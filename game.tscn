@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://character.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://katanagirl.png" id="3_feb5d"]
-[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://helpers.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://grid.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://helpers.gd" id="6_ryrav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -16,6 +17,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_7jktm"]
 tile_size = Vector2i(32, 32)
+navigation_layer_0/layers = 1
 sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 
 [sub_resource type="GDScript" id="GDScript_ryrav"]
@@ -34,29 +36,38 @@ func _process(delta: float) -> void:
 
 [node name="Game" type="Node2D" unique_id=142744751]
 
-[node name="Map" type="TileMapLayer" parent="." unique_id=313124913]
+[node name="Camera" type="Camera2D" parent="." unique_id=974548880]
+anchor_mode = 0
+zoom = Vector2(5, 5)
+script = ExtResource("2_fc0e3")
+
+[node name="Grid" type="Node2D" parent="." unique_id=1472658941]
+script = ExtResource("5_7jktm")
+
+[node name="Tilemap" type="TileMapLayer" parent="Grid" unique_id=313124913]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAAAAwAAAAAAAAACAAEAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAMAAwAAAAAAAAADAAIAAwAAAAAAAAADAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAABAAIAAwAAAAAAAAABAAMAAwAAAAAAAAAEAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAIAAwAAAAAAAAAFAAMAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAAAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAAAAwAAAAAAAAAHAAEAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAIAAwAAAAAAAAAHAAMAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
 rendering_quadrant_size = 32
 script = SubResource("GDScript_ryrav")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=974548880]
-anchor_mode = 0
-zoom = Vector2(5, 5)
-script = ExtResource("2_fc0e3")
+[node name="Katanagirl" parent="Grid" unique_id=514008038 instance=ExtResource("3_fc0e3")]
+position = Vector2(64, 32)
 
-[node name="CharacterBody2D" parent="." unique_id=44628498 instance=ExtResource("3_fc0e3")]
-state = 1
-
-[node name="CharacterBody2D2" parent="." unique_id=514008038 instance=ExtResource("3_fc0e3")]
-position = Vector2(32, 0)
-
-[node name="Sprite" parent="CharacterBody2D2" index="0" unique_id=2005633188]
+[node name="Sprite" parent="Grid/Katanagirl" index="0" unique_id=2005633188]
 texture = ExtResource("3_feb5d")
 
-[node name="Helpers" type="Node" parent="." unique_id=391304421]
-script = ExtResource("5_7jktm")
+[node name="Scythegirl" parent="Grid" unique_id=44628498 instance=ExtResource("3_fc0e3")]
+position = Vector2(160, 32)
 
-[editable path="CharacterBody2D"]
-[editable path="CharacterBody2D2"]
+[node name="Click" type="Node" parent="Grid" unique_id=112512100]
+script = ExtResource("2_fc0e3")
+
+[node name="Helpers" type="Node" parent="Grid" unique_id=454416058]
+script = ExtResource("6_ryrav")
+
+[connection signal="calculate_path" from="Grid/Katanagirl" to="Grid" method="_on_calculate_path"]
+[connection signal="calculate_path" from="Grid/Scythegirl" to="Grid" method="_on_calculate_path"]
+
+[editable path="Grid/Katanagirl"]
+[editable path="Grid/Scythegirl"]
