@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://character.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://katanagirl.png" id="3_feb5d"]
-[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://grid.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://nav_grid.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://helpers.gd" id="6_ryrav"]
+[ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://game_manager.gd" id="7_eow3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -41,33 +42,40 @@ anchor_mode = 0
 zoom = Vector2(5, 5)
 script = ExtResource("2_fc0e3")
 
-[node name="Grid" type="Node2D" parent="." unique_id=1472658941]
-script = ExtResource("5_7jktm")
-
-[node name="Tilemap" type="TileMapLayer" parent="Grid" unique_id=313124913]
+[node name="Tilemap" type="TileMapLayer" parent="." unique_id=313124913]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAAAAwAAAAAAAAACAAEAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAMAAwAAAAAAAAADAAIAAwAAAAAAAAADAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAABAAIAAwAAAAAAAAABAAMAAwAAAAAAAAAEAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAIAAwAAAAAAAAAFAAMAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAAAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAAAAwAAAAAAAAAHAAEAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAIAAwAAAAAAAAAHAAMAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
 rendering_quadrant_size = 32
 script = SubResource("GDScript_ryrav")
 
-[node name="Katanagirl" parent="Grid" unique_id=514008038 instance=ExtResource("3_fc0e3")]
-position = Vector2(64, 32)
+[node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
+script = ExtResource("7_eow3j")
 
-[node name="Sprite" parent="Grid/Katanagirl" index="0" unique_id=2005633188]
-texture = ExtResource("3_feb5d")
-
-[node name="Scythegirl" parent="Grid" unique_id=44628498 instance=ExtResource("3_fc0e3")]
-position = Vector2(160, 32)
-
-[node name="Click" type="Node" parent="Grid" unique_id=112512100]
+[node name="Click" type="Node" parent="GameManager" unique_id=112512100]
 script = ExtResource("2_fc0e3")
 
-[node name="Helpers" type="Node" parent="Grid" unique_id=454416058]
+[node name="Helpers" type="Node" parent="GameManager" unique_id=1833757236]
 script = ExtResource("6_ryrav")
 
-[connection signal="calculate_path" from="Grid/Katanagirl" to="Grid" method="_on_calculate_path"]
-[connection signal="calculate_path" from="Grid/Scythegirl" to="Grid" method="_on_calculate_path"]
+[node name="Actors" type="Node" parent="GameManager" unique_id=1493779444]
 
-[editable path="Grid/Katanagirl"]
-[editable path="Grid/Scythegirl"]
+[node name="Katanagirl" parent="GameManager/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
+position = Vector2(64, 32)
+
+[node name="Sprite" parent="GameManager/Actors/Katanagirl" index="0" unique_id=2005633188]
+texture = ExtResource("3_feb5d")
+
+[node name="Scythegirl" parent="GameManager/Actors" unique_id=44628498 instance=ExtResource("3_fc0e3")]
+position = Vector2(160, 32)
+
+[node name="NavGrid" type="Node2D" parent="GameManager" unique_id=1472658941]
+script = ExtResource("5_7jktm")
+
+[node name="Helpers" type="Node" parent="GameManager/NavGrid" unique_id=454416058]
+script = ExtResource("6_ryrav")
+
+[connection signal="click" from="GameManager/Click" to="GameManager" method="_on_click"]
+
+[editable path="GameManager/Actors/Katanagirl"]
+[editable path="GameManager/Actors/Scythegirl"]

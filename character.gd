@@ -1,14 +1,20 @@
+class_name Character
+
 extends Area2D
 
 enum States {ready, move, declare_move, idle}
 
-signal calculate_path(Node, Vector2)
+signal calculate_path(start:Vector2i, destination:Vector2i, callback:Callable, mask:Array[Vector2i])
+signal done
+signal moved(from:Vector2i, to:Vector2i)
 
 @export var state: States = States.idle
 @export var movement_speed: float = 64
 var movement_delta: float
 var path: PackedVector2Array = PackedVector2Array([global_position])
 var target: Vector2 
+var grid_coordinates: Vector2i
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +32,8 @@ func _process(delta: float) -> void:
 			var new_position = $Helpers.snap_to_grid(get_viewport().get_camera_2d().get_global_mouse_position())
 			if new_position != $MovementReticleSprite.global_position:
 				$MovementReticleSprite.global_position = new_position
-				calculate_path.emit($".", new_position)
+				print("emitting")
+				calculate_path.emit(grid_coordinates, $Helpers.absolute_to_grid_coordinates(new_position), set_path, [grid_coordinates])
 
 func _physics_process(delta):
 	match state:
@@ -35,6 +42,10 @@ func _physics_process(delta):
 				global_position = target
 				if path.is_empty():
 					state = States.idle
+					var new_coordinates = $Helpers.absolute_to_grid_coordinates(global_position)
+					moved.emit(grid_coordinates, new_coordinates)
+					grid_coordinates = new_coordinates
+					done.emit()
 					return
 				target = path[0]
 				path = path.slice(1)
@@ -46,9 +57,10 @@ func _physics_process(delta):
 func move():
 	state = States.move
 	
+func activate():
+	state = States.declare_move
 
 func set_path(_path: PackedVector2Array):
-	print('rendering', _path)
 	path = _path
 	var path_offset = PackedVector2Array()
 	for point in _path:
@@ -58,9 +70,5 @@ func set_path(_path: PackedVector2Array):
 
 func _on_click(_coordinates) -> void:
 	match state:
-		States.idle:
-			if $Helpers.snap_to_grid(_coordinates) != global_position:
-				return
-			state = States.declare_move
 		States.declare_move:
 			move()
