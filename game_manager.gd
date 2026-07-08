@@ -18,7 +18,6 @@ func initialize_board():
 		actor.done.connect(_on_character_done)
 		actor.moved.connect(_on_character_moved)
 		actor.calculate_path.connect($NavGrid._on_calculate_path)
-		print(actor, "connected", actor.calculate_path.get_connections())
 	$NavGrid.initialize_grid(game_board)
 	
 

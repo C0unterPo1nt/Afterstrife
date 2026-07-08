@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 			var new_position = $Helpers.snap_to_grid(get_viewport().get_camera_2d().get_global_mouse_position())
 			if new_position != $MovementReticleSprite.global_position:
 				$MovementReticleSprite.global_position = new_position
-				print("emitting")
 				calculate_path.emit(grid_coordinates, $Helpers.absolute_to_grid_coordinates(new_position), set_path, [grid_coordinates])
 
 func _physics_process(delta):
