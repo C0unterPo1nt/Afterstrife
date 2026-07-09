@@ -15,10 +15,19 @@ run/main_scene="uid://cwbwrxpbonbnh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Grid="*uid://dta03qjfkg7wx"
+Constants="*uid://epvhci8hpdqr"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=640
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [physics]
 

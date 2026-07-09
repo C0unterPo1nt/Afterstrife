@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://Scythegirl.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://d3wixdyf7dxr3" path="res://character.gd" id="1_px5sl"]
 [ext_resource type="Texture2D" uid="uid://db2iq4gxukxx7" path="res://reticle.png" id="3_wfnr8"]
-[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://helpers.gd" id="4_wfnr8"]
+[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://grid.gd" id="4_wfnr8"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="5_px5sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
@@ -32,9 +32,5 @@ script = ExtResource("4_wfnr8")
 
 [node name="Click" type="Node" parent="." unique_id=1604102015]
 script = ExtResource("5_px5sl")
-
-[node name="MovementPreviewLine" type="Line2D" parent="." unique_id=959344343]
-width = 6.67
-default_color = Color(1, 0, 0, 1)
 
 [connection signal="click" from="Click" to="." method="_on_click"]

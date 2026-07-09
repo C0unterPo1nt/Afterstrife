@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cxib61inrdn4x"
+path="res://.godot/imported/reticle.ase-d12d7be14f3f4fd49f109ddfd12f7042.res"
+
+[deps]
+
+source_file="res://reticle.ase"
+dest_files=["res://.godot/imported/reticle.ase-d12d7be14f3f4fd49f109ddfd12f7042.res"]
+
+[params]
+

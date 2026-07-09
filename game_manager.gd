@@ -18,6 +18,8 @@ func initialize_board():
 		actor.done.connect(_on_character_done)
 		actor.moved.connect(_on_character_moved)
 		actor.calculate_path.connect($NavGrid._on_calculate_path)
+		actor.update_preview_path.connect($MovementPreviewLine._on_update_path_preview)
+		actor.update_state.connect($MovementPreviewLine._on_character_update_state)
 	$NavGrid.initialize_grid(game_board)
 	
 

@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://character.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://katanagirl.png" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://nav_grid.gd" id="5_7jktm"]
-[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://helpers.gd" id="6_ryrav"]
+[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://grid.gd" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://game_manager.gd" id="7_eow3j"]
+[ext_resource type="Script" uid="uid://cbahf0flbmmlt" path="res://movement_preview_line.gd" id="8_j5wjh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -74,6 +75,9 @@ script = ExtResource("5_7jktm")
 
 [node name="Helpers" type="Node" parent="GameManager/NavGrid" unique_id=454416058]
 script = ExtResource("6_ryrav")
+
+[node name="MovementPreviewLine" type="Node2D" parent="GameManager" unique_id=1504991797]
+script = ExtResource("8_j5wjh")
 
 [connection signal="click" from="GameManager/Click" to="GameManager" method="_on_click"]
 
