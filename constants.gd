@@ -1,1 +1,1 @@
-enum CharacterStates {ready, move, declare_move, idle}
+enum CharacterStates {ready, move, declare_move, tapped}

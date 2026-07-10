@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://Scythegirl.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://d3wixdyf7dxr3" path="res://character.gd" id="1_px5sl"]
+[ext_resource type="Script" uid="uid://bw8wiskuh8h7e" path="res://character_sprite.gd" id="3_px5sl"]
 [ext_resource type="Texture2D" uid="uid://db2iq4gxukxx7" path="res://reticle.png" id="3_wfnr8"]
-[ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://grid.gd" id="4_wfnr8"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="5_px5sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
@@ -12,10 +12,11 @@ size = Vector2(32, 32)
 [node name="Character" type="Area2D" unique_id=1589579558]
 script = ExtResource("1_px5sl")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2005633188]
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=2005633188]
 texture_filter = 1
 texture = ExtResource("1_glpr6")
 centered = false
+script = ExtResource("3_px5sl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284294932]
 position = Vector2(16, 16)
@@ -26,9 +27,6 @@ shape = SubResource("RectangleShape2D_pjt0s")
 visible = false
 texture = ExtResource("3_wfnr8")
 centered = false
-
-[node name="Helpers" type="Node" parent="." unique_id=2111422234]
-script = ExtResource("4_wfnr8")
 
 [node name="Click" type="Node" parent="." unique_id=1604102015]
 script = ExtResource("5_px5sl")

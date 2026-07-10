@@ -14,15 +14,15 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_character_update_state(state: Constants.CharacterStates):
-	matricide()
+	kill_children()
 
-func matricide():
+func kill_children():
 	for node in get_children():
 		node.queue_free()
 
 func _on_update_path_preview(_path: PackedVector2Array):
 	path = _path
-	matricide()
+	kill_children()
 	draw_line_sprites()
 		
 

@@ -1,10 +1,11 @@
 extends Node2D
 
-enum States {selecting, character_acting}
+enum States {selecting, character_acting, between_turns}
 var Character = load("res://character.tscn")
 
 var game_board: Dictionary[Vector2i, Character] = {}
 var state: States = States.selecting
+var turn_count: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func initialize_board():
 	for actor in $Actors.get_children():
-		var coordinates = $Helpers.absolute_to_grid_coordinates(actor.global_position)
+		var coordinates = Grid.absolute_to_grid_coordinates(actor.global_position)
 		game_board.set(coordinates, actor)
 		actor.grid_coordinates = coordinates
 		actor.done.connect(_on_character_done)
@@ -27,12 +28,17 @@ func initialize_board():
 func _process(delta: float) -> void:
 	pass
 
+func start_turn():
+	state = States.selecting
+	$Actors.refresh()
+	
+
 func _on_click(_position):
 	match state:
 		States.selecting:
 			var coordinates = $Helpers.absolute_to_grid_coordinates(_position)
 			var character = game_board.get(coordinates)
-			if character != null:
+			if character != null && character.state == Constants.CharacterStates.ready:
 				character.activate()
 				state = States.character_acting
 
@@ -45,3 +51,6 @@ func _on_character_moved(old_coordinates, new_coordinates):
 	game_board.set(new_coordinates, character)
 	$NavGrid.initialize_grid(game_board)
 	pass
+
+func _on_end_turn_button_pressed():
+	start_turn()

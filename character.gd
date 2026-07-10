@@ -8,12 +8,14 @@ signal moved(from:Vector2i, to:Vector2i)
 signal update_preview_path(path:PackedVector2Array)
 signal update_state(state:Constants.CharacterStates)
 
-@export var state: Constants.CharacterStates = Constants.CharacterStates.idle
-@export var movement_speed: float = 64
+@export var state: Constants.CharacterStates = Constants.CharacterStates.ready
+@export var movement_speed: float = 128
 var movement_delta: float
 var path: PackedVector2Array = PackedVector2Array([global_position])
 var target: Vector2 
 var grid_coordinates: Vector2i
+var activated: bool = false
+var remaining_actions: int = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,10 +29,10 @@ func _process(delta: float) -> void:
 	match state:
 		Constants.CharacterStates.declare_move:
 			$MovementReticleSprite.visible = true
-			var new_position = $Helpers.snap_to_grid(get_viewport().get_camera_2d().get_global_mouse_position())
+			var new_position = Grid.snap_to_grid(get_viewport().get_camera_2d().get_global_mouse_position())
 			if new_position != $MovementReticleSprite.global_position:
 				$MovementReticleSprite.global_position = new_position
-				calculate_path.emit(grid_coordinates, $Helpers.absolute_to_grid_coordinates(new_position), set_path, [grid_coordinates])
+				calculate_path.emit(grid_coordinates, Grid.absolute_to_grid_coordinates(new_position), set_path, [grid_coordinates])
 
 func _physics_process(delta):
 	match state:
@@ -38,11 +40,11 @@ func _physics_process(delta):
 			if global_position.distance_to(target) < 1:
 				global_position = target
 				if path.is_empty():
-					state = Constants.CharacterStates.idle
-					var new_coordinates = $Helpers.absolute_to_grid_coordinates(global_position)
+					state = Constants.CharacterStates.ready
+					var new_coordinates = Grid.absolute_to_grid_coordinates(global_position)
 					moved.emit(grid_coordinates, new_coordinates)
 					grid_coordinates = new_coordinates
-					done.emit()
+					end_turn()
 					return
 				target = path[0]
 				path = path.slice(1)
@@ -56,17 +58,32 @@ func change_state(_state: Constants.CharacterStates):
 	update_state.emit(state)
 	
 func activate():
-	state = Constants.CharacterStates.declare_move
+	if state != Constants.CharacterStates.ready:
+		return
+	activated = true
+	change_state(Constants.CharacterStates.declare_move)
+	
+func end_turn():
+	activated = false
+	change_state(Constants.CharacterStates.tapped)
+	$CharacterSprite.dim()
+	done.emit()
+
+func refresh():
+	change_state(Constants.CharacterStates.ready)
+	$CharacterSprite.undim()
 
 func set_path(_path: PackedVector2Array):
 	path = _path
 	var path_offset = PackedVector2Array()
 	for point in _path:
-		path_offset.append(point - global_position + Vector2($Helpers.cell_size/2))
+		path_offset.append(point - global_position + Vector2(Grid.cell_size/2))
 	update_preview_path.emit(path)
 	
 
 func _on_click(_coordinates) -> void:
+	if not activated:
+		return
 	match state:
 		Constants.CharacterStates.declare_move:
 			change_state(Constants.CharacterStates.move)

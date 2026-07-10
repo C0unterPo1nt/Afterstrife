@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://character.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://katanagirl.png" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://nav_grid.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors.gd" id="5_vef74"]
 [ext_resource type="Script" uid="uid://dta03qjfkg7wx" path="res://grid.gd" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://cbahf0flbmmlt" path="res://movement_preview_line.gd" id="8_j5wjh"]
@@ -36,22 +37,17 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="Game" type="Node2D" unique_id=142744751]
+[node name="Game" type="Node2D" unique_id=1345526355]
 
-[node name="Camera" type="Camera2D" parent="." unique_id=974548880]
-anchor_mode = 0
-zoom = Vector2(5, 5)
-script = ExtResource("2_fc0e3")
+[node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
+script = ExtResource("7_eow3j")
 
-[node name="Tilemap" type="TileMapLayer" parent="." unique_id=313124913]
+[node name="Tilemap" type="TileMapLayer" parent="GameManager" unique_id=313124913]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAAAAwAAAAAAAAACAAEAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAMAAwAAAAAAAAADAAIAAwAAAAAAAAADAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAABAAIAAwAAAAAAAAABAAMAAwAAAAAAAAAEAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAIAAwAAAAAAAAAFAAMAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAAAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAAAAwAAAAAAAAAHAAEAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAIAAwAAAAAAAAAHAAMAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
 rendering_quadrant_size = 32
 script = SubResource("GDScript_ryrav")
-
-[node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
-script = ExtResource("7_eow3j")
 
 [node name="Click" type="Node" parent="GameManager" unique_id=112512100]
 script = ExtResource("2_fc0e3")
@@ -60,11 +56,12 @@ script = ExtResource("2_fc0e3")
 script = ExtResource("6_ryrav")
 
 [node name="Actors" type="Node" parent="GameManager" unique_id=1493779444]
+script = ExtResource("5_vef74")
 
 [node name="Katanagirl" parent="GameManager/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
 position = Vector2(64, 32)
 
-[node name="Sprite" parent="GameManager/Actors/Katanagirl" index="0" unique_id=2005633188]
+[node name="CharacterSprite" parent="GameManager/Actors/Katanagirl" index="0" unique_id=2005633188]
 texture = ExtResource("3_feb5d")
 
 [node name="Scythegirl" parent="GameManager/Actors" unique_id=44628498 instance=ExtResource("3_fc0e3")]
@@ -79,7 +76,18 @@ script = ExtResource("6_ryrav")
 [node name="MovementPreviewLine" type="Node2D" parent="GameManager" unique_id=1504991797]
 script = ExtResource("8_j5wjh")
 
+[node name="EndTurnButton" type="Button" parent="GameManager" unique_id=208532653]
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 159.0
+text = "End Turn"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1546570405]
+anchor_mode = 0
+zoom = Vector2(5, 4.015)
+
 [connection signal="click" from="GameManager/Click" to="GameManager" method="_on_click"]
+[connection signal="pressed" from="GameManager/EndTurnButton" to="GameManager" method="_on_end_turn_button_pressed"]
 
 [editable path="GameManager/Actors/Katanagirl"]
 [editable path="GameManager/Actors/Scythegirl"]
