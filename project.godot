@@ -22,8 +22,8 @@ Constants="*uid://epvhci8hpdqr"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=640
+window/size/viewport_width=2560
+window/size/viewport_height=1280
 
 [editor_plugins]
 

@@ -7,8 +7,8 @@ func _ready():
 
 func initialize_grid(game_board):
 	astar_grid = AStarGrid2D.new()
-	astar_grid.size = $Helpers.grid_size
-	astar_grid.cell_size = $Helpers.cell_size
+	astar_grid.size = Grid.grid_size
+	astar_grid.cell_size = Grid.cell_size
 	astar_grid.offset = Vector2i.ZERO
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN

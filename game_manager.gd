@@ -4,12 +4,13 @@ enum States {selecting, character_acting, between_turns}
 var Character = load("res://character.tscn")
 
 var game_board: Dictionary[Vector2i, Character] = {}
-var state: States = States.selecting
-var turn_count: int
+var state: States = States.between_turns
+var turn_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	call_deferred("initialize_board")
+	call_deferred("change_turn")
 
 func initialize_board():
 	for actor in $Actors.get_children():
@@ -31,12 +32,19 @@ func _process(delta: float) -> void:
 func start_turn():
 	state = States.selecting
 	$Actors.refresh()
-	
+
+func change_turn():
+	turn_count += 1
+	$TurnCounter.text = "Turn {0}".format([turn_count])
+	$TurnCounter.visible = true
+	await get_tree().create_timer(2).timeout
+	$TurnCounter.visible = false
+	start_turn()
 
 func _on_click(_position):
 	match state:
 		States.selecting:
-			var coordinates = $Helpers.absolute_to_grid_coordinates(_position)
+			var coordinates = Grid.absolute_to_grid_coordinates(_position)
 			var character = game_board.get(coordinates)
 			if character != null && character.state == Constants.CharacterStates.ready:
 				character.activate()
@@ -53,4 +61,4 @@ func _on_character_moved(old_coordinates, new_coordinates):
 	pass
 
 func _on_end_turn_button_pressed():
-	start_turn()
+	change_turn()
