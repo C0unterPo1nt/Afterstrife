@@ -2,7 +2,7 @@ extends Node2D
 
 var path: PackedVector2Array
 var arrow = load("res://MovementPreviewLine.png")
-var arrow_regions: Dictionary = { "straight": Rect2(0,0,32,32), "point": Rect2(32,0,32,32), "bend": Rect2(64,0,32,32)}
+var arrow_regions: Dictionary = { "straight": Rect2(0,0,32,32), "point": Rect2(32,0,32,32), "bend": Rect2(64,0,32,32), "pointbend": Rect2(96,0,32,32)}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,17 +41,18 @@ func draw_line_sprites():
 
 		if direction_to_next.dot(direction_to_prev) == 0:
 			var flip_v = false
-			if direction_to_prev.angle_to(direction_to_next) < 0:
+			if direction_to_next.angle_to(direction_to_prev) < 0:
 				flip_v = true
-			#if i == path.size() - 2:
-				#pointbend
-			instance_sprite(point, 'bend', direction_to_prev.angle(), flip_v)
+			if i == path.size() - 2:
+				instance_sprite(point, 'pointbend', direction_to_next.angle(), flip_v)
+			else:
+				instance_sprite(point, 'bend', direction_to_next.angle(), flip_v)
 			continue
 		if i == path.size() - 2:
-			instance_sprite(point, 'point', direction_to_prev.angle() + PI/2)
+			instance_sprite(point, 'point', direction_to_next.angle())
 			continue
 		print(direction_to_next.angle())
-		instance_sprite(point, 'straight', direction_to_next.angle() + PI/2)
+		instance_sprite(point, 'straight', direction_to_next.angle())
 
 func instance_sprite(coords, type, rotate=0, flip_v=false):
 	var sprite = Sprite2D.new()
@@ -62,4 +63,3 @@ func instance_sprite(coords, type, rotate=0, flip_v=false):
 	sprite.rotation = rotate
 	sprite.global_position = coords + Vector2(Grid.cell_size/2)
 	add_child(sprite)
-	print('instanced sprite at:', sprite.global_position)
