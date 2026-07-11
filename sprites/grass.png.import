@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdt7q22mjkcdc"
-path="res://.godot/imported/Scythegirl.png-1a075c55020c1cc9eccf6a8e0dccdf2f.ctex"
+uid="uid://h2dsosu0nnaw"
+path="res://.godot/imported/grass.png-1572a75374ab70eb30be63c3ab8a61c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scythegirl.png"
-dest_files=["res://.godot/imported/Scythegirl.png-1a075c55020c1cc9eccf6a8e0dccdf2f.ctex"]
+source_file="res://sprites/grass.png"
+dest_files=["res://.godot/imported/grass.png-1572a75374ab70eb30be63c3ab8a61c1.ctex"]
 
 [params]
 

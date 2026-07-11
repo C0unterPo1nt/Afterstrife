@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtl00k120styc"
-path="res://.godot/imported/katanagirl.png-5fd6f415e95661a20f75754274981a8e.ctex"
+uid="uid://dn27y6nitxxj6"
+path="res://.godot/imported/MovementPreviewLine.png-8d8ddf5e24560dd44c942ce093a44976.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://katanagirl.png"
-dest_files=["res://.godot/imported/katanagirl.png-5fd6f415e95661a20f75754274981a8e.ctex"]
+source_file="res://sprites/MovementPreviewLine.png"
+dest_files=["res://.godot/imported/MovementPreviewLine.png-8d8ddf5e24560dd44c942ce093a44976.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://cwbwrxpbonbnh"]
 
-[ext_resource type="Texture2D" uid="uid://h2dsosu0nnaw" path="res://grass.png" id="1_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://h2dsosu0nnaw" path="res://sprites/grass.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="2_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://olnxkew7u2go" path="res://board_tiles.png" id="2_vef74"]
+[ext_resource type="Texture2D" uid="uid://olnxkew7u2go" path="res://sprites/board_tiles.png" id="2_vef74"]
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://character.tscn" id="3_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://katanagirl.png" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://sprites/katanagirl.png" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://nav_grid.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors.gd" id="5_vef74"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://game_manager.gd" id="7_eow3j"]
