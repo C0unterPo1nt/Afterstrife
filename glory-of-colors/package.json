@@ -1,0 +1,45 @@
+{
+  "name": "glory-of-colors",
+  "displayName": "Glory of Colors",
+  "description": "Compilation of palettes created by SurrealEmber",
+  "version": "1.1",
+  "author": { "name": "SurrealEmber", "url": "https://tumblr.com/surrealember" },
+  "publisher": "aseprite",
+  "categories": [
+    "Palettes"
+  ],
+  "contributes": {
+    "palettes": [
+      { "id": "Alice in Cherryland", "path": "./aliceincherryland.gpl" },
+      { "id": "Antique Tarot 32", "path": "./antiquetarot32.gpl" },
+      { "id": "Arabica 4", "path": "./arabica4.gpl" },
+      { "id": "Atropoeia", "path": "./atropoeia.gpl" },
+      { "id": "Blighted Paint", "path": "./blightedpaint.gpl" },
+      { "id": "Cafe Nouveau", "path": "./cafenouveau.gpl" },
+      { "id": "Carob Treat", "path": "./carobtreat.gpl" },
+      { "id": "Cophee 4", "path": "./cophee4.gpl" },
+      { "id": "Cophee 4 Enhanced", "path": "./cophee4v2.gpl" },
+      { "id": "Daifuku Delights 24", "path": "./daifukudelights24.gpl" },
+      { "id": "Enchanted 6", "path": "./enchanted6.gpl" },
+      { "id": "End of All Glory", "path": "./endofallglory.gpl" },
+      { "id": "Fading 16", "path": "./fading16.gpl" },
+      { "id": "Golden 6", "path": "./golden6.gpl" },
+      { "id": "June Flower", "path": "./juneflower.gpl" },
+      { "id": "Lost Century", "path": "./lostcentury.gpl" },
+      { "id": "Lost Century 24", "path": "./lostcentury24.gpl" },
+      { "id": "Mariposa 4", "path": "./mariposa4.gpl" },
+      { "id": "Omnia", "path": "./omnia.gpl" },
+      { "id": "Omnia Regia", "path": "./omniaregia.gpl" },
+      { "id": "Papier 4", "path": "./papier4.gpl" },
+      { "id": "Poisson 23", "path": "./poisson23.gpl" },
+      { "id": "Prismatic Reverie", "path": "./prismaticreverie.gpl" },
+      { "id": "Robusta 4", "path": "./robusta4.gpl" },
+      { "id": "Sunset Lantern", "path": "./sunsetlantern.gpl" },
+      { "id": "Tattered Atlas", "path": "./tatteredatlas.gpl" },
+      { "id": "Timeless Night", "path": "./timelessnight.gpl" },
+      { "id": "Wisteria Mystery", "path": "./wisteriamystery.gpl" },
+      { "id": "Withered Cherry", "path": "./witheredcherry.gpl" },
+      { "id": "Withering 24", "path": "./withering24.gpl" }
+    ]
+  }
+}

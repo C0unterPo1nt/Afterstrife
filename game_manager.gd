@@ -19,10 +19,10 @@ func initialize_board():
 		actor.grid_coordinates = coordinates
 		actor.done.connect(_on_character_done)
 		actor.moved.connect(_on_character_moved)
-		actor.calculate_path.connect($NavGrid._on_calculate_path)
+		actor.calculate_path.connect($Tilemap._on_calculate_path)
 		actor.update_preview_path.connect($MovementPreviewLine._on_update_path_preview)
 		actor.update_state.connect($MovementPreviewLine._on_character_update_state)
-	$NavGrid.initialize_grid(game_board)
+	$Tilemap.initialize_grid(game_board)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,7 +57,7 @@ func _on_character_moved(old_coordinates, new_coordinates):
 	var character = game_board[old_coordinates]
 	game_board.erase(old_coordinates)
 	game_board.set(new_coordinates, character)
-	$NavGrid.initialize_grid(game_board)
+	$Tilemap.initialize_grid(game_board)
 	pass
 
 func _on_end_turn_button_pressed():

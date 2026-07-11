@@ -1,9 +1,12 @@
-extends Node2D
+extends TileMapLayer
 
 var astar_grid:AStarGrid2D
 
+enum Tile {Obstacle}
+
 func _ready():
 	pass
+	
 
 func initialize_grid(game_board):
 	astar_grid = AStarGrid2D.new()
@@ -13,6 +16,11 @@ func initialize_grid(game_board):
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	astar_grid.update()
+	for i in range(astar_grid.size.x):
+		for j in range(astar_grid.size.y):
+			var pos = Vector2i(i,j)
+			if get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
+				astar_grid.set_point_solid(pos)
 	for key in game_board.keys():
 		astar_grid.set_point_solid(key, true)
 
