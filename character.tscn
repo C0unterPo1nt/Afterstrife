@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://d3wixdyf7dxr3" path="res://character.gd" id="1_px5sl"]
 [ext_resource type="Script" uid="uid://bw8wiskuh8h7e" path="res://character_sprite.gd" id="3_px5sl"]
-[ext_resource type="Texture2D" uid="uid://db2iq4gxukxx7" path="res://sprites/reticle.png" id="3_wfnr8"]
-[ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://click.gd" id="5_px5sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
 size = Vector2(32, 32)
@@ -22,13 +20,3 @@ script = ExtResource("3_px5sl")
 position = Vector2(16, 16)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pjt0s")
-
-[node name="MovementReticleSprite" type="Sprite2D" parent="." unique_id=885323284]
-visible = false
-texture = ExtResource("3_wfnr8")
-centered = false
-
-[node name="Click" type="Node" parent="." unique_id=1604102015]
-script = ExtResource("5_px5sl")
-
-[connection signal="click" from="Click" to="." method="_on_click"]

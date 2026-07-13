@@ -1,7 +1,6 @@
 extends Node2D
 
 enum States {selecting, character_acting, between_turns}
-var Character = load("res://character.tscn")
 
 var game_board: Dictionary[Vector2i, Character] = {}
 var state: States = States.between_turns
@@ -17,11 +16,6 @@ func initialize_board():
 		var coordinates = Grid.absolute_to_grid_coordinates(actor.global_position)
 		game_board.set(coordinates, actor)
 		actor.grid_coordinates = coordinates
-		actor.done.connect(_on_character_done)
-		actor.moved.connect(_on_character_moved)
-		actor.calculate_path.connect($Tilemap._on_calculate_path)
-		actor.update_preview_path.connect($MovementPreviewLine._on_update_path_preview)
-		actor.update_state.connect($MovementPreviewLine._on_character_update_state)
 	$Tilemap.initialize_grid(game_board)
 	
 
@@ -37,28 +31,29 @@ func change_turn():
 	turn_count += 1
 	$TurnCounter.text = "Turn {0}".format([turn_count])
 	$TurnCounter.visible = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	$TurnCounter.visible = false
 	start_turn()
 
-func _on_click(_position):
+func character_act(character: Character):
+	state = States.character_acting
+	var path: PackedVector2Array = await $Targeting.move(character)
+	await $Movement.move(character, path)
+	var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
+	game_board.erase(character.grid_coordinates)
+	game_board.set(final_coords, character)
+	character.grid_coordinates = final_coords
+	$Tilemap.initialize_grid(game_board)
+	character.remaining_actions = character.remaining_actions - 1
+	state = States.selecting
+
+func _on_end_turn_button_pressed():
+	change_turn()
+
+func _on_input_click(_position) -> void:
 	match state:
 		States.selecting:
 			var coordinates = Grid.absolute_to_grid_coordinates(_position)
 			var character = game_board.get(coordinates)
-			if character != null && character.state == Constants.CharacterStates.ready:
-				character.activate()
-				state = States.character_acting
-
-func _on_character_done():
-	state = States.selecting
-
-func _on_character_moved(old_coordinates, new_coordinates):
-	var character = game_board[old_coordinates]
-	game_board.erase(old_coordinates)
-	game_board.set(new_coordinates, character)
-	$Tilemap.initialize_grid(game_board)
-	pass
-
-func _on_end_turn_button_pressed():
-	change_turn()
+			if character != null && character.state == Character.States.ready:
+				character_act(character)

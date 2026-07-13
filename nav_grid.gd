@@ -24,13 +24,14 @@ func initialize_grid(game_board):
 	for key in game_board.keys():
 		astar_grid.set_point_solid(key, true)
 
-func _on_calculate_path(start, end, callback, mask) -> void:
+func calculate_path(start: Vector2i, end: Vector2i, mask: PackedVector2Array) -> PackedVector2Array:
+	print("calculating")
 	for point in mask:
 		if astar_grid.is_point_solid(point):
 			astar_grid.set_point_solid(start, false)
 		else:
 			mask.erase(point)
 	var path = astar_grid.get_point_path(start, end)
-	callback.call(path)
 	for point in mask:
 			astar_grid.set_point_solid(start, true)
+	return path

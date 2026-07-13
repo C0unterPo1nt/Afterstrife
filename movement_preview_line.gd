@@ -1,28 +1,17 @@
 extends Node2D
 
 var path: PackedVector2Array
-var arrow = load("res://MovementPreviewLine.png")
+var arrow = load("res://sprites/MovementPreviewLine.png")
 var arrow_regions: Dictionary = { "straight": Rect2(0,0,32,32), "point": Rect2(32,0,32,32), "bend": Rect2(64,0,32,32), "pointbend": Rect2(96,0,32,32)}
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_character_update_state(state: Constants.CharacterStates):
-	kill_children()
-
-func kill_children():
+func clear_path():
 	for node in get_children():
 		node.queue_free()
 
-func _on_update_path_preview(_path: PackedVector2Array):
+func update_path_preview(_path: PackedVector2Array):
+	print('MovementPreviewLine.update_path_preview(', _path, ')')
 	path = _path
-	kill_children()
+	clear_path()
 	draw_line_sprites()
 		
 
