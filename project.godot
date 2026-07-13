@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [autoload]
 
 Grid="*uid://dta03qjfkg7wx"
-Constants="*uid://epvhci8hpdqr"
 
 [display]
 

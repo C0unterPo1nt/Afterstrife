@@ -9,7 +9,11 @@ enum States {ready, declare, acting, tapped}
 @export var grid_coordinates: Vector2i
 @export var activated: bool = false
 var maximum_actions: int = 2
-var remaining_actions: int = 1
+var remaining_actions: int = maximum_actions
+
+var actions: Array[Action] = [
+	Action.Move.new()
+]
 
 func _process(delta: float) -> void:
 	if remaining_actions == 0 and state != States.tapped:

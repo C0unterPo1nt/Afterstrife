@@ -37,15 +37,22 @@ func change_turn():
 
 func character_act(character: Character):
 	state = States.character_acting
-	var path: PackedVector2Array = await $Targeting.move(character)
-	await $Movement.move(character, path)
-	var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
-	game_board.erase(character.grid_coordinates)
-	game_board.set(final_coords, character)
-	character.grid_coordinates = final_coords
-	$Tilemap.initialize_grid(game_board)
+	var action: Action = await $Menu.make_action_selection(character.actions)
+	for sub in action.sequence:
+		await perform_sub_act(character, sub)
 	character.remaining_actions = character.remaining_actions - 1
 	state = States.selecting
+
+func perform_sub_act(character: Character, sub: SubAction):
+	if sub is SubAction.Move:
+		var path: PackedVector2Array = await $Targeting.move(character)
+		await $Movement.move(character, path)
+		var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
+		game_board.erase(character.grid_coordinates)
+		game_board.set(final_coords, character)
+		character.grid_coordinates = final_coords
+		$Tilemap.initialize_grid(game_board)
+	
 
 func _on_end_turn_button_pressed():
 	change_turn()
@@ -56,4 +63,5 @@ func _on_input_click(_position) -> void:
 			var coordinates = Grid.absolute_to_grid_coordinates(_position)
 			var character = game_board.get(coordinates)
 			if character != null && character.state == Character.States.ready:
+				var action = Action.Move.new()
 				character_act(character)
