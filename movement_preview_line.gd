@@ -9,7 +9,6 @@ func clear_path():
 		node.queue_free()
 
 func update_path_preview(_path: PackedVector2Array):
-	print('MovementPreviewLine.update_path_preview(', _path, ')')
 	path = _path
 	clear_path()
 	draw_line_sprites()
@@ -40,7 +39,6 @@ func draw_line_sprites():
 		if i == path.size() - 2:
 			instance_sprite(point, 'point', direction_to_next.angle())
 			continue
-		print(direction_to_next.angle())
 		instance_sprite(point, 'straight', direction_to_next.angle())
 
 func instance_sprite(coords, type, rotate=0, flip_v=false):

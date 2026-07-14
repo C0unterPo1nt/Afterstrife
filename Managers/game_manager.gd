@@ -17,6 +17,7 @@ func initialize_board():
 		game_board.set(coordinates, actor)
 		actor.grid_coordinates = coordinates
 	$Tilemap.initialize_grid(game_board)
+	$Targeting.init(game_board, $Tilemap)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,6 +53,9 @@ func perform_sub_act(character: Character, sub: SubAction):
 		game_board.set(final_coords, character)
 		character.grid_coordinates = final_coords
 		$Tilemap.initialize_grid(game_board)
+	elif sub is SubAction.Attack:
+		var target = await $Targeting.target_character(character)
+		$Combat.initiate(character, target)
 	
 
 func _on_end_turn_button_pressed():

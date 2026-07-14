@@ -2,3 +2,6 @@
 
 class Move extends SubAction:
 	pass
+
+class Attack extends SubAction:
+	pass
