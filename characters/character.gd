@@ -49,4 +49,5 @@ func damage(ammount: int):
 	$CharacterSprite.play("damage")
 
 func attack():
+	$CharacterSprite.play("attack")
 	return strength
