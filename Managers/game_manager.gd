@@ -2,6 +2,8 @@ extends Node2D
 
 enum States {selecting, character_acting, between_turns}
 
+signal tile_selected(Vector2i)
+
 var game_board: Dictionary[Vector2i, Character] = {}
 var state: States = States.between_turns
 var turn_count: int = 0
@@ -17,7 +19,7 @@ func initialize_board():
 		game_board.set(coordinates, actor)
 		actor.grid_coordinates = coordinates
 	$Tilemap.initialize_grid(game_board)
-	$Targeting.init(game_board, $Tilemap)
+	$Targeting.init(game_board, $Tilemap, tile_selected)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,12 +61,16 @@ func perform_sub_act(character: Character, sub: SubAction):
 	
 
 func _on_end_turn_button_pressed():
-	change_turn()
+	if state == States.selecting:
+		change_turn()
 
 func _on_input_click(_position) -> void:
+	var coordinates = Grid.absolute_to_grid_coordinates(_position)
+	tile_selected.emit(coordinates)
+
+func _on_tile_selected(coordinates):
 	match state:
 		States.selecting:
-			var coordinates = Grid.absolute_to_grid_coordinates(_position)
 			var character = game_board.get(coordinates)
 			if character != null && character.state == Character.States.ready:
 				var action = Action.Move.new()

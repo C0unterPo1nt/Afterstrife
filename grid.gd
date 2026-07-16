@@ -20,3 +20,6 @@ func project_to_nearest_cardinal(vector: Vector2):
 func absolute_to_grid_coordinates(absolute_coordinates: Vector2):
 	var snapped = snap_to_grid(absolute_coordinates)
 	return Vector2i(snapped) / cell_size
+
+func grid_to_absolute_coordinates(grid_coordinates: Vector2i):
+	return grid_coordinates * cell_size

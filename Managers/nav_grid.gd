@@ -4,9 +4,6 @@ var astar_grid:AStarGrid2D
 
 enum Tile {Obstacle}
 
-func _ready():
-	pass
-	
 
 func initialize_grid(game_board):
 	astar_grid = AStarGrid2D.new()
@@ -24,14 +21,18 @@ func initialize_grid(game_board):
 	for key in game_board.keys():
 		astar_grid.set_point_solid(key, true)
 
-func calculate_path(start: Vector2i, end: Vector2i, mask: PackedVector2Array) -> PackedVector2Array:
-	print("calculating")
+func calculate_path(start: Vector2i, end: Vector2i, mask: Array[Vector2i] = []) -> PackedVector2Array:
+	var start_previously_solid = astar_grid.is_point_solid(start)
+	if start_previously_solid:
+		astar_grid.set_point_solid(start, false)
 	for point in mask:
 		if astar_grid.is_point_solid(point):
-			astar_grid.set_point_solid(start, false)
+			astar_grid.set_point_solid(point, false)
 		else:
 			mask.erase(point)
 	var path = astar_grid.get_point_path(start, end)
 	for point in mask:
-			astar_grid.set_point_solid(start, true)
+			astar_grid.set_point_solid(point, true)
+	if start_previously_solid:
+		astar_grid.set_point_solid(start, true)
 	return path

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bw0dk6dp7es5t"
+path="res://.godot/imported/PreviewSprites.ase-62b0ae7083b9b74298917ac9f68c53eb.res"
+
+[deps]
+
+source_file="res://sprites/PreviewSprites.ase"
+dest_files=["res://.godot/imported/PreviewSprites.ase-62b0ae7083b9b74298917ac9f68c53eb.res"]
+
+[params]
+
