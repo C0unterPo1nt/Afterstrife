@@ -41,7 +41,7 @@ func character_act(character: Character):
 	var action: Action = await $Menu.make_action_selection(character.actions)
 	for sub in action.sequence:
 		await perform_sub_act(character, sub)
-	character.remaining_actions = character.remaining_actions - 1
+	character.stats.remaining_actions = character.stats.remaining_actions - 1
 	state = States.selecting
 
 func perform_sub_act(character: Character, sub: SubAction):
