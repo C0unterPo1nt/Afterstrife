@@ -2,7 +2,7 @@ class_name Character
 
 extends Area2D
 
-enum States {ready, declare, acting, tapped}
+enum States {ready, declare, acting, tapped, sleep}
 
 @export var state: States = States.ready
 
@@ -38,6 +38,9 @@ func refresh():
 	state = States.ready
 	stats.remaining_actions = stats.maximum_actions
 	$CharacterSprite.undim()
+
+func sleep():
+	state = States.sleep
 
 func damage(ammount: int):
 	stats.health -= ammount

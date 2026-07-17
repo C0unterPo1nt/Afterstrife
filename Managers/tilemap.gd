@@ -4,8 +4,16 @@ var astar_grid:AStarGrid2D
 
 enum Tile {Obstacle}
 
+signal tile_selected(Vector2i)
 
-func initialize_grid(game_board):
+var game_board: Dictionary[Vector2i, Character]
+
+func initialize(menu: Control, combat: Node):
+	game_board = $Actors.init(self, menu, $Targeting, $Movement, combat)
+	initialize_astar_grid(game_board)
+	$Targeting.init(game_board, self, tile_selected)
+
+func initialize_astar_grid(game_board):
 	astar_grid = AStarGrid2D.new()
 	astar_grid.size = Grid.grid_size
 	astar_grid.cell_size = Grid.cell_size
@@ -36,3 +44,8 @@ func calculate_path(start: Vector2i, end: Vector2i, mask: Array[Vector2i] = []) 
 	if start_previously_solid:
 		astar_grid.set_point_solid(start, true)
 	return path
+
+func _on_input_click(_position) -> void:
+	var coordinates = Grid.absolute_to_grid_coordinates(_position)
+	print('selected', coordinates)
+	tile_selected.emit(coordinates)

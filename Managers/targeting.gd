@@ -14,6 +14,7 @@ var range: int
 
 func init(_game_board: Dictionary, _tile_map: TileMapLayer, _tile_selected: Signal):
 	game_board = _game_board
+	print(_tile_map)
 	tile_map = _tile_map
 	tile_selected = _tile_selected
 	$TargetPreviewIndicators.tile_map = tile_map
