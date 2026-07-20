@@ -9,6 +9,7 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var grid_coordinates: Vector2i
 @export var activated: bool = false
 @export var stats: CharacterStats
+@export var team: Team
 
 var actions: Array[Action] = [
 	Action.Move.new(),
@@ -19,20 +20,18 @@ func _ready() -> void:
 	$HealthBar.max_value = stats.max_health
 	$HealthBar.value = stats.health
 
-func _process(delta: float) -> void:
-	if stats.remaining_actions == 0 and state != States.tapped:
-		end_turn()
-
 func activate():
 	if state != States.ready:
 		return
 	activated = true
 	state = States.declare
 	
-func end_turn():
+func deactivate():
 	activated = false
-	state = States.tapped
-	$CharacterSprite.dim()
+	stats.remaining_actions = stats.remaining_actions - 1
+	if stats.remaining_actions == 0:
+		state = States.tapped
+		$CharacterSprite.dim()
 
 func refresh():
 	state = States.ready
@@ -41,12 +40,15 @@ func refresh():
 
 func sleep():
 	state = States.sleep
+	$CharacterSprite.undim()
 
 func damage(ammount: int):
 	stats.health -= ammount
 	$HealthBar.value = stats.health
 	$CharacterSprite.play("damage")
+	await $CharacterSprite.animation_finished
 
-func attack():
+func attack(defender: Character):
 	$CharacterSprite.play("attack")
-	return stats.attack_strength
+	defender.damage(stats.attack_strength)
+	await $CharacterSprite.animation_finished

@@ -46,6 +46,6 @@ func calculate_path(start: Vector2i, end: Vector2i, mask: Array[Vector2i] = []) 
 	return path
 
 func _on_input_click(_position) -> void:
-	var coordinates = Grid.absolute_to_grid_coordinates(_position)
-	print('selected', coordinates)
-	tile_selected.emit(coordinates)
+	if GameState.input_allowed:
+		var coordinates = Grid.absolute_to_grid_coordinates(_position)
+		tile_selected.emit(coordinates)

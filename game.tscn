@@ -17,6 +17,10 @@
 [ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://combat.gd" id="14_7sc4i"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://target_preview_indicators.gd" id="15_e8heu"]
 [ext_resource type="Texture2D" uid="uid://dn27y6nitxxj6" path="res://sprites/MovementPreviewLine.png" id="15_rvswv"]
+[ext_resource type="Script" uid="uid://kkv5evd2gwl4" path="res://team.gd" id="16_boyg6"]
+[ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://teams/blue_team.tres" id="16_e36ub"]
+[ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://turns.gd" id="17_rvswv"]
+[ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://teams/red_team.tres" id="18_hb5m1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vef74"]
 font_size = 37
@@ -53,7 +57,21 @@ custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
-[sub_resource type="Resource" id="Resource_e8heu"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
+
+[sub_resource type="Resource" id="Resource_boyg6"]
+script = ExtResource("7_80cx4")
+attack_strength = 25
+movement = 4
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
+
+[sub_resource type="Resource" id="Resource_e36ub"]
+script = ExtResource("7_80cx4")
+attack_strength = 25
+movement = 4
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
+
+[sub_resource type="Resource" id="Resource_hb5m1"]
 script = ExtResource("7_80cx4")
 attack_strength = 20
 movement = 6
@@ -93,22 +111,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_80cx4"]
+[sub_resource type="Resource" id="Resource_x5p1p"]
 script = ExtResource("7_80cx4")
-attack_strength = 25
-movement = 4
+attack_strength = 20
+movement = 6
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
-
-[node name="Game" type="Node2D" unique_id=702725256]
+[node name="Main" type="Node2D" unique_id=702725256]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=989355654]
 anchor_mode = 0
-zoom = Vector2(3.785, 3.785)
+zoom = Vector2(5.035, 5.035)
 
 [node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
 script = ExtResource("7_eow3j")
+teams = Array[ExtResource("16_boyg6")]([ExtResource("16_e36ub"), ExtResource("18_hb5m1")])
 
 [node name="CombatMenu" type="TabContainer" parent="GameManager" unique_id=706196546]
 offset_top = 224.0
@@ -134,11 +151,9 @@ metadata/_tab_index = 1
 
 [node name="TurnCounter" type="Label" parent="GameManager" unique_id=1561996554]
 z_index = 1
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 320.0
-offset_bottom = 128.0
-text = "Turn x"
+offset_right = 512.0
+offset_bottom = 224.0
+text = "BlueTeam Turn x"
 label_settings = SubResource("LabelSettings_vef74")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -151,20 +166,6 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAABAAAAAAAGAAEAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAADAAYAAAABAAAAAAACAAYAAAABAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAABAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAABAAAAAAAJAAEAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAABAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAABAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAABAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAIAAAABAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAAMAAMAAAABAAAAAAALAAQAAAAAAAAAAAANAAUAAAABAAAAAAAEAAQAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
 script = ExtResource("5_7jktm")
-
-[node name="Actors" type="Node2D" parent="GameManager/Tilemap" unique_id=931924421]
-script = ExtResource("5_vef74")
-
-[node name="Katanagirl" parent="GameManager/Tilemap/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
-position = Vector2(224, 96)
-stats = SubResource("Resource_e8heu")
-
-[node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl" index="0" unique_id=2028234674]
-sprite_frames = SubResource("SpriteFrames_7sc4i")
-
-[node name="Scythegirl" parent="GameManager/Tilemap/Actors" unique_id=44628498 instance=ExtResource("3_fc0e3")]
-position = Vector2(256, 96)
-stats = SubResource("Resource_80cx4")
 
 [node name="Movement" type="Node2D" parent="GameManager/Tilemap" unique_id=1729078751]
 script = ExtResource("10_hve3p")
@@ -211,13 +212,47 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 }
 
+[node name="Actors" type="Node2D" parent="GameManager/Tilemap" unique_id=931924421]
+script = ExtResource("5_vef74")
+
+[node name="Scythegirl" parent="GameManager/Tilemap/Actors" unique_id=1589579558 instance=ExtResource("3_fc0e3")]
+position = Vector2(256, 96)
+stats = SubResource("Resource_boyg6")
+team = ExtResource("16_e36ub")
+
+[node name="Scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=1876524643 instance=ExtResource("3_fc0e3")]
+position = Vector2(256, 128)
+stats = SubResource("Resource_e36ub")
+team = ExtResource("16_e36ub")
+
+[node name="Katanagirl" parent="GameManager/Tilemap/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
+position = Vector2(224, 96)
+stats = SubResource("Resource_hb5m1")
+team = ExtResource("18_hb5m1")
+
+[node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl" index="0" unique_id=2028234674]
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+
+[node name="Katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=535672700 instance=ExtResource("3_fc0e3")]
+position = Vector2(224, 128)
+stats = SubResource("Resource_x5p1p")
+team = ExtResource("18_hb5m1")
+
+[node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl2" index="0" unique_id=2028234674]
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+
+[node name="Turns" type="Node" parent="GameManager" unique_id=1847990413]
+script = ExtResource("17_rvswv")
+
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
 
-[connection signal="pressed" from="GameManager/CombatMenu/EndTurnButton" to="GameManager" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="GameManager/CombatMenu/EndTurnButton" to="GameManager/Turns" method="_on_end_turn_button_pressed"]
 [connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager" method="_on_tilemap_tile_selected"]
 [connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager/Tilemap/Actors" method="_on_tilemap_tile_selected"]
 [connection signal="click" from="Input" to="GameManager/Tilemap" method="_on_input_click"]
 
-[editable path="GameManager/Tilemap/Actors/Katanagirl"]
 [editable path="GameManager/Tilemap/Actors/Scythegirl"]
+[editable path="GameManager/Tilemap/Actors/Scythegirl2"]
+[editable path="GameManager/Tilemap/Actors/Katanagirl"]
+[editable path="GameManager/Tilemap/Actors/Katanagirl2"]

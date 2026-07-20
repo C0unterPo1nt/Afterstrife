@@ -10,7 +10,10 @@ func clear():
 	for node in get_children():
 		node.queue_free()
 
-func preview(origin: Vector2i, range: int):
+func preview_targets(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i]):
+	_preview(origin, range, allowed_tiles)
+
+func preview_paths(origin: Vector2i, range: int):
 	# make a set of coordinates that are range or less away
 	var within_radius: Array[Vector2i]
 	for x in range(origin.x - range, origin.x + range):
@@ -18,10 +21,14 @@ func preview(origin: Vector2i, range: int):
 			var point = Vector2i(x,y)
 			if point.distance_to(origin) < range:
 				within_radius.append(point)
+	_preview(origin, range, within_radius)
+
+func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i]):
 	# for every tile in set
-	for tile in within_radius:
+	for tile in allowed_tiles:
 	# call tilemap for a path
-		var path = tile_map.calculate_path(origin, tile)
+		var path_mask: Array[Vector2i] = [tile]
+		var path = tile_map.calculate_path(origin, tile, path_mask)
 	# if path.size is less than or equal to range + 1, save
 		if path.is_empty():
 			continue
