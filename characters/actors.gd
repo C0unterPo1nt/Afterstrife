@@ -52,5 +52,10 @@ func perform_sub_act(character: Character, sub: SubAction):
 func _on_tilemap_tile_selected(coordinates: Vector2i) -> void:
 	if GameState.input_allowed && !is_character_acting:
 		var character = get_character(coordinates)
-		if character != null && character.state == Character.States.ready:
-			await character_act(character)
+		if character == null:
+			return
+		if character.state != Character.States.ready:
+			return
+		if character.team != GameState.active_team:
+			return
+		await character_act(character)

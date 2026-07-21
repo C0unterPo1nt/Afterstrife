@@ -11,9 +11,10 @@ func init(_team_queue, _turn_counter_ui: Control):
 	start_turn(team_queue[turn_count])
 
 func start_turn(team):
+	show_turn_label(team)
+	GameState.active_team = team
 	team.refresh()
 	GameState.input_allowed = true
-	show_turn_label(team)
 
 func next_turn():
 	turn_count += 1
