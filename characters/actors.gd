@@ -17,7 +17,8 @@ func init(_tilemap: TileMapLayer, _combat_menu: Control, _targeting: Node, _move
 	for actor in get_children():
 		var coordinates = Grid.absolute_to_grid_coordinates(actor.global_position)
 		game_board.set(coordinates, actor)
-		actor.grid_coordinates = coordinates
+		actor.init(coordinates, game_board)
+		
 	return game_board
 
 func sleep():

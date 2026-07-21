@@ -22,10 +22,6 @@
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://turns.gd" id="17_rvswv"]
 [ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://teams/red_team.tres" id="18_hb5m1"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_vef74"]
-font_size = 37
-font_color = Color(1, 0, 0, 1)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("2_vef74")
 texture_region_size = Vector2i(32, 32)
@@ -61,24 +57,32 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="Resource" id="Resource_boyg6"]
 script = ExtResource("7_80cx4")
-attack_strength = 25
+attack_strength = 103
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_e36ub"]
 script = ExtResource("7_80cx4")
-attack_strength = 25
+attack_strength = 103
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_hb5m1"]
 script = ExtResource("7_80cx4")
-attack_strength = 20
+attack_strength = 264
 movement = 6
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_feb5d")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_feb5d")
@@ -117,6 +121,10 @@ attack_strength = 20
 movement = 6
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
+[sub_resource type="LabelSettings" id="LabelSettings_vef74"]
+font_size = 37
+font_color = Color(1, 0, 0, 1)
+
 [node name="Main" type="Node2D" unique_id=702725256]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=989355654]
@@ -148,15 +156,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("8_lc2xo")
 metadata/_tab_index = 1
-
-[node name="TurnCounter" type="Label" parent="GameManager" unique_id=1561996554]
-z_index = 1
-offset_right = 512.0
-offset_bottom = 224.0
-text = "BlueTeam Turn x"
-label_settings = SubResource("LabelSettings_vef74")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Combat" type="Node" parent="GameManager" unique_id=432269478]
 script = ExtResource("14_7sc4i")
@@ -221,7 +220,7 @@ stats = SubResource("Resource_boyg6")
 team = ExtResource("16_e36ub")
 
 [node name="Scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=1876524643 instance=ExtResource("3_fc0e3")]
-position = Vector2(256, 128)
+position = Vector2(224, 128)
 stats = SubResource("Resource_e36ub")
 team = ExtResource("16_e36ub")
 
@@ -232,17 +231,28 @@ team = ExtResource("18_hb5m1")
 
 [node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl" index="0" unique_id=2028234674]
 sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"attack"
 
 [node name="Katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=535672700 instance=ExtResource("3_fc0e3")]
-position = Vector2(224, 128)
+position = Vector2(224, 160)
 stats = SubResource("Resource_x5p1p")
 team = ExtResource("18_hb5m1")
 
 [node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl2" index="0" unique_id=2028234674]
 sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"attack"
 
 [node name="Turns" type="Node" parent="GameManager" unique_id=1847990413]
 script = ExtResource("17_rvswv")
+
+[node name="Label" type="Label" parent="GameManager" unique_id=1561996554]
+z_index = 1
+offset_right = 512.0
+offset_bottom = 224.0
+text = "BlueTeam Turn x"
+label_settings = SubResource("LabelSettings_vef74")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
