@@ -57,19 +57,19 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="Resource" id="Resource_boyg6"]
 script = ExtResource("7_80cx4")
-attack_strength = 103
+attack_strength = 25
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_e36ub"]
 script = ExtResource("7_80cx4")
-attack_strength = 103
+attack_strength = 25
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_hb5m1"]
 script = ExtResource("7_80cx4")
-attack_strength = 264
+attack_strength = 20
 movement = 6
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
@@ -215,17 +215,17 @@ metadata/_aseprite_wizard_interface_config_ = {
 script = ExtResource("5_vef74")
 
 [node name="Scythegirl" parent="GameManager/Tilemap/Actors" unique_id=1589579558 instance=ExtResource("3_fc0e3")]
-position = Vector2(256, 96)
+position = Vector2(320, 32)
 stats = SubResource("Resource_boyg6")
 team = ExtResource("16_e36ub")
 
 [node name="Scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=1876524643 instance=ExtResource("3_fc0e3")]
-position = Vector2(224, 128)
+position = Vector2(352, 192)
 stats = SubResource("Resource_e36ub")
 team = ExtResource("16_e36ub")
 
 [node name="Katanagirl" parent="GameManager/Tilemap/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
-position = Vector2(224, 96)
+position = Vector2(96, 96)
 stats = SubResource("Resource_hb5m1")
 team = ExtResource("18_hb5m1")
 
@@ -234,7 +234,7 @@ sprite_frames = SubResource("SpriteFrames_7sc4i")
 animation = &"attack"
 
 [node name="Katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=535672700 instance=ExtResource("3_fc0e3")]
-position = Vector2(224, 160)
+position = Vector2(160, 160)
 stats = SubResource("Resource_x5p1p")
 team = ExtResource("18_hb5m1")
 
@@ -246,6 +246,7 @@ animation = &"attack"
 script = ExtResource("17_rvswv")
 
 [node name="Label" type="Label" parent="GameManager" unique_id=1561996554]
+visible = false
 z_index = 1
 offset_right = 512.0
 offset_bottom = 224.0
