@@ -11,7 +11,7 @@ func clear():
 		node.queue_free()
 
 func preview_targets(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i]):
-	_preview(origin, range, allowed_tiles)
+	_preview(origin, range, allowed_tiles, allowed_tiles)
 
 func preview_paths(origin: Vector2i, range: int):
 	# make a set of coordinates that are range or less away
@@ -23,11 +23,11 @@ func preview_paths(origin: Vector2i, range: int):
 				within_radius.append(point)
 	_preview(origin, range, within_radius)
 
-func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i]):
+func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i] = [], tile_override: Array[Vector2i] = []):
 	# for every tile in set
 	for tile in allowed_tiles:
 	# call tilemap for a path
-		var path_mask: Array[Vector2i] = [tile]
+		var path_mask: Array[Vector2i] = tile_override
 		var path = tile_map.calculate_path(origin, tile, path_mask)
 	# if path.size is less than or equal to range + 1, save
 		if path.is_empty():
