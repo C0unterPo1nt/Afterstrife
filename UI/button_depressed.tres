@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://doh8qcjlkbjws"]
+
+[ext_resource type="Texture2D" uid="uid://cffkv7dncva3j" path="res://sprites/button_depressed.png" id="1_t6t1d"]
+
+[resource]
+texture = ExtResource("1_t6t1d")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0

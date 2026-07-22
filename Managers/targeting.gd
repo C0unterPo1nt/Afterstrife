@@ -70,7 +70,7 @@ func update_target(new_position: Vector2):
 		$MovementPreviewLine.update_path_preview(path)
 
 func get_snapped_mouse_position():
-	return Grid.snap_to_grid(get_viewport().get_camera_2d().get_global_mouse_position())
+	return Grid.snap_to_grid(get_viewport().get_mouse_position())
 
 func visible(is_visible):
 	$MovementReticleSprite.visible = is_visible

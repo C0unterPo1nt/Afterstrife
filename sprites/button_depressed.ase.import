@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://r8vug23t4slu"
+path="res://.godot/imported/button_depressed.ase-d0b5e3771634cb2f488434250f3efa1d.res"
+
+[deps]
+
+source_file="res://sprites/button_depressed.ase"
+dest_files=["res://.godot/imported/button_depressed.ase-d0b5e3771634cb2f488434250f3efa1d.res"]
+
+[params]
+

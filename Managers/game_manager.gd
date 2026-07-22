@@ -11,9 +11,9 @@ func _process(delta: float) -> void:
 
 func initialize_game():
 	GameState.active_entity = self
-	$Tilemap.initialize($CombatMenu, $Combat)
-	$Tilemap/Actors.combat_menu = $CombatMenu
-	$Turns.init(teams, $Label)
+	$Tilemap.initialize($UI/CombatMenu, $Combat)
+	$Tilemap/Actors.combat_menu = $UI/CombatMenu
+	$Turns.init(teams, $UI/Label)
 
 func check_victory_condition():
 	for team in teams:
@@ -23,5 +23,5 @@ func check_victory_condition():
 
 func game_over(victor: Team):
 	GameState.input_allowed = false
-	$Label.text = "{0} Wins!".format([victor.name])
-	$Label.visible = true
+	$UI/Label.text = "{0} Wins!".format([victor.name])
+	$UI/Label.visible = true

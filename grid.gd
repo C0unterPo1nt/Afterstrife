@@ -1,7 +1,7 @@
 extends Node
 
 var cell_size = Vector2i(32, 32)
-var grid_size = Vector2i(16, 7)
+var grid_size = Vector2i(16, 8)
 var lower_bound = Vector2i.ZERO
 
 func snap_to_grid(vector: Vector2):
