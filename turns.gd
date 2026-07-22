@@ -17,6 +17,8 @@ func start_turn(team):
 	GameState.input_allowed = true
 
 func next_turn():
+	for actor in team_queue[turn_count].actors:
+		actor.sleep()
 	turn_count += 1
 	if turn_count < team_queue.size():
 		start_turn(team_queue[turn_count])
