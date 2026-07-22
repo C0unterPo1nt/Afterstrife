@@ -57,13 +57,13 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="Resource" id="Resource_boyg6"]
 script = ExtResource("7_80cx4")
-attack_strength = 25
+attack_strength = 50
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_e36ub"]
 script = ExtResource("7_80cx4")
-attack_strength = 25
+attack_strength = 50
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
@@ -126,10 +126,6 @@ font_size = 37
 font_color = Color(1, 0, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=702725256]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=989355654]
-anchor_mode = 0
-zoom = Vector2(5.035, 5.035)
 
 [node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
 script = ExtResource("7_eow3j")
@@ -257,6 +253,10 @@ vertical_alignment = 1
 
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=758121320]
+anchor_mode = 0
+zoom = Vector2(3.75, 4.22)
 
 [connection signal="pressed" from="GameManager/CombatMenu/EndTurnButton" to="GameManager/Turns" method="_on_end_turn_button_pressed"]
 [connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager" method="_on_tilemap_tile_selected"]
