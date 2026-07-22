@@ -1,6 +1,6 @@
 class_name Character
 
-extends Area2D
+extends Node2D
 
 enum States {ready, declare, acting, tapped, sleep}
 
@@ -30,6 +30,7 @@ func activate():
 	if state != States.ready:
 		return
 	activated = true
+	$ReadyIndicator.visible = false
 	state = States.declare
 	
 func deactivate():
@@ -37,15 +38,21 @@ func deactivate():
 	stats.remaining_actions = stats.remaining_actions - 1
 	if stats.remaining_actions == 0:
 		state = States.tapped
+		$ReadyIndicator.visible = false
 		$CharacterSprite.dim()
+	else:
+		state = States.ready
+		$ReadyIndicator.visible = true
 
 func refresh():
 	state = States.ready
 	stats.remaining_actions = stats.maximum_actions
+	$ReadyIndicator.visible = true
 	$CharacterSprite.undim()
 
 func sleep():
 	state = States.sleep
+	$ReadyIndicator.visible = false
 	$CharacterSprite.undim()
 
 func damage(ammount: int):

@@ -58,4 +58,5 @@ func _on_tilemap_tile_selected(coordinates: Vector2i) -> void:
 			return
 		if character.team != GameState.active_team:
 			return
+		character.activate()
 		await character_act(character)

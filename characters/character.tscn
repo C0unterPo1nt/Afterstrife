@@ -76,12 +76,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
-size = Vector2(32, 32)
-
-[node name="Character" type="Area2D" unique_id=1589579558]
+[node name="Character" type="Node2D" unique_id=264603401]
 script = ExtResource("1_px5sl")
 stats = SubResource("Resource_b1u1o")
+
+[node name="ReadyIndicator" type="Polygon2D" parent="." unique_id=164336434]
+visible = false
+color = Color(0.17184411, 0.33003333, 0.6196782, 0.3)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="." unique_id=2028234674]
 texture_filter = 1
@@ -90,11 +92,6 @@ autoplay = "default"
 centered = false
 flip_h = true
 script = ExtResource("3_px5sl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284294932]
-position = Vector2(16, 16)
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_pjt0s")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=428600830]
 offset_top = 28.0
