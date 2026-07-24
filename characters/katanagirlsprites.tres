@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://3qeqem53at2f"]
+
+[ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://sprites/katanagirl.png" id="1_p1f2y"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p1f2y")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p1f2y")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_p1f2y")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_p1f2y")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p1f2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

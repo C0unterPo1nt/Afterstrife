@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://h2dsosu0nnaw" path="res://sprites/grass.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://olnxkew7u2go" path="res://sprites/board_tiles.png" id="2_vef74"]
-[ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://characters/character.tscn" id="3_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://sprites/katanagirl.png" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://Managers/tilemap.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://characters/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/combat_menu.tres" id="6_x5p1p"]
@@ -22,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://teams/blue_team.tres" id="16_e36ub"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://turns.gd" id="17_rvswv"]
 [ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://teams/red_team.tres" id="18_hb5m1"]
+[ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://characters/scythegirl.tscn" id="18_x5p1p"]
+[ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://characters/katanagirl.tscn" id="20_x5p1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("2_vef74")
@@ -56,70 +56,18 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
 
-[sub_resource type="Resource" id="Resource_boyg6"]
+[sub_resource type="Resource" id="Resource_qhcbd"]
+resource_local_to_scene = true
 script = ExtResource("7_80cx4")
-attack_strength = 50
+attack_strength = 10
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
-[sub_resource type="Resource" id="Resource_e36ub"]
+[sub_resource type="Resource" id="Resource_f1jbl"]
+resource_local_to_scene = true
 script = ExtResource("7_80cx4")
-attack_strength = 50
+attack_strength = 10
 movement = 4
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="Resource" id="Resource_hb5m1"]
-script = ExtResource("7_80cx4")
-attack_strength = 20
-movement = 6
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_feb5d")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_feb5d")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_feb5d")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_feb5d")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"damage",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_feb5d")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_x5p1p"]
-script = ExtResource("7_80cx4")
-attack_strength = 20
-movement = 6
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [node name="Main" type="Node2D" unique_id=702725256]
@@ -232,33 +180,23 @@ metadata/_aseprite_wizard_interface_config_ = {
 [node name="Actors" type="Node2D" parent="GameManager/Tilemap" unique_id=931924421]
 script = ExtResource("5_vef74")
 
-[node name="Scythegirl" parent="GameManager/Tilemap/Actors" unique_id=1589579558 instance=ExtResource("3_fc0e3")]
-position = Vector2(320, 32)
-stats = SubResource("Resource_boyg6")
+[node name="scythegirl" parent="GameManager/Tilemap/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
+position = Vector2(320, 128)
+stats = SubResource("Resource_qhcbd")
 team = ExtResource("16_e36ub")
 
-[node name="Scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=1876524643 instance=ExtResource("3_fc0e3")]
-position = Vector2(352, 192)
-stats = SubResource("Resource_e36ub")
+[node name="scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=708922969 instance=ExtResource("18_x5p1p")]
+position = Vector2(320, 64)
+stats = SubResource("Resource_f1jbl")
 team = ExtResource("16_e36ub")
 
-[node name="Katanagirl" parent="GameManager/Tilemap/Actors" unique_id=514008038 instance=ExtResource("3_fc0e3")]
-position = Vector2(96, 96)
-stats = SubResource("Resource_hb5m1")
+[node name="katanagirl" parent="GameManager/Tilemap/Actors" unique_id=2016364985 instance=ExtResource("20_x5p1p")]
+position = Vector2(160, 96)
 team = ExtResource("18_hb5m1")
 
-[node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl" index="1" unique_id=2028234674]
-sprite_frames = SubResource("SpriteFrames_7sc4i")
-animation = &"attack"
-
-[node name="Katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=535672700 instance=ExtResource("3_fc0e3")]
-position = Vector2(160, 160)
-stats = SubResource("Resource_x5p1p")
+[node name="katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=1608902161 instance=ExtResource("20_x5p1p")]
+position = Vector2(192, 160)
 team = ExtResource("18_hb5m1")
-
-[node name="CharacterSprite" parent="GameManager/Tilemap/Actors/Katanagirl2" index="1" unique_id=2028234674]
-sprite_frames = SubResource("SpriteFrames_7sc4i")
-animation = &"attack"
 
 [node name="Turns" type="Node" parent="GameManager" unique_id=1847990413]
 script = ExtResource("17_rvswv")
@@ -270,8 +208,3 @@ script = ExtResource("2_fc0e3")
 [connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager" method="_on_tilemap_tile_selected"]
 [connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager/Tilemap/Actors" method="_on_tilemap_tile_selected"]
 [connection signal="click" from="Input" to="GameManager/Tilemap" method="_on_input_click"]
-
-[editable path="GameManager/Tilemap/Actors/Scythegirl"]
-[editable path="GameManager/Tilemap/Actors/Scythegirl2"]
-[editable path="GameManager/Tilemap/Actors/Katanagirl"]
-[editable path="GameManager/Tilemap/Actors/Katanagirl2"]
