@@ -36,6 +36,10 @@ func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i] = [],
 			instance_sprite(tile)
 	# each saved coordinates gets a sprite
 
+func preview(tiles: Array[Vector2i]):
+	for tile in tiles:
+		instance_sprite(tile)
+
 func instance_sprite(coords):
 	var sprite = Sprite2D.new()
 	sprite.global_position = Grid.grid_to_absolute_coordinates(coords) + Grid.cell_size/2

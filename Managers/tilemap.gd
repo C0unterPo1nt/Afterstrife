@@ -6,14 +6,12 @@ enum Tile {Obstacle}
 
 signal tile_selected(Vector2i)
 
-var game_board: Dictionary[Vector2i, Character]
-
 func initialize(menu: Control, combat: Node):
-	game_board = $Actors.init(self, menu, $Targeting, $Movement, combat)
-	initialize_astar_grid(game_board)
-	$Targeting.init(game_board, self, tile_selected)
+	$Actors.init(self, menu, $Targeting, $Movement, combat)
+	update_astar_grid()
+	$Targeting.init(Grid.game_board, self, tile_selected)
 
-func initialize_astar_grid(game_board):
+func update_astar_grid():
 	astar_grid = AStarGrid2D.new()
 	astar_grid.size = Grid.grid_size
 	astar_grid.cell_size = Grid.cell_size
@@ -26,7 +24,7 @@ func initialize_astar_grid(game_board):
 			var pos = Vector2i(i,j)
 			if get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
 				astar_grid.set_point_solid(pos)
-	for key in game_board.keys():
+	for key in Grid.game_board.keys():
 		astar_grid.set_point_solid(key, true)
 
 func calculate_path(start: Vector2i, end: Vector2i, mask: Array[Vector2i] = []) -> PackedVector2Array:

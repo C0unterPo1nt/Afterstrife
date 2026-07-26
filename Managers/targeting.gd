@@ -27,18 +27,17 @@ func move(_character: Character) -> PackedVector2Array:
 	sleep()
 	return path
 
-func target_enemy(_character: Character):
+func target_enemy(_character: Character, range: int):
 	var valid_targets: Dictionary[Vector2i, Character] = {}
 	for coords in game_board:
 		var actor = game_board[coords]
 		if actor.team != _character.team:
 			valid_targets.set(coords, actor)
-	return await target_character(_character, valid_targets)
+	return await target_character(_character, valid_targets, range)
 
-func target_character(_character: Character, valid_targets: Dictionary[Vector2i, Character]) -> Character:
+func target_character(_character: Character, valid_targets: Dictionary[Vector2i, Character], range: int) -> Character:
 	mode = Modes.CHARACTER
 	character = _character
-	range = 1 #TODO placeholder
 	activate(valid_targets.keys())
 	var target_character: Character
 	while target_character == null:
@@ -81,9 +80,9 @@ func activate(allowed_tiles: Array[Vector2i] = []):
 	state = States.targeting
 	update_target(get_snapped_mouse_position())
 	var coords = Grid.absolute_to_grid_coordinates(character.global_position)
-	#TODO: remove and implement a real targeting preview for attacks
 	if mode == Modes.SPACE:
-		$TargetPreviewIndicators.preview_paths(coords, range)
+		var tiles = Grid.find_squares_in_range(coords, range)
+		$TargetPreviewIndicators.preview_paths(coords, range, tiles)
 	if mode == Modes.CHARACTER:
 		$TargetPreviewIndicators.preview_targets(coords, range, allowed_tiles)
 	visible(true)

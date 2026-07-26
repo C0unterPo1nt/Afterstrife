@@ -56,14 +56,14 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
 
-[sub_resource type="Resource" id="Resource_qhcbd"]
+[sub_resource type="Resource" id="Resource_x5p1p"]
 resource_local_to_scene = true
 script = ExtResource("7_80cx4")
 attack_strength = 10
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
-[sub_resource type="Resource" id="Resource_f1jbl"]
+[sub_resource type="Resource" id="Resource_qhcbd"]
 resource_local_to_scene = true
 script = ExtResource("7_80cx4")
 attack_strength = 10
@@ -182,12 +182,12 @@ script = ExtResource("5_vef74")
 
 [node name="scythegirl" parent="GameManager/Tilemap/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
 position = Vector2(320, 128)
-stats = SubResource("Resource_qhcbd")
+stats = SubResource("Resource_x5p1p")
 team = ExtResource("16_e36ub")
 
 [node name="scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=708922969 instance=ExtResource("18_x5p1p")]
 position = Vector2(320, 64)
-stats = SubResource("Resource_f1jbl")
+stats = SubResource("Resource_qhcbd")
 team = ExtResource("16_e36ub")
 
 [node name="katanagirl" parent="GameManager/Tilemap/Actors" unique_id=2016364985 instance=ExtResource("20_x5p1p")]

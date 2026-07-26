@@ -3,6 +3,16 @@ extends Node
 var cell_size = Vector2i(32, 32)
 var grid_size = Vector2i(16, 8)
 var lower_bound = Vector2i.ZERO
+var game_board: Dictionary[Vector2i, Character]
+
+func get_actor(coords: Vector2i):
+	return game_board.get(coords)
+
+func get_actors(coords: Array[Vector2i]):
+	var actors: Array[Character] = []
+	for i in coords:
+		actors.append(game_board.get(i))
+	return actors
 
 func snap_to_grid(vector: Vector2):
 	var vector_i = Vector2i(vector)
@@ -23,3 +33,14 @@ func absolute_to_grid_coordinates(absolute_coordinates: Vector2):
 
 func grid_to_absolute_coordinates(grid_coordinates: Vector2i):
 	return grid_coordinates * cell_size
+
+func find_squares_in_range(origin: Vector2i, range: int):
+	var tiles: Array[Vector2i] = []
+	for ring in range(range + 1):
+		for i in range(ring):
+			tiles.append(Vector2i(i, ring-i) + origin)
+			tiles.append(Vector2i(ring-i, -i) + origin)
+			tiles.append(Vector2i(-i, -ring+i) + origin)
+			tiles.append(Vector2i(-ring+i, i) + origin)
+	return tiles
+	

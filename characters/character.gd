@@ -10,16 +10,14 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var activated: bool = false
 @export var stats: CharacterStats
 @export var team: Team
-var game_board: Dictionary[Vector2i, Character]
 
 var actions: Array[Action] = [
-	Action.Move.new(),
-	Action.Attack.new()
+	Action.Move.new(self),
+	Action.Attack.new(self)
 ]
 
-func init(_grid_coordinates: Vector2i, _game_board: Dictionary[Vector2i, Character]):
+func init(_grid_coordinates: Vector2i):
 	grid_coordinates = _grid_coordinates
-	game_board = _game_board
 
 func _ready() -> void:
 	$HealthBar.max_value = stats.max_health
@@ -69,7 +67,7 @@ func attack(defender: Character):
 	await $CharacterSprite.animation_finished
 
 func die():
-	game_board.erase(grid_coordinates)
+	Grid.game_board.erase(grid_coordinates)
 	team.actors.erase(self)
 	team.check_defeated()
 	queue_free()
