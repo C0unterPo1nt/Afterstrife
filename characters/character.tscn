@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d3wixdyf7dxr3" path="res://characters/character.gd" id="1_px5sl"]
 [ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://characters/character_stats.gd" id="2_mdkfl"]
 [ext_resource type="Script" uid="uid://bw8wiskuh8h7e" path="res://character_sprite.gd" id="3_px5sl"]
+[ext_resource type="Script" uid="uid://c38u4idawgxej" path="res://Managers/movement.gd" id="4_mdkfl"]
 
 [sub_resource type="Resource" id="Resource_b1u1o"]
 resource_local_to_scene = true
@@ -33,3 +34,6 @@ offset_bottom = 32.0
 step = 1.0
 value = 79.0
 show_percentage = false
+
+[node name="Movement" type="Node2D" parent="." unique_id=2081088522]
+script = ExtResource("4_mdkfl")

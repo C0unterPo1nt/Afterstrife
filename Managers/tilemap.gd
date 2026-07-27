@@ -7,7 +7,7 @@ enum Tile {Obstacle}
 signal tile_selected(Vector2i)
 
 func initialize(menu: Control, combat: Node):
-	$Actors.init(self, menu, $Targeting, $Movement, combat)
+	$Actors.init(self, menu, $Targeting, combat)
 	update_astar_grid()
 	$Targeting.init(self, tile_selected)
 

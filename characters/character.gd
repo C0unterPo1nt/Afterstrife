@@ -71,3 +71,6 @@ func die():
 	team.actors.erase(self)
 	team.check_defeated()
 	queue_free()
+	
+func move(path: PackedVector2Array):
+	await $Movement.move(self, path)

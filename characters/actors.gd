@@ -2,15 +2,13 @@ extends Node2D
 
 var combat_menu: Control
 var targeting: Node
-var movement: Node
 var tilemap: TileMapLayer
 var combat: Node
 var is_character_acting: bool = false
 
-func init(_tilemap: TileMapLayer, _combat_menu: Control, _targeting: Node, _movement, _combat: Node):
+func init(_tilemap: TileMapLayer, _combat_menu: Control, _targeting: Node, _combat: Node):
 	combat_menu = _combat_menu
 	targeting = _targeting
-	movement = _movement
 	tilemap = _tilemap
 	combat = _combat
 	for actor in get_children():
@@ -33,7 +31,7 @@ func character_act(character: Character):
 func perform_sub_act(character: Character, sub: SubAction):
 	if sub is SubAction.Move:
 		var path: PackedVector2Array = await targeting.move(character)
-		await movement.move(character, path)
+		await character.move(path)
 		var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
 		Grid.game_board.erase(character.grid_coordinates)
 		Grid.game_board.set(final_coords, character)
