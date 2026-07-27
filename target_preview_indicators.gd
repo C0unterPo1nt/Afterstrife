@@ -14,14 +14,8 @@ func preview_targets(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i
 	_preview(origin, range, allowed_tiles, allowed_tiles)
 
 func preview_paths(origin: Vector2i, range: int):
-	# make a set of coordinates that are range or less away
-	var within_radius: Array[Vector2i]
-	for x in range(origin.x - range, origin.x + range):
-		for y in range(origin.y - range, origin.y + range):
-			var point = Vector2i(x,y)
-			if point.distance_to(origin) < range:
-				within_radius.append(point)
-	_preview(origin, range, within_radius)
+	var tiles = Grid.find_squares_in_range(origin, range)
+	_preview(origin, range, tiles)
 
 func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i] = [], tile_override: Array[Vector2i] = []):
 	# for every tile in set

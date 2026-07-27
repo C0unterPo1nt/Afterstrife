@@ -8,12 +8,10 @@ var mode: Modes
 var character: Character
 var path: PackedVector2Array
 var tile_map: TileMapLayer
-var game_board: Dictionary[Vector2i, Character]
 var tile_selected: Signal
 var range: int
 
-func init(_game_board: Dictionary, _tile_map: TileMapLayer, _tile_selected: Signal):
-	game_board = _game_board
+func init(_tile_map: TileMapLayer, _tile_selected: Signal):
 	tile_map = _tile_map
 	tile_selected = _tile_selected
 	$TargetPreviewIndicators.tile_map = tile_map
@@ -29,8 +27,8 @@ func move(_character: Character) -> PackedVector2Array:
 
 func target_enemy(_character: Character, range: int):
 	var valid_targets: Dictionary[Vector2i, Character] = {}
-	for coords in game_board:
-		var actor = game_board[coords]
+	for coords in Grid.game_board:
+		var actor = Grid.game_board[coords]
 		if actor.team != _character.team:
 			valid_targets.set(coords, actor)
 	return await target_character(_character, valid_targets, range)
@@ -46,7 +44,7 @@ func target_character(_character: Character, valid_targets: Dictionary[Vector2i,
 			continue
 		var target_coordinates = Grid.absolute_to_grid_coordinates(path[path.size() - 1])
 		if valid_targets.has(target_coordinates):
-			target_character = game_board.get(target_coordinates)
+			target_character = Grid.game_board.get(target_coordinates)
 	sleep()
 	return target_character
 
@@ -61,7 +59,7 @@ func update_target(new_position: Vector2):
 	$MovementReticleSprite.global_position = new_position
 	var reticle_coordinates = Grid.absolute_to_grid_coordinates(new_position)
 	var nav_mask: Array[Vector2i] = []
-	if mode == Modes.CHARACTER && game_board.has(new_coordinates):
+	if mode == Modes.CHARACTER && Grid.game_board.has(new_coordinates):
 		nav_mask.append(new_coordinates)
 	path = tile_map.calculate_path(character.grid_coordinates, reticle_coordinates, nav_mask)
 	path = path.slice(0, range + 1)
@@ -81,8 +79,7 @@ func activate(allowed_tiles: Array[Vector2i] = []):
 	update_target(get_snapped_mouse_position())
 	var coords = Grid.absolute_to_grid_coordinates(character.global_position)
 	if mode == Modes.SPACE:
-		var tiles = Grid.find_squares_in_range(coords, range)
-		$TargetPreviewIndicators.preview_paths(coords, range, tiles)
+		$TargetPreviewIndicators.preview_paths(coords, range)
 	if mode == Modes.CHARACTER:
 		$TargetPreviewIndicators.preview_targets(coords, range, allowed_tiles)
 	visible(true)

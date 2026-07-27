@@ -9,7 +9,7 @@ signal tile_selected(Vector2i)
 func initialize(menu: Control, combat: Node):
 	$Actors.init(self, menu, $Targeting, $Movement, combat)
 	update_astar_grid()
-	$Targeting.init(Grid.game_board, self, tile_selected)
+	$Targeting.init(self, tile_selected)
 
 func update_astar_grid():
 	astar_grid = AStarGrid2D.new()
