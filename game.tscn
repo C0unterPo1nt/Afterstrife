@@ -70,7 +70,7 @@ attack_strength = 10
 movement = 4
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
-[node name="Main" type="Node2D" unique_id=702725256]
+[node name="Game" type="Node2D" unique_id=702725256]
 
 [node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
 script = ExtResource("7_eow3j")
