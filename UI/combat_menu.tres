@@ -4,6 +4,8 @@
 [ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/button_normal.tres" id="1_qvpb8"]
 [ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/button_depressed.tres" id="2_8xdmq"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xdmq"]
+
 [resource]
 default_font = ExtResource("1_8xdmq")
 default_font_size = 9
@@ -21,3 +23,4 @@ Label/colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
 Label/colors/font_outline_color = Color(0.2784314, 0.17254902, 0.14901961, 1)
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_8xdmq")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_8xdmq")

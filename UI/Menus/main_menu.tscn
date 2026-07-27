@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://doq4abdpcki4c"]
+
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/combat_menu.tres" id="1_jf8mj"]
+[ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
+
+[node name="MainMenu" type="Control" unique_id=2038571758]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jf8mj")
+script = ExtResource("2_p3jrs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1981534267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27058825, 0.21176471, 0.32941177, 1)
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=2130787152]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Title" type="Label" parent="TabContainer/HomePageContainer" unique_id=1315927762]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = ExtResource("1_jf8mj")
+text = "Afterstrife"
+
+[node name="MenuContainer" type="VBoxContainer" parent="TabContainer/HomePageContainer" unique_id=1910597178]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="StartGameButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1890086475]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Start"
+
+[node name="InfoButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1328858006]
+layout_mode = 2
+text = "Info"
+
+[node name="QuitGameButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1219398686]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Quit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer" unique_id=497232664]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="TabContainer/VBoxContainer" unique_id=1930442114]
+layout_mode = 2
+text = "Info"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/VBoxContainer" unique_id=792088412]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Changelog
+WIP"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="TabContainer/VBoxContainer" unique_id=257030561]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="TabContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
