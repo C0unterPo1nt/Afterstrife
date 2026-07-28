@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://sprites/katanagirl.png" id="1_5p0bl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p35lx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0bl"]
 atlas = ExtResource("1_5p0bl")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [resource]
 animations = [{
@@ -18,19 +18,19 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p35lx")
+"texture": SubResource("AtlasTexture_5p0bl")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p35lx")
+"texture": SubResource("AtlasTexture_5p0bl")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p35lx")
+"texture": SubResource("AtlasTexture_5p0bl")
 }],
 "loop": false,
 "name": &"damage",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p35lx")
+"texture": SubResource("AtlasTexture_5p0bl")
 }],
 "loop": true,
 "name": &"default",

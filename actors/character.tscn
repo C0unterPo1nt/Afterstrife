@@ -25,6 +25,7 @@ polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
 texture_filter = 1
 autoplay = "default"
 centered = false
+offset = Vector2(-16, -16)
 script = ExtResource("3_px5sl")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=428600830]

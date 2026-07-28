@@ -2,33 +2,39 @@
 
 [ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="1_g4cq6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3fwhk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tucwe"]
 atlas = ExtResource("1_g4cq6")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdkfl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nn2f"]
 atlas = ExtResource("1_g4cq6")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1u1o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vjbl"]
 atlas = ExtResource("1_g4cq6")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke030"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xusc"]
 atlas = ExtResource("1_g4cq6")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3fwhk")
+"texture": SubResource("AtlasTexture_tucwe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mdkfl")
+"texture": SubResource("AtlasTexture_tucwe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b1u1o")
+"texture": SubResource("AtlasTexture_6nn2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vjbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vjbl")
 }],
 "loop": false,
 "name": &"attack",
@@ -36,19 +42,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke030")
+"texture": SubResource("AtlasTexture_5xusc")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke030")
+"texture": SubResource("AtlasTexture_5xusc")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke030")
+"texture": SubResource("AtlasTexture_5xusc")
 }, {
 "duration": 1.0,
 "texture": null
@@ -59,7 +65,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke030")
+"texture": SubResource("AtlasTexture_5xusc")
 }],
 "loop": true,
 "name": &"default",
