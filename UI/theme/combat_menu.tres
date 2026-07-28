@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://ce4rc8t8yldjd"]
 
 [ext_resource type="FontFile" uid="uid://maje43f5cvr0" path="res://UI/pixeloid.ttf/PixeloidSans.ttf" id="1_8xdmq"]
-[ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/button_normal.tres" id="1_qvpb8"]
-[ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/button_depressed.tres" id="2_8xdmq"]
+[ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/theme/button_normal.tres" id="1_qvpb8"]
+[ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/theme/button_depressed.tres" id="2_8xdmq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xdmq"]
 

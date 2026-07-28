@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bk1s4ono60yno"]
 
-[ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://characters/character.tscn" id="1_w11f1"]
-[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://characters/character_stats.gd" id="2_2t2vg"]
-[ext_resource type="SpriteFrames" uid="uid://bxso7i1gq5i0a" path="res://characters/scythegirlsprites.tres" id="3_wal2c"]
+[ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_w11f1"]
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="2_2t2vg"]
+[ext_resource type="SpriteFrames" uid="uid://bxso7i1gq5i0a" path="res://actors/characters/scythe/scythegirlsprites.tres" id="3_wal2c"]
 
 [sub_resource type="Resource" id="Resource_3gqnw"]
 resource_local_to_scene = true

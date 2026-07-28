@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cobn7mntvekv8"]
+
+[ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_6cqmo"]
+[ext_resource type="Resource" uid="uid://bb4qsckhprhfk" path="res://actors/characters/katana/katanagirlstats.tres" id="2_4osny"]
+[ext_resource type="SpriteFrames" uid="uid://3qeqem53at2f" path="res://actors/characters/katana/katanagirlsprites.tres" id="3_4osny"]
+
+[node name="Character" unique_id=264603401 instance=ExtResource("1_6cqmo")]
+stats = ExtResource("2_4osny")
+
+[node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
+sprite_frames = ExtResource("3_4osny")

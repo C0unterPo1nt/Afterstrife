@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doq4abdpcki4c"]
 
-[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/combat_menu.tres" id="1_jf8mj"]
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_jf8mj"]
 [ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
 
 [node name="MainMenu" type="Control" unique_id=2038571758]
