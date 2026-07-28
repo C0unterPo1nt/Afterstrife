@@ -1,6 +1,7 @@
 extends Node2D
 
 signal done
+signal turn(bool)
 
 var character: Character
 var path: PackedVector2Array
@@ -29,6 +30,10 @@ func _physics_process(delta):
 				done.emit(character)
 				return
 			progress += 1
+			if path[progress].direction_to(global_position).x > 0:
+				turn.emit(true)
+			elif path[progress].direction_to(global_position).x < 0:
+				turn.emit(false)
 		var movement_delta = movement_speed * delta
 		character.global_position = character.global_position.move_toward(destination, movement_delta)
 

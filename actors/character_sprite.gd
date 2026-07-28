@@ -18,3 +18,7 @@ func undim():
 
 func _on_animation_finished():
 	play("default")
+
+
+func _on_movement_turn(bool: Variant) -> void:
+	flip_h = bool

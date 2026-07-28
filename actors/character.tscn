@@ -37,3 +37,5 @@ show_percentage = false
 
 [node name="Movement" type="Node2D" parent="." unique_id=2081088522]
 script = ExtResource("4_mdkfl")
+
+[connection signal="turn" from="Movement" to="CharacterSprite" method="_on_movement_turn"]
