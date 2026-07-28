@@ -1,7 +1,6 @@
 @abstract class_name Action
 
 var name: String
-var sequence: Array[SubAction]
 var character: Character
 
 @abstract func predicate() -> bool
@@ -9,7 +8,6 @@ var character: Character
 class Move extends Action:
 	func _init(character: Character):
 		name = "Move"
-		sequence = [SubAction.Move.new()]
 	
 	func predicate() -> bool:
 		return true
@@ -18,7 +16,6 @@ class Attack extends Action:
 	var range = 1
 	func _init(_character: Character):
 		name = "Attack"
-		sequence = [SubAction.Attack.new()]
 		character = _character
 	
 	func predicate() -> bool:

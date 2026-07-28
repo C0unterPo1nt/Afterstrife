@@ -25,15 +25,16 @@ func move(_character: Character) -> PackedVector2Array:
 	sleep()
 	return path
 
-func target_enemy(_character: Character, range: int):
+func target_enemy(_character: Character, _range: int):
 	var valid_targets: Dictionary[Vector2i, Character] = {}
 	for coords in Grid.game_board:
 		var actor = Grid.game_board[coords]
 		if actor.team != _character.team:
 			valid_targets.set(coords, actor)
-	return await target_character(_character, valid_targets, range)
+	return await target_character(_character, valid_targets, _range)
 
-func target_character(_character: Character, valid_targets: Dictionary[Vector2i, Character], range: int) -> Character:
+func target_character(_character: Character, valid_targets: Dictionary[Vector2i, Character], _range: int) -> Character:
+	range = _range
 	mode = Modes.CHARACTER
 	character = _character
 	activate(valid_targets.keys())

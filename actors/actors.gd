@@ -23,13 +23,8 @@ func sleep():
 func character_act(character: Character):
 	is_character_acting = true
 	var action: Action = await combat_menu.make_action_selection(character.actions)
-	for sub in action.sequence:
-		await perform_sub_act(character, sub)
-	character.deactivate()
-	is_character_acting = false
-
-func perform_sub_act(character: Character, sub: SubAction):
-	if sub is SubAction.Move:
+	
+	if action is Action.Move:
 		var path: PackedVector2Array = await targeting.move(character)
 		await character.move(path)
 		var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
@@ -37,9 +32,14 @@ func perform_sub_act(character: Character, sub: SubAction):
 		Grid.game_board.set(final_coords, character)
 		character.grid_coordinates = final_coords
 		tilemap.update_astar_grid()
-	elif sub is SubAction.Attack:
-		var target = await targeting.target_enemy(character)
+	elif action is Action.Attack:
+		var target = await targeting.target_enemy(character, action.range)
 		await combat.initiate(character, target)
+		
+	character.deactivate()
+	is_character_acting = false
+
+
 
 func _on_tilemap_tile_selected(coordinates: Vector2i) -> void:
 	if GameState.input_allowed && !is_character_acting:
