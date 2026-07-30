@@ -1,23 +1,23 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://3qeqem53at2f"]
 
-[ext_resource type="Texture2D" uid="uid://dtl00k120styc" path="res://sprites/katanagirl.png" id="1_5p0bl"]
+[ext_resource type="Texture2D" uid="uid://b77prxpdhl6t8" path="res://sprites/katanagirl2.png" id="2_p35lx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p0bl"]
-atlas = ExtResource("1_5p0bl")
+atlas = ExtResource("2_p35lx")
 region = Rect2(0, 0, 64, 64)
 
 [resource]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0bl")
+}],
 "loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5p0bl")
 }, {
 "duration": 1.0,
@@ -31,6 +31,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5p0bl")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"damage",

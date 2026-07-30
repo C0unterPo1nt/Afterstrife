@@ -9,3 +9,4 @@ stats = ExtResource("2_4osny")
 
 [node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
 sprite_frames = ExtResource("3_4osny")
+animation = &"attack"
