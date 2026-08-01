@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bkp0ju8beu2q8"]
+
+[ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_xms36"]
+[ext_resource type="Resource" uid="uid://da3p7bdebs7ih" path="res://actors/characters/witch/witchstats.tres" id="2_56ja5"]
+[ext_resource type="SpriteFrames" uid="uid://d0hm7ek4hywo5" path="res://actors/characters/witch/witchsprites.tres" id="3_56ja5"]
+
+[node name="Character" unique_id=264603401 instance=ExtResource("1_xms36")]
+stats = ExtResource("2_56ja5")
+
+[node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
+sprite_frames = ExtResource("3_56ja5")
+animation = &"attack"

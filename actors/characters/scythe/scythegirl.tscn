@@ -1,19 +1,11 @@
 [gd_scene format=3 uid="uid://bk1s4ono60yno"]
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_w11f1"]
-[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="2_2t2vg"]
+[ext_resource type="Resource" uid="uid://d2uhdvul868o3" path="res://actors/characters/scythe/scythegirlstats.tres" id="2_02nrh"]
 [ext_resource type="SpriteFrames" uid="uid://bxso7i1gq5i0a" path="res://actors/characters/scythe/scythegirlsprites.tres" id="3_wal2c"]
 
-[sub_resource type="Resource" id="Resource_02nrh"]
-resource_local_to_scene = true
-script = ExtResource("2_2t2vg")
-attack_strength = 10
-movement = 4
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
 [node name="Character" unique_id=264603401 instance=ExtResource("1_w11f1")]
-stats = SubResource("Resource_02nrh")
+stats = ExtResource("2_02nrh")
 
 [node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
 sprite_frames = ExtResource("3_wal2c")
-animation = &"attack"

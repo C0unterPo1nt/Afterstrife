@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://da3p7bdebs7ih"]
+
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="1_135xd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_135xd")
+attack_strength = 45
+movement = 4
+max_health = 50
+maximum_actions = 1
+metadata/_custom_type_script = "uid://0vslwn03wk6o"

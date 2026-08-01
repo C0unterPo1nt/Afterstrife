@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://Managers/tilemap.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
-[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="7_80cx4"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="Script" uid="uid://cbahf0flbmmlt" path="res://Managers/targeting/movement_preview_line.gd" id="8_j5wjh"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
 [ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://actors/teams/red_team.tres" id="18_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="18_x5p1p"]
+[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="20_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="20_x5p1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
@@ -54,20 +54,6 @@ sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
-
-[sub_resource type="Resource" id="Resource_hb5m1"]
-resource_local_to_scene = true
-script = ExtResource("7_80cx4")
-attack_strength = 10
-movement = 4
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="Resource" id="Resource_x5p1p"]
-resource_local_to_scene = true
-script = ExtResource("7_80cx4")
-attack_strength = 10
-movement = 4
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [node name="Game" type="Node2D" unique_id=702725256]
 
@@ -177,13 +163,11 @@ metadata/_aseprite_wizard_interface_config_ = {
 script = ExtResource("5_vef74")
 
 [node name="scythegirl" parent="GameManager/Tilemap/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
-position = Vector2(320, 128)
-stats = SubResource("Resource_hb5m1")
+position = Vector2(288, 192)
 team = ExtResource("16_e36ub")
 
 [node name="scythegirl2" parent="GameManager/Tilemap/Actors" unique_id=708922969 instance=ExtResource("18_x5p1p")]
-position = Vector2(320, 64)
-stats = SubResource("Resource_x5p1p")
+position = Vector2(320, 128)
 team = ExtResource("16_e36ub")
 
 [node name="katanagirl" parent="GameManager/Tilemap/Actors" unique_id=2016364985 instance=ExtResource("20_x5p1p")]
@@ -193,6 +177,10 @@ team = ExtResource("18_hb5m1")
 [node name="katanagirl2" parent="GameManager/Tilemap/Actors" unique_id=1608902161 instance=ExtResource("20_x5p1p")]
 position = Vector2(192, 160)
 team = ExtResource("18_hb5m1")
+
+[node name="Witch" parent="GameManager/Tilemap/Actors" unique_id=1837095790 instance=ExtResource("20_qhcbd")]
+position = Vector2(320, 64)
+team = ExtResource("16_e36ub")
 
 [node name="Turns" type="Node" parent="GameManager" unique_id=1847990413]
 script = ExtResource("17_rvswv")
