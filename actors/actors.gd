@@ -26,18 +26,23 @@ func character_act(character: Character):
 	
 	if action is Action.Move:
 		var path: PackedVector2Array = await targeting.move(character)
+		GameState.input_allowed = false
 		await character.move(path)
 		var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
 		Grid.game_board.erase(character.grid_coordinates)
 		Grid.game_board.set(final_coords, character)
 		character.grid_coordinates = final_coords
 		tilemap.update_astar_grid()
+		GameState.input_allowed = true
 	elif action is Action.Attack:
 		var target = await targeting.target_enemy(character, action.range)
+		GameState.input_allowed = false
 		await combat.initiate(character, target)
+		GameState.input_allowed = true
 		
 	character.deactivate()
 	is_character_acting = false
+	
 
 
 

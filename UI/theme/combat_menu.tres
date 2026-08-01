@@ -3,6 +3,22 @@
 [ext_resource type="FontFile" uid="uid://maje43f5cvr0" path="res://UI/pixeloid.ttf/PixeloidSans.ttf" id="1_8xdmq"]
 [ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/theme/button_normal.tres" id="1_qvpb8"]
 [ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/theme/button_depressed.tres" id="2_8xdmq"]
+[ext_resource type="Texture2D" uid="uid://caxibdg3u0t7k" path="res://sprites/healthbarBackground.png" id="4_0lm3h"]
+[ext_resource type="Texture2D" uid="uid://dkw4170csh6sh" path="res://sprites/healthbar.png" id="5_1c0i3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cr6y6"]
+texture = ExtResource("4_0lm3h")
+texture_margin_left = 1.0
+texture_margin_top = 2.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_146i7"]
+texture = ExtResource("5_1c0i3")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xdmq"]
 
@@ -23,4 +39,6 @@ Label/colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
 Label/colors/font_outline_color = Color(0.2784314, 0.17254902, 0.14901961, 1)
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_8xdmq")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_cr6y6")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_146i7")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_8xdmq")

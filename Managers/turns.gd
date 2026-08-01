@@ -11,14 +11,18 @@ func init(_team_queue, _turn_counter_ui: Control):
 	start_turn(team_queue[turn_count])
 
 func start_turn(team):
-	show_turn_label(team)
+	await show_turn_label(team)
 	GameState.active_team = team
 	team.refresh()
 	GameState.input_allowed = true
 
-func next_turn():
+func end_turn(team):
+	GameState.input_allowed = false
 	for actor in team_queue[turn_count].actors:
 		actor.sleep()
+
+func next_turn():
+	end_turn(team_queue[turn_count])
 	turn_count += 1
 	if turn_count < team_queue.size():
 		start_turn(team_queue[turn_count])

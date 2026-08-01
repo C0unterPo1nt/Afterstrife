@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="2_mdkfl"]
 [ext_resource type="Script" uid="uid://bw8wiskuh8h7e" path="res://actors/character_sprite.gd" id="3_px5sl"]
 [ext_resource type="Script" uid="uid://c38u4idawgxej" path="res://actors/movement.gd" id="4_mdkfl"]
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="4_v8d33"]
 
 [sub_resource type="Resource" id="Resource_b1u1o"]
 resource_local_to_scene = true
@@ -29,11 +30,13 @@ offset = Vector2(-16, -16)
 script = ExtResource("3_px5sl")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=428600830]
-offset_top = 28.0
+visible = false
+offset_top = 25.0
 offset_right = 32.0
 offset_bottom = 32.0
+theme = ExtResource("4_v8d33")
 step = 1.0
-value = 79.0
+value = 80.0
 show_percentage = false
 
 [node name="Movement" type="Node2D" parent="." unique_id=2081088522]

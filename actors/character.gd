@@ -25,6 +25,13 @@ func _ready() -> void:
 	$HealthBar.value = stats.health
 	team.actors.append(self)
 
+func _process(delta: float) -> void:
+	if GameState.input_allowed:
+		if Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position()) == grid_coordinates:
+			should_display_health(true)
+		else:
+			should_display_health(false)
+
 func activate():
 	if state != States.ready:
 		return
@@ -57,8 +64,10 @@ func sleep():
 func damage(ammount: int):
 	stats.health -= ammount
 	$HealthBar.value = stats.health
+	should_display_health(true)
 	$CharacterSprite.play("damage")
 	await $CharacterSprite.animation_finished
+	should_display_health(false)
 	if stats.health <= 0:
 		die()
 
@@ -75,3 +84,6 @@ func die():
 	
 func move(path: PackedVector2Array):
 	await $Movement.move(self, path)
+
+func should_display_health(should: bool):
+	$HealthBar.visible = should
