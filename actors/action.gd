@@ -19,7 +19,7 @@ class Attack extends Action:
 		character = _character
 	
 	func predicate() -> bool:
-		var tiles = Grid.find_squares_in_range(character.grid_coordinates, range)
+		var tiles = Grid.get_tiles_in_range(character.grid_coordinates, range)
 		var characters: Array[Character] = Grid.get_actors(tiles).filter(func(x): return x != null)
 		for other in characters:
 			if other.team != character.team:

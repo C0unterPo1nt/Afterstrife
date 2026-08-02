@@ -1,20 +1,63 @@
 extends Node2D
 
 enum States {targeting, sleeping}
-enum Modes {SPACE, CHARACTER}
 
 var state: States = States.sleeping
+
+func init(_tile_map: TileMapLayer):
+	tile_map = _tile_map
+	tile_selected = tile_map.tile_selected
+	$PotentialTargets.tile_map = tile_map
+
+func begin_targeting(config: TargetingConfig) -> Array:
+	var reachable_tiles: Array[Vector2i] = Grid.get_tiles_in_range(config.character.grid_coordinates, config.range)
+	#first remove blocking tiles from the array
+	if config.path_obstacles.obstacles:
+		remove_entries(reachable_tiles, tile_map.get_obstacles())
+	if config.path_obstacles.allies:
+		var allies_coords = Grid.get_allies_coordinates(config.character)
+		remove_entries(reachable_tiles, allies_coords)
+	if config.path_obstacles.enemies:
+		var enemies_coords = Grid.get_enemies_coordinates(config.character)
+		remove_entries(reachable_tiles, enemies_coords)
+	
+	#then create targeting indicator passing selectable if its a valid target
+	for tile in reachable_tiles:
+		var path = tile_map.calculate_path(config.character.grid_coordinates, tile, reachable_tiles)
+		if path.size() > config.range + 1 or path.is_empty():
+			continue
+		var valid_target: bool = false
+		if config.potential_targets.obstacles == true:
+			if tile_map.get_cell_tile_data(tile).get_custom_data("Obstacle") == true:
+				valid_target = true
+		##TODO get character here
+		elif config.potential_targets.allies:
+			if config.character.team == character.team:
+				valid_target = true
+		elif config.potential_targets.enemies:
+			if config.character.team != character.team:
+				valid_target = true
+		else:
+			valid_target = true
+		print('valid target', valid_target)
+		$PotentialTargets.create_target_indicator(tile, path, valid_target)
+	var target = await $PotentialTargets.target_selected
+	return target
+
+func remove_entries(original: Array, for_removal: Array):
+	for i in for_removal:
+		original.erase(i)
+
+# Legacy implementation
+# Logic will be moved out of here as it is deemed necessary
+#region
+enum Modes {SPACE, CHARACTER}
 var mode: Modes
 var character: Character
 var path: PackedVector2Array
 var tile_map: TileMapLayer
 var tile_selected: Signal
 var range: int
-
-func init(_tile_map: TileMapLayer, _tile_selected: Signal):
-	tile_map = _tile_map
-	tile_selected = _tile_selected
-	$TargetPreviewIndicators.tile_map = tile_map
 
 func move(_character: Character) -> PackedVector2Array:
 	mode = Modes.SPACE
@@ -89,3 +132,4 @@ func sleep():
 	state = States.sleeping
 	$TargetPreviewIndicators.clear()
 	visible(false)
+#endregion

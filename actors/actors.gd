@@ -25,14 +25,18 @@ func character_act(character: Character):
 	var action: Action = await combat_menu.make_action_selection(character.actions)
 	
 	if action is Action.Move:
-		var path: PackedVector2Array = await targeting.move(character)
+		var potential_targets = TargetingConfig.TileMask.new(false, false, false, true)
+		var path_obstacles = TargetingConfig.TileMask.new(true, false, true, false)
+		var targeting_config = TargetingConfig.new(potential_targets, character.stats.movement, character, true, path_obstacles)
+		
+		var target_payload = await targeting.begin_targeting(targeting_config)
+		var path: PackedVector2Array = target_payload[1]
 		GameState.input_allowed = false
 		await character.move(path)
 		var final_coords = Grid.absolute_to_grid_coordinates(path[path.size()-1])
 		Grid.game_board.erase(character.grid_coordinates)
 		Grid.game_board.set(final_coords, character)
 		character.grid_coordinates = final_coords
-		tilemap.update_astar_grid()
 		GameState.input_allowed = true
 	elif action is Action.Attack:
 		var target = await targeting.target_enemy(character, action.range)
@@ -43,8 +47,6 @@ func character_act(character: Character):
 	character.deactivate()
 	is_character_acting = false
 	
-
-
 
 func _on_tilemap_tile_selected(coordinates: Vector2i) -> void:
 	if GameState.input_allowed && !is_character_acting:

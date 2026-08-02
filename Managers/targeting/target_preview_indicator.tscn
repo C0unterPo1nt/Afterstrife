@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://gslnoi6u1c1m"]
+
+[ext_resource type="Script" uid="uid://e1t2p6bjjutg" path="res://Managers/targeting/target_preview_indicator.gd" id="1_wc01j"]
+[ext_resource type="Texture2D" uid="uid://cffuwqlychtuo" path="res://sprites/PreviewSprites.png" id="2_38qfm"]
+
+[node name="TargetPreviewIndicator" type="Node2D" unique_id=647166369]
+script = ExtResource("1_wc01j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449394614]
+modulate = Color(1, 1, 1, 0.3)
+texture = ExtResource("2_38qfm")
+offset = Vector2(16, 16)
+region_enabled = true
+region_rect = Rect2(160, 0, 32, 32)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+}
+}

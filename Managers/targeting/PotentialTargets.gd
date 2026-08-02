@@ -1,10 +1,26 @@
 extends Node2D
 
+var target_preview_indicator = load("res://Managers/targeting/target_preview_indicator.tscn")
+signal target_selected(coords: Vector2i, path: PackedVector2Array)
+
+func create_target_indicator(coords: Vector2i, path: PackedVector2Array, selectable: bool):
+		var indicator = target_preview_indicator.instantiate()
+		indicator.init(path, coords, _on_target_preview_indicator_selected, selectable)
+		add_child(indicator)
+
+func deactivate():
+	for tile in get_children():
+		tile.queue_free()
+
+func _on_target_preview_indicator_selected(coords: Vector2i, path: PackedVector2Array):
+	target_selected.emit(coords, path)
+	deactivate()
+
+# Legacy code
+#region
 var tile_sprite = load("res://sprites/PreviewSprites.png")
 var tile_map: TileMapLayer
 var sprite_region = Rect2(160,0,32,32)
-
-
 
 func clear():
 	for node in get_children():
@@ -14,7 +30,7 @@ func preview_targets(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i
 	_preview(origin, range, allowed_tiles, allowed_tiles)
 
 func preview_paths(origin: Vector2i, range: int):
-	var tiles = Grid.find_squares_in_range(origin, range)
+	var tiles = Grid.get_tiles_in_range(origin, range)
 	_preview(origin, range, tiles)
 
 func _preview(origin: Vector2i, range: int, allowed_tiles: Array[Vector2i] = [], tile_override: Array[Vector2i] = []):
@@ -42,3 +58,4 @@ func instance_sprite(coords):
 	sprite.region_rect = sprite_region
 	sprite.modulate = Color(1,1,1,.3)
 	add_child(sprite)
+#endregion

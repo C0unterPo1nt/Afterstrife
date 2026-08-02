@@ -6,41 +6,48 @@ enum Tile {Obstacle}
 
 signal tile_selected(Vector2i)
 
-func initialize(menu: Control, combat: Node):
-	$Actors.init(self, menu, $Targeting, combat)
-	update_astar_grid()
-	$Targeting.init(self, tile_selected)
-
-func update_astar_grid():
+func initialize():
 	astar_grid = AStarGrid2D.new()
-	astar_grid.size = Grid.grid_size
 	astar_grid.cell_size = Grid.cell_size
+	reset()
 	astar_grid.offset = Vector2i.ZERO
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	astar_grid.update()
+
+func reset():
+	astar_grid.clear()
+	astar_grid.region = Grid.region
+	astar_grid.update()
+
+func get_obstacles():
+	var obstacles: Array[Vector2i]
+	for pos in get_points():
+		if get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
+			obstacles.append(pos)
+	return obstacles
+
+func get_points() -> Array[Vector2i]:
+	var points: Array[Vector2i]
 	for i in range(astar_grid.size.x):
 		for j in range(astar_grid.size.y):
-			var pos = Vector2i(i,j)
-			if get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
-				astar_grid.set_point_solid(pos)
-	for key in Grid.game_board.keys():
-		astar_grid.set_point_solid(key, true)
+			points.append(Vector2i(i,j))
+	return points
 
-func calculate_path(start: Vector2i, end: Vector2i, mask: Array[Vector2i] = []) -> PackedVector2Array:
-	var start_previously_solid = astar_grid.is_point_solid(start)
-	if start_previously_solid:
-		astar_grid.set_point_solid(start, false)
-	for point in mask:
-		if astar_grid.is_point_solid(point):
-			astar_grid.set_point_solid(point, false)
-		else:
-			mask.erase(point)
+func set_blocked_by_obstacles():
+	for obstacle in get_obstacles():
+		astar_grid.set_point_solid(obstacle)
+
+func calculate_path(start: Vector2i, end: Vector2i, unsolid_points: Array[Vector2i]) -> PackedVector2Array:
+	reset()
+	if !unsolid_points.has(start) or !unsolid_points.has(end):
+		return PackedVector2Array()
+	
+	for point in get_points():
+		if !unsolid_points.has(point):
+			astar_grid.set_point_solid(point)
+
 	var path = astar_grid.get_point_path(start, end)
-	for point in mask:
-			astar_grid.set_point_solid(point, true)
-	if start_previously_solid:
-		astar_grid.set_point_solid(start, true)
 	return path
 
 func _on_input_click(_position) -> void:
