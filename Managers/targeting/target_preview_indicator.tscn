@@ -12,7 +12,7 @@ offset = Vector2(16, 16)
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449394614]
+[node name="Tile" type="Sprite2D" parent="." unique_id=1449394614]
 modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("2_38qfm")
 offset = Vector2(16, 16)

@@ -2,16 +2,16 @@ extends Node2D
 
 enum States {targeting, sleeping}
 
-var state: States = States.sleeping
+var tile_map: TileMapLayer
 
 func init(_tile_map: TileMapLayer):
 	tile_map = _tile_map
-	tile_selected = tile_map.tile_selected
 	$PotentialTargets.tile_map = tile_map
 
 func begin_targeting(config: TargetingConfig) -> Array:
 	var reachable_tiles: Array[Vector2i] = Grid.get_tiles_in_range(config.character.grid_coordinates, config.range)
 	#first remove blocking tiles from the array
+	# TODO move to a helper
 	if config.path_obstacles.obstacles:
 		remove_entries(reachable_tiles, tile_map.get_obstacles())
 	if config.path_obstacles.allies:
@@ -49,13 +49,14 @@ func remove_entries(original: Array, for_removal: Array):
 
 # Legacy implementation
 # Logic will be moved out of here as it is deemed necessary
+# TODO DELETE THIS
 #region
 enum Modes {SPACE, CHARACTER}
 var mode: Modes
 var path: PackedVector2Array
-var tile_map: TileMapLayer
 var tile_selected: Signal
 var range: int
+var state: States = States.sleeping
 
 func move(_character: Character) -> PackedVector2Array:
 	mode = Modes.SPACE

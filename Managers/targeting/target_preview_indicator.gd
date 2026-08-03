@@ -12,6 +12,7 @@ func init(path: PackedVector2Array, coords: Vector2i, callback: Callable, select
 	_selectable = selectable
 	selected.connect(callback)
 
+# TODO Move path preview into this
 func _process(delta: float) -> void:
 	if GameState.input_allowed:
 		if Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position()) == _coords && _selectable:
