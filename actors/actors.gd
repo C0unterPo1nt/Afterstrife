@@ -25,11 +25,7 @@ func character_act(character: Character):
 	var action: Action = await combat_menu.make_action_selection(character.actions)
 	
 	if action is Action.Move:
-		var potential_targets = TargetingConfig.TileMask.new(false, false, false, true)
-		var path_obstacles = TargetingConfig.TileMask.new(true, false, true, false)
-		var targeting_config = TargetingConfig.new(potential_targets, character.stats.movement, character, true, path_obstacles)
-		
-		var target_payload = await targeting.begin_targeting(targeting_config)
+		var target_payload = await targeting.begin_targeting(action.targeting_config)
 		var path: PackedVector2Array = target_payload[1]
 		GameState.input_allowed = false
 		await character.move(path)
@@ -39,7 +35,8 @@ func character_act(character: Character):
 		character.grid_coordinates = final_coords
 		GameState.input_allowed = true
 	elif action is Action.Attack:
-		var target = await targeting.target_enemy(character, action.range)
+		var target_payload = await targeting.begin_targeting(action.targeting_config)
+		var target = Grid.get_actor(target_payload[0])
 		GameState.input_allowed = false
 		await combat.initiate(character, target)
 		GameState.input_allowed = true

@@ -12,6 +12,13 @@ func init(path: PackedVector2Array, coords: Vector2i, callback: Callable, select
 	_selectable = selectable
 	selected.connect(callback)
 
+func _process(delta: float) -> void:
+	if GameState.input_allowed:
+		if Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position()) == _coords && _selectable:
+			$Reticle.visible = true
+		else:
+			$Reticle.visible = false
+
 func _input(event: InputEvent) -> void:
 	var is_mouse_over_self = Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position()) == _coords
 	var clicked = event is InputEventMouseButton && event.pressed

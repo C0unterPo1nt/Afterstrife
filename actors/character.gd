@@ -11,10 +11,7 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var stats: CharacterStats
 @export var team: Team
 
-var actions: Array[Action] = [
-	Action.Move.new(self),
-	Action.Attack.new(self)
-]
+var actions: Array[Action] 
 
 func init(_grid_coordinates: Vector2i):
 	grid_coordinates = _grid_coordinates
@@ -23,6 +20,10 @@ func _ready() -> void:
 	stats.health = stats.max_health
 	$HealthBar.max_value = stats.max_health
 	$HealthBar.value = stats.health
+	actions = [
+		Action.Move.new(self),
+		Action.Attack.new(self)
+	]
 	team.actors.append(self)
 
 func _process(delta: float) -> void:

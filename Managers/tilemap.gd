@@ -40,12 +40,13 @@ func set_blocked_by_obstacles():
 
 func calculate_path(start: Vector2i, end: Vector2i, unsolid_points: Array[Vector2i]) -> PackedVector2Array:
 	reset()
-	if !unsolid_points.has(start) or !unsolid_points.has(end):
-		return PackedVector2Array()
 	
 	for point in get_points():
 		if !unsolid_points.has(point):
 			astar_grid.set_point_solid(point)
+	
+	astar_grid.set_point_solid(start, false)
+	astar_grid.set_point_solid(end, false)
 
 	var path = astar_grid.get_point_path(start, end)
 	return path
