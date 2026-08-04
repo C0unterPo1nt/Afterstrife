@@ -43,4 +43,5 @@ metadata/_aseprite_wizard_interface_config_ = {
 
 [node name="MovementPreviewLine" type="Node2D" parent="." unique_id=324589894]
 visible = false
+z_index = 1
 script = ExtResource("3_3p5cg")
