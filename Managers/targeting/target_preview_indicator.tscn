@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://e1t2p6bjjutg" path="res://Managers/targeting/target_preview_indicator.gd" id="1_wc01j"]
 [ext_resource type="Texture2D" uid="uid://cffuwqlychtuo" path="res://sprites/PreviewSprites.png" id="2_38qfm"]
+[ext_resource type="Script" uid="uid://cbahf0flbmmlt" path="res://Managers/targeting/movement_preview_line.gd" id="3_3p5cg"]
 
 [node name="TargetPreviewIndicator" type="Node2D" unique_id=647166369]
 script = ExtResource("1_wc01j")
@@ -39,3 +40,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "source_uid": -1
 }
 }
+
+[node name="MovementPreviewLine" type="Node2D" parent="." unique_id=324589894]
+visible = false
+script = ExtResource("3_3p5cg")

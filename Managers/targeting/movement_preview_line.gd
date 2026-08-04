@@ -8,7 +8,8 @@ func clear_path():
 	for node in get_children():
 		node.queue_free()
 
-func update_path_preview(_path: PackedVector2Array):
+func update_path_preview(destination_position: Vector2, _path: PackedVector2Array):
+	position = Vector2.ZERO - destination_position
 	path = _path
 	clear_path()
 	draw_line_sprites()

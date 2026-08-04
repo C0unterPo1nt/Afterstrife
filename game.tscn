@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
-[ext_resource type="Script" uid="uid://cbahf0flbmmlt" path="res://Managers/targeting/movement_preview_line.gd" id="8_j5wjh"]
 [ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
 [ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://Managers/combat.gd" id="14_7sc4i"]
@@ -56,6 +55,13 @@ sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boyg6"]
 
+[sub_resource type="Resource" id="Resource_hb5m1"]
+resource_local_to_scene = true
+script = ExtResource("18_qhcbd")
+attack_strength = 40
+movement = 4
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
+
 [sub_resource type="Resource" id="Resource_x5p1p"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
@@ -66,8 +72,9 @@ metadata/_custom_type_script = "uid://0vslwn03wk6o"
 [sub_resource type="Resource" id="Resource_qhcbd"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
-attack_strength = 40
-movement = 4
+attack_strength = 30
+movement = 5
+max_health = 80
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_f1jbl"]
@@ -79,14 +86,6 @@ max_health = 80
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_vaj68"]
-resource_local_to_scene = true
-script = ExtResource("18_qhcbd")
-attack_strength = 30
-movement = 5
-max_health = 80
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="Resource" id="Resource_i2p71"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
 attack_strength = 45
@@ -167,9 +166,6 @@ script = ExtResource("15_e8heu")
 visible = false
 texture = SubResource("CompressedTexture2D_boyg6")
 
-[node name="MovementPreviewLine" type="Node2D" parent="GameManager/Targeting" unique_id=1504991797]
-script = ExtResource("8_j5wjh")
-
 [node name="MovementReticleSprite" type="Sprite2D" parent="GameManager/Targeting" unique_id=1414701466]
 visible = false
 texture = ExtResource("15_rvswv")
@@ -207,27 +203,27 @@ script = ExtResource("5_vef74")
 
 [node name="scythegirl" parent="GameManager/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
 position = Vector2(288, 192)
-stats = SubResource("Resource_x5p1p")
+stats = SubResource("Resource_hb5m1")
 team = ExtResource("16_e36ub")
 
 [node name="scythegirl2" parent="GameManager/Actors" unique_id=708922969 instance=ExtResource("18_x5p1p")]
 position = Vector2(256, 192)
-stats = SubResource("Resource_qhcbd")
+stats = SubResource("Resource_x5p1p")
 team = ExtResource("16_e36ub")
 
 [node name="katanagirl" parent="GameManager/Actors" unique_id=2016364985 instance=ExtResource("20_x5p1p")]
 position = Vector2(160, 96)
-stats = SubResource("Resource_f1jbl")
+stats = SubResource("Resource_qhcbd")
 team = ExtResource("18_hb5m1")
 
 [node name="katanagirl2" parent="GameManager/Actors" unique_id=1608902161 instance=ExtResource("20_x5p1p")]
 position = Vector2(192, 160)
-stats = SubResource("Resource_vaj68")
+stats = SubResource("Resource_f1jbl")
 team = ExtResource("18_hb5m1")
 
 [node name="Witch" parent="GameManager/Actors" unique_id=1837095790 instance=ExtResource("20_qhcbd")]
-position = Vector2(320, 64)
-stats = SubResource("Resource_i2p71")
+position = Vector2(256, 160)
+stats = SubResource("Resource_vaj68")
 team = ExtResource("16_e36ub")
 
 [node name="Input" type="Node" parent="." unique_id=112512100]

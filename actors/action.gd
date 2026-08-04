@@ -23,7 +23,7 @@ class Attack extends Action:
 		character = _character
 		var potential_targets = TargetingConfig.TileMask.new(false, false, true, false)
 		var path_obstacles = TargetingConfig.TileMask.new(false, false, false, false)
-		targeting_config = TargetingConfig.new(potential_targets, range, character, true, path_obstacles)
+		targeting_config = TargetingConfig.new(potential_targets, range, character, false, path_obstacles)
 	
 	func predicate() -> bool:
 		var tiles = Grid.get_tiles_in_range(character.grid_coordinates, range)
