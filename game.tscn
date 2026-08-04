@@ -52,37 +52,30 @@ custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
-[sub_resource type="Resource" id="Resource_hb5m1"]
+[sub_resource type="Resource" id="Resource_e36ub"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
 attack_strength = 40
 movement = 4
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
+
+[sub_resource type="Resource" id="Resource_hb5m1"]
+resource_local_to_scene = true
+script = ExtResource("18_qhcbd")
+attack_strength = 30
+movement = 5
+max_health = 80
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_x5p1p"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
-attack_strength = 40
-movement = 4
+attack_strength = 30
+movement = 5
+max_health = 80
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="Resource" id="Resource_qhcbd"]
-resource_local_to_scene = true
-script = ExtResource("18_qhcbd")
-attack_strength = 30
-movement = 5
-max_health = 80
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="Resource" id="Resource_f1jbl"]
-resource_local_to_scene = true
-script = ExtResource("18_qhcbd")
-attack_strength = 30
-movement = 5
-max_health = 80
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
-
-[sub_resource type="Resource" id="Resource_vaj68"]
 resource_local_to_scene = true
 script = ExtResource("18_qhcbd")
 attack_strength = 45
@@ -166,28 +159,23 @@ script = ExtResource("17_rvswv")
 script = ExtResource("5_vef74")
 
 [node name="scythegirl" parent="GameManager/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
-position = Vector2(288, 192)
-stats = SubResource("Resource_hb5m1")
-team = ExtResource("16_e36ub")
-
-[node name="scythegirl2" parent="GameManager/Actors" unique_id=708922969 instance=ExtResource("18_x5p1p")]
-position = Vector2(256, 192)
-stats = SubResource("Resource_x5p1p")
+position = Vector2(320, 128)
+stats = SubResource("Resource_e36ub")
 team = ExtResource("16_e36ub")
 
 [node name="katanagirl" parent="GameManager/Actors" unique_id=2016364985 instance=ExtResource("20_x5p1p")]
 position = Vector2(160, 96)
-stats = SubResource("Resource_qhcbd")
+stats = SubResource("Resource_hb5m1")
 team = ExtResource("18_hb5m1")
 
 [node name="katanagirl2" parent="GameManager/Actors" unique_id=1608902161 instance=ExtResource("20_x5p1p")]
 position = Vector2(192, 160)
-stats = SubResource("Resource_f1jbl")
+stats = SubResource("Resource_x5p1p")
 team = ExtResource("18_hb5m1")
 
 [node name="Witch" parent="GameManager/Actors" unique_id=1837095790 instance=ExtResource("20_qhcbd")]
-position = Vector2(256, 160)
-stats = SubResource("Resource_vaj68")
+position = Vector2(288, 192)
+stats = SubResource("Resource_qhcbd")
 team = ExtResource("16_e36ub")
 
 [node name="Input" type="Node" parent="." unique_id=112512100]
