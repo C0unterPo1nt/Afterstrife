@@ -8,22 +8,22 @@ func init(_tile_map: TileMapLayer):
 	tile_map = _tile_map
 	$PotentialTargets.tile_map = tile_map
 
-func begin_targeting(config: TargetingConfig) -> Array:
-	var reachable_tiles: Array[Vector2i] = get_navigable_tiles_in_range(config)
+func begin_targeting(character: Character, range: int, config: TargetingConfig) -> Array:
+	var reachable_tiles: Array[Vector2i] = get_navigable_tiles_in_range(character, range, config)
 	
 	for tile in reachable_tiles:
-		var path = tile_map.calculate_path(config.character.grid_coordinates, tile, reachable_tiles)
-		if path.size() > config.range + 1 or path.is_empty():
+		var path = tile_map.calculate_path(character.grid_coordinates, tile, reachable_tiles)
+		if path.size() > range + 1 or path.is_empty():
 			continue
-		var character: Character = Grid.game_board.get(tile)
+		var character_at_tile: Character = Grid.game_board.get(tile)
 		var valid_target: bool = false
 		if config.potential_targets.obstacles == true:
 			if tile_map.get_cell_tile_data(tile).get_custom_data("Obstacle") == true:
 				valid_target = true
-		if character != null:
-			if config.character.team == character.team && config.potential_targets.allies:
+		if character_at_tile != null:
+			if character.team == character_at_tile.team && config.potential_targets.allies:
 				valid_target = true
-			if config.character.team != character.team && config.potential_targets.enemies:
+			if character.team != character_at_tile.team && config.potential_targets.enemies:
 				valid_target = true
 		else:
 			valid_target = true
@@ -32,15 +32,15 @@ func begin_targeting(config: TargetingConfig) -> Array:
 	var target = await $PotentialTargets.target_selected
 	return target
 
-func get_navigable_tiles_in_range(config):
-	var reachable_tiles: Array[Vector2i] = Grid.get_tiles_in_range(config.character.grid_coordinates, config.range)
+func get_navigable_tiles_in_range(character: Character, range: int, config: TargetingConfig):
+	var reachable_tiles: Array[Vector2i] = Grid.get_tiles_in_range(character.grid_coordinates, range)
 	if config.path_obstacles.obstacles:
 		remove_entries(reachable_tiles, tile_map.get_obstacles())
 	if config.path_obstacles.allies:
-		var allies_coords = Grid.get_allies_coordinates(config.character)
+		var allies_coords = Grid.get_allies_coordinates(character)
 		remove_entries(reachable_tiles, allies_coords)
 	if config.path_obstacles.enemies:
-		var enemies_coords = Grid.get_enemies_coordinates(config.character)
+		var enemies_coords = Grid.get_enemies_coordinates(character)
 		remove_entries(reachable_tiles, enemies_coords)
 	return reachable_tiles
 

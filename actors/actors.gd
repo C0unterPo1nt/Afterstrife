@@ -22,10 +22,10 @@ func sleep():
 
 func character_act(character: Character):
 	is_character_acting = true
-	var action: Action = await combat_menu.make_action_selection(character.actions)
+	var action: Action = await combat_menu.make_action_selection(character)
 	
-	if action is Action.Move:
-		var target_payload = await targeting.begin_targeting(action.targeting_config)
+	if action is Move:
+		var target_payload = await targeting.begin_targeting(character, action.movement, action.targeting_config)
 		var path: PackedVector2Array = target_payload[1]
 		GameState.input_allowed = false
 		await character.move(path)
@@ -34,8 +34,8 @@ func character_act(character: Character):
 		Grid.game_board.set(final_coords, character)
 		character.grid_coordinates = final_coords
 		GameState.input_allowed = true
-	elif action is Action.Attack:
-		var target_payload = await targeting.begin_targeting(action.targeting_config)
+	elif action is Attack:
+		var target_payload = await targeting.begin_targeting(character, action.range, action.targeting_config)
 		var target = Grid.get_actor(target_payload[0])
 		GameState.input_allowed = false
 		await combat.initiate(character, target)
