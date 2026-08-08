@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_jf8mj"]
 [ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
+[ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/CharacterSpinner/character_spinner.tscn" id="3_njn2r"]
 
 [node name="MainMenu" type="Control" unique_id=2038571758]
 layout_mode = 3
@@ -62,19 +63,19 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "Quit"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer" unique_id=497232664]
+[node name="InfoPageContainer" type="VBoxContainer" parent="TabContainer" unique_id=497232664]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="TabContainer/VBoxContainer" unique_id=1930442114]
+[node name="Label" type="Label" parent="TabContainer/InfoPageContainer" unique_id=1930442114]
 layout_mode = 2
 text = "Info"
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/VBoxContainer" unique_id=792088412]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/InfoPageContainer" unique_id=792088412]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Changelog
@@ -82,12 +83,23 @@ WIP"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="TabContainer/VBoxContainer" unique_id=257030561]
+[node name="BackButton" type="Button" parent="TabContainer/InfoPageContainer" unique_id=257030561]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 
+[node name="GameSetupPageContainer" type="HBoxContainer" parent="TabContainer" unique_id=1287884916]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/GameSetupPageContainer" unique_id=1685289283]
+layout_mode = 2
+
+[node name="CenterContainer" parent="TabContainer/GameSetupPageContainer/VBoxContainer" unique_id=1288423298 instance=ExtResource("3_njn2r")]
+layout_mode = 2
+
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
-[connection signal="pressed" from="TabContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="TabContainer/InfoPageContainer/BackButton" to="." method="_on_back_button_pressed"]

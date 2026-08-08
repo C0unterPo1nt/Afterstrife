@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://d266komxkemby"]
+
+[ext_resource type="Script" uid="uid://cwpf3hbwgjri1" path="res://UI/Menus/CharacterSpinner/character_spinner.gd" id="1_wnthd"]
+[ext_resource type="Script" uid="uid://bhu0c7rxtk4ox" path="res://UI/Menus/CharacterSpinner/character_preview.gd" id="2_haqe6"]
+[ext_resource type="Texture2D" uid="uid://e648ra8dvo8w" path="res://sprites/ScrollBoxArrow.png" id="2_s06tr"]
+[ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="3_haqe6"]
+[ext_resource type="Texture2D" uid="uid://b77prxpdhl6t8" path="res://sprites/katanagirl2.png" id="3_n7jwj"]
+[ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="4_ipkbv"]
+[ext_resource type="Texture2D" uid="uid://c2itxhbrv5fxy" path="res://sprites/witch.png" id="5_rqvql"]
+[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="6_7wlqw"]
+[ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="8_1x6t5"]
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="10_317rf"]
+[ext_resource type="Script" uid="uid://cu8ks8u110yw7" path="res://UI/Menus/CharacterSpinner/character_container.gd" id="10_ipkbv"]
+[ext_resource type="Script" uid="uid://bpsolysi6o72s" path="res://UI/Menus/CharacterSpinner/placeholder.gd" id="11_16ifm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdoul"]
+atlas = ExtResource("3_haqe6")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_07diq"]
+script = ExtResource("2_haqe6")
+scene = ExtResource("8_1x6t5")
+preview_texture = SubResource("AtlasTexture_sdoul")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs283"]
+atlas = ExtResource("3_n7jwj")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_7rxre"]
+script = ExtResource("2_haqe6")
+scene = ExtResource("4_ipkbv")
+preview_texture = SubResource("AtlasTexture_xs283")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkrl2"]
+atlas = ExtResource("5_rqvql")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_few66"]
+script = ExtResource("2_haqe6")
+scene = ExtResource("6_7wlqw")
+preview_texture = SubResource("AtlasTexture_vkrl2")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ygdw"]
+atlas = ExtResource("3_haqe6")
+region = Rect2(16, 16, 32, 32)
+
+[node name="CharacterSpinner" type="HBoxContainer" unique_id=1182409972]
+offset_right = 52.0
+offset_bottom = 32.0
+script = ExtResource("1_wnthd")
+all_characters = Array[ExtResource("2_haqe6")]([SubResource("Resource_07diq"), SubResource("Resource_7rxre"), SubResource("Resource_few66")])
+
+[node name="LeftButton" type="TextureButton" parent="." unique_id=179722166]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_s06tr")
+flip_h = true
+
+[node name="CharacterContainer" type="TabContainer" parent="." unique_id=841919510]
+layout_mode = 2
+theme = ExtResource("10_317rf")
+current_tab = 0
+tabs_visible = false
+script = ExtResource("10_ipkbv")
+
+[node name="PlaceholderTexture" type="TextureRect" parent="CharacterContainer" unique_id=783817783]
+layout_mode = 2
+texture = SubResource("AtlasTexture_7ygdw")
+script = ExtResource("11_16ifm")
+metadata/_tab_index = 0
+
+[node name="RightButton" type="TextureButton" parent="." unique_id=1594448559]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_s06tr")
+
+[connection signal="pressed" from="LeftButton" to="CharacterContainer" method="_on_left_button_pressed"]
+[connection signal="pressed" from="RightButton" to="CharacterContainer" method="_on_right_button_pressed"]
