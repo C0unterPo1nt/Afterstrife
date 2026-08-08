@@ -2,7 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_jf8mj"]
 [ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
-[ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/CharacterSpinner/character_spinner.tscn" id="3_njn2r"]
+[ext_resource type="PackedScene" uid="uid://di1jlrk2gykii" path="res://UI/Menus/GameSetupPage/team_setup_container.tscn" id="3_njn2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njn2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ch4um"]
 
 [node name="MainMenu" type="Control" unique_id=1937139275]
 layout_mode = 3
@@ -33,10 +37,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -92,15 +97,51 @@ size_flags_horizontal = 4
 text = "Back"
 
 [node name="GameSetupPageContainer" type="HBoxContainer" parent="TabContainer" unique_id=1287884916]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/GameSetupPageContainer" unique_id=1685289283]
+[node name="Panel" type="Panel" parent="TabContainer/GameSetupPageContainer" unique_id=1916604337]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
+
+[node name="TeamSetupContainer" parent="TabContainer/GameSetupPageContainer" unique_id=420494000 instance=ExtResource("3_njn2r")]
 layout_mode = 2
 
-[node name="CenterContainer" parent="TabContainer/GameSetupPageContainer/VBoxContainer" unique_id=1288423298 instance=ExtResource("3_njn2r")]
+[node name="GameSettingsContainer" type="VBoxContainer" parent="TabContainer/GameSetupPageContainer" unique_id=24970701]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=908551393]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
+
+[node name="Label" type="Label" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=1203227421]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "test"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=1331143962]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "test"
+
+[node name="Panel2" type="Panel" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=1289483167]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
+
+[node name="TeamSetupContainer2" parent="TabContainer/GameSetupPageContainer" unique_id=952828127 instance=ExtResource("3_njn2r")]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="TabContainer/GameSetupPageContainer" unique_id=1922636021]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ch4um")
 
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/InfoButton" to="." method="_on_info_button_pressed"]

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends CenterContainer
 
 @export var all_characters: Array[CharacterPreview]
 
@@ -10,4 +10,4 @@ func init_characters():
 		var preview: TextureRect = TextureRect.new()
 		preview.texture = character.preview_texture
 		print(character)
-		$CharacterContainer.add_child(preview)
+		$HLayout/CharacterContainer.add_child(preview)

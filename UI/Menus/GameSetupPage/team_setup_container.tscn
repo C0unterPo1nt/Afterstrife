@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://di1jlrk2gykii"]
+
+[ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/GameSetupPage/CharacterSpinner/character_spinner.tscn" id="1_n23k0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n23k0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rq23s"]
+
+[node name="TeamSetupContainer" type="VBoxContainer" unique_id=420494000]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_right = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel2" type="Panel" parent="." unique_id=458588585]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n23k0")
+
+[node name="CharacterSpinner" parent="." unique_id=1182409972 instance=ExtResource("1_n23k0")]
+layout_mode = 2
+
+[node name="CharacterSpinner2" parent="." unique_id=564950411 instance=ExtResource("1_n23k0")]
+layout_mode = 2
+
+[node name="CharacterSpinner3" parent="." unique_id=1373256743 instance=ExtResource("1_n23k0")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1219635517]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rq23s")
