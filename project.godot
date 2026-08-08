@@ -18,13 +18,14 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 Grid="*uid://dta03qjfkg7wx"
 GameState="*uid://bjfgs8yrk3vqq"
+ViewPortScaling="*uid://du5jxa80ohjxt"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=512
+window/size/viewport_height=288
 window/stretch/mode="viewport"
-window/stretch/scale=3.75
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

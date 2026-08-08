@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
 [ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/CharacterSpinner/character_spinner.tscn" id="3_njn2r"]
 
-[node name="MainMenu" type="Control" unique_id=2038571758]
+[node name="MainMenu" type="Control" unique_id=1937139275]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,12 +15,13 @@ theme = ExtResource("1_jf8mj")
 script = ExtResource("2_p3jrs")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1981534267]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0.27058825, 0.21176471, 0.32941177, 1)
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=2130787152]
@@ -30,6 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 current_tab = 0
 tabs_visible = false
 
