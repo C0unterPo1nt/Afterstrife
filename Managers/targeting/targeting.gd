@@ -2,11 +2,10 @@ extends Node2D
 
 enum States {targeting, sleeping}
 
-var tile_map: TileMapLayer
+var tile_map: Node2D
 
-func init(_tile_map: TileMapLayer):
+func init(_tile_map: Node2D):
 	tile_map = _tile_map
-	$PotentialTargets.tile_map = tile_map
 
 func begin_targeting(character: Character, range: int, config: TargetingConfig) -> Array:
 	var reachable_tiles: Array[Vector2i] = get_navigable_tiles_in_range(character, range, config)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bggqsuyagsada"]
+
+[ext_resource type="PackedScene" uid="uid://dm0rfu88mdwic" path="res://Map/character_spawner.tscn" id="1_3jh8s"]
+[ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://actors/teams/blue_team.tres" id="2_vl07f"]
+
+[node name="BlueSpawner" unique_id=1664650677 instance=ExtResource("1_3jh8s")]
+team = ExtResource("2_vl07f")

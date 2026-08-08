@@ -3,13 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://h2dsosu0nnaw" path="res://sprites/grass.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://olnxkew7u2go" path="res://sprites/board_tiles.png" id="2_vef74"]
-[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://Managers/tilemap.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://Map/tilemap.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
+[ext_resource type="Script" uid="uid://dwqed2v72wghc" path="res://actors/teams/team_configuration.gd" id="12_i2p71"]
+[ext_resource type="PackedScene" uid="uid://clas810dc8esh" path="res://Map/red_spawner.tscn" id="12_vaj68"]
+[ext_resource type="PackedScene" uid="uid://bggqsuyagsada" path="res://Map/blue_spawner.tscn" id="13_i2p71"]
 [ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://Managers/combat.gd" id="14_7sc4i"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://kkv5evd2gwl4" path="res://actors/team.gd" id="16_boyg6"]
@@ -19,6 +22,14 @@
 [ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="18_x5p1p"]
 [ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="20_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="20_x5p1p"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i2p71"]
+scenes/1/scene = ExtResource("13_i2p71")
+scenes/2/scene = ExtResource("12_vaj68")
+
+[sub_resource type="TileSet" id="TileSet_xa8c5"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_i2p71")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
 texture = ExtResource("2_vef74")
@@ -51,6 +62,18 @@ custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
+[sub_resource type="Resource" id="Resource_5b14r"]
+script = ExtResource("12_i2p71")
+team = ExtResource("18_hb5m1")
+members = Array[PackedScene]([ExtResource("20_x5p1p"), ExtResource("20_qhcbd")])
+metadata/_custom_type_script = "uid://dwqed2v72wghc"
+
+[sub_resource type="Resource" id="Resource_bnpwn"]
+script = ExtResource("12_i2p71")
+team = ExtResource("16_e36ub")
+members = Array[PackedScene]([ExtResource("18_x5p1p"), ExtResource("20_qhcbd")])
+metadata/_custom_type_script = "uid://dwqed2v72wghc"
+
 [node name="Game" type="Node2D" unique_id=702725256]
 
 [node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
@@ -66,6 +89,7 @@ offset_bottom = 40.0
 theme = ExtResource("6_x5p1p")
 
 [node name="Label" type="Label" parent="GameManager/UI" unique_id=1561996554]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_right = 512.0
@@ -107,11 +131,17 @@ metadata/_tab_index = 1
 [node name="Combat" type="Node" parent="GameManager" unique_id=432269478]
 script = ExtResource("14_7sc4i")
 
-[node name="Tilemap" type="TileMapLayer" parent="GameManager" unique_id=313124913]
+[node name="TileMap" type="Node2D" parent="GameManager" unique_id=714817926]
+script = ExtResource("5_7jktm")
+
+[node name="SpawnerLayer" type="TileMapLayer" parent="GameManager/TileMap" unique_id=1306133556]
+tile_map_data = PackedByteArray("AAAKAAYAAAAAAAAAAQAJAAMAAAAAAAAAAQAGAAUAAAAAAAAAAgAGAAIAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_xa8c5")
+
+[node name="BaseTileMapLayer" type="TileMapLayer" parent="GameManager/TileMap" unique_id=313124913]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAABAAAAAAAGAAEAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAADAAYAAAABAAAAAAACAAYAAAABAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAABAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAABAAAAAAAJAAEAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAABAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAABAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAABAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAIAAAABAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAAMAAMAAAABAAAAAAALAAQAAAAAAAAAAAANAAUAAAABAAAAAAAEAAQAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
-script = ExtResource("5_7jktm")
 
 [node name="Targeting" type="Node2D" parent="GameManager" unique_id=1820902521]
 script = ExtResource("10_mfdv2")
@@ -124,22 +154,11 @@ script = ExtResource("17_rvswv")
 
 [node name="Actors" type="Node2D" parent="GameManager" unique_id=931924421]
 script = ExtResource("5_vef74")
-
-[node name="scythegirl" parent="GameManager/Actors" unique_id=264603401 instance=ExtResource("18_x5p1p")]
-position = Vector2(320, 128)
-team = ExtResource("16_e36ub")
-
-[node name="Witch" parent="GameManager/Actors" unique_id=1837095790 instance=ExtResource("20_qhcbd")]
-position = Vector2(288, 192)
-team = ExtResource("16_e36ub")
-
-[node name="katana" parent="GameManager/Actors" unique_id=2061504982 instance=ExtResource("20_x5p1p")]
-position = Vector2(192, 160)
-team = ExtResource("18_hb5m1")
+team_configurations = Array[ExtResource("12_i2p71")]([SubResource("Resource_5b14r"), SubResource("Resource_bnpwn")])
 
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
 
 [connection signal="pressed" from="GameManager/UI/CombatMenu/EndTurnButton" to="GameManager/Turns" method="_on_end_turn_button_pressed"]
-[connection signal="tile_selected" from="GameManager/Tilemap" to="GameManager/Actors" method="_on_tilemap_tile_selected"]
-[connection signal="click" from="Input" to="GameManager/Tilemap" method="_on_input_click"]
+[connection signal="tile_selected" from="GameManager/TileMap" to="GameManager/Actors" method="_on_tile_map_tile_selected"]
+[connection signal="click" from="Input" to="GameManager/Actors" method="_on_input_click"]

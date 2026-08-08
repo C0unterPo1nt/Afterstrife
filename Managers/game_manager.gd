@@ -11,10 +11,10 @@ func _process(delta: float) -> void:
 
 func initialize_game():
 	GameState.active_entity = self
-	$Tilemap.initialize()
-	$Actors.init($Tilemap, $UI/CombatMenu, $Targeting, $Combat)
+	$TileMap.initialize()
+	$Actors.init($TileMap, $UI/CombatMenu, $Targeting, $Combat)
 	$Turns.init(teams, $UI/Label)
-	$Targeting.init($Tilemap)
+	$Targeting.init($TileMap)
 
 func check_victory_condition():
 	for team in teams:

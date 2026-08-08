@@ -1,10 +1,10 @@
-extends TileMapLayer
-
-var astar_grid:AStarGrid2D
+extends Node2D
 
 enum Tile {Obstacle}
 
 signal tile_selected(Vector2i)
+
+var astar_grid:AStarGrid2D
 
 func initialize():
 	astar_grid = AStarGrid2D.new()
@@ -23,7 +23,7 @@ func reset():
 func get_obstacles():
 	var obstacles: Array[Vector2i]
 	for pos in get_points():
-		if get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
+		if $BaseTileMapLayer.get_cell_tile_data(pos).get_custom_data("Obstacle") == true:
 			obstacles.append(pos)
 	return obstacles
 
@@ -51,7 +51,11 @@ func calculate_path(start: Vector2i, end: Vector2i, unsolid_points: Array[Vector
 	var path = astar_grid.get_point_path(start, end)
 	return path
 
-func _on_input_click(_position) -> void:
-	if GameState.input_allowed:
-		var coordinates = Grid.absolute_to_grid_coordinates(_position)
-		tile_selected.emit(coordinates)
+func get_starting_positions_for_team(team: Team) -> Array[Vector2]:
+	var tiles = $SpawnerLayer.get_children()
+	var starting_positions: Array[Vector2] = []
+	for tile in tiles:
+		if tile.team == team:
+			starting_positions.append(tile.position)
+	return starting_positions
+	
