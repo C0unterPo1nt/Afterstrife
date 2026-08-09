@@ -1,20 +1,39 @@
-extends Node2D
+class_name Game extends Node2D
 
-@export var teams: Array[Team]
+var team_configurations: Array[TeamConfiguration] = [TeamConfiguration.new(
+	load("res://actors/teams/red_team.tres"),
+	[
+		preload("res://actors/characters/katana/katanagirl.tscn"),
+		preload("res://actors/characters/witch/witch.tscn"),
+		preload("res://actors/characters/witch/witch.tscn")
+	]
+), TeamConfiguration.new(
+	load("res://actors/teams/blue_team.tres"),
+	[
+		preload("res://actors/characters/scythe/scythegirl.tscn"),
+		preload("res://actors/characters/witch/witch.tscn"),
+		preload("res://actors/characters/scythe/scythegirl.tscn")
+	]
+)]
 
-func _ready() -> void:
-	call_deferred("initialize_game")
-	call_deferred("change_turn")
+var teams: Array[Team]
+
+func _ready():
+	call_deferred("on_ready")
+
+func on_ready():
+	for config in team_configurations:
+		teams.append(config.team)
+	$Actors.init(team_configurations, $TileMap, $UI/CombatMenu, $Targeting, $Combat)
+	$Targeting.init($TileMap)
+	$Turns.init(teams, $UI/Label)
+	start_game()
+
+func start_game():
+	$Turns.start()
 
 func _process(delta: float) -> void:
 	check_victory_condition()
-
-func initialize_game():
-	GameState.active_entity = self
-	$TileMap.initialize()
-	$Actors.init($TileMap, $UI/CombatMenu, $Targeting, $Combat)
-	$Turns.init(teams, $UI/Label)
-	$Targeting.init($TileMap)
 
 func check_victory_condition():
 	for team in teams:

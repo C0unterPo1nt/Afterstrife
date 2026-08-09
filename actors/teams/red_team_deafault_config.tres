@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TeamConfiguration" format=3 uid="uid://bjnqhu8ylxsxk"]
+
+[ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="1_cd2fr"]
+[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="2_cmtu3"]
+[ext_resource type="Script" uid="uid://dwqed2v72wghc" path="res://actors/teams/team_configuration.gd" id="3_t7ky4"]
+[ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://actors/teams/red_team.tres" id="4_nbeoj"]
+
+[resource]
+script = ExtResource("3_t7ky4")
+team = ExtResource("4_nbeoj")
+members = Array[PackedScene]([ExtResource("1_cd2fr"), ExtResource("2_cmtu3")])
+metadata/_custom_type_script = "uid://dwqed2v72wghc"

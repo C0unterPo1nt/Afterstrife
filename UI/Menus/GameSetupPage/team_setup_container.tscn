@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://di1jlrk2gykii"]
 
+[ext_resource type="Script" uid="uid://d34irjwbk1ddb" path="res://UI/Menus/GameSetupPage/team_setup.gd" id="1_2usol"]
 [ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/GameSetupPage/CharacterSpinner/character_spinner.tscn" id="1_n23k0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n23k0"]
@@ -16,6 +17,7 @@ offset_right = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+script = ExtResource("1_2usol")
 
 [node name="Panel2" type="Panel" parent="." unique_id=458588585]
 layout_mode = 2

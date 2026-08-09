@@ -1,6 +1,6 @@
 extends Node
 
-var team_queue: Array[Team] = []
+var team_queue: Array[Team]
 var turn_count: int = 0
 var round_count: int = 1
 var turn_counter_ui: Control
@@ -8,6 +8,8 @@ var turn_counter_ui: Control
 func init(_team_queue, _turn_counter_ui: Control):
 	team_queue = _team_queue
 	turn_counter_ui = _turn_counter_ui
+
+func start():
 	start_turn(team_queue[turn_count])
 
 func start_turn(team):

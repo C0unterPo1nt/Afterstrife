@@ -39,6 +39,7 @@ Label/colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
 Label/colors/font_outline_color = Color(0.2784314, 0.17254902, 0.14901961, 1)
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_8xdmq")
+OptionButton/icons/arrow = null
 ProgressBar/styles/background = SubResource("StyleBoxTexture_cr6y6")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_146i7")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_8xdmq")

@@ -10,18 +10,11 @@
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
-[ext_resource type="Script" uid="uid://dwqed2v72wghc" path="res://actors/teams/team_configuration.gd" id="12_i2p71"]
 [ext_resource type="PackedScene" uid="uid://clas810dc8esh" path="res://Map/red_spawner.tscn" id="12_vaj68"]
 [ext_resource type="PackedScene" uid="uid://bggqsuyagsada" path="res://Map/blue_spawner.tscn" id="13_i2p71"]
 [ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://Managers/combat.gd" id="14_7sc4i"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
-[ext_resource type="Script" uid="uid://kkv5evd2gwl4" path="res://actors/team.gd" id="16_boyg6"]
-[ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://actors/teams/blue_team.tres" id="16_e36ub"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
-[ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://actors/teams/red_team.tres" id="18_hb5m1"]
-[ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="18_x5p1p"]
-[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="20_qhcbd"]
-[ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="20_x5p1p"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i2p71"]
 scenes/1/scene = ExtResource("13_i2p71")
@@ -62,25 +55,10 @@ custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_fc0e3")
 sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
-[sub_resource type="Resource" id="Resource_5b14r"]
-script = ExtResource("12_i2p71")
-team = ExtResource("18_hb5m1")
-members = Array[PackedScene]([ExtResource("20_x5p1p"), ExtResource("20_qhcbd")])
-metadata/_custom_type_script = "uid://dwqed2v72wghc"
-
-[sub_resource type="Resource" id="Resource_bnpwn"]
-script = ExtResource("12_i2p71")
-team = ExtResource("16_e36ub")
-members = Array[PackedScene]([ExtResource("18_x5p1p"), ExtResource("20_qhcbd")])
-metadata/_custom_type_script = "uid://dwqed2v72wghc"
-
-[node name="Game" type="Node2D" unique_id=702725256]
-
-[node name="GameManager" type="Node2D" parent="." unique_id=1196397495]
+[node name="Game" type="Node2D" unique_id=1196397495]
 script = ExtResource("7_eow3j")
-teams = Array[ExtResource("16_boyg6")]([ExtResource("16_e36ub"), ExtResource("18_hb5m1")])
 
-[node name="UI" type="Control" parent="GameManager" unique_id=413811218]
+[node name="UI" type="Control" parent="." unique_id=413811218]
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 3
 anchors_preset = 0
@@ -88,7 +66,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("6_x5p1p")
 
-[node name="Label" type="Label" parent="GameManager/UI" unique_id=1561996554]
+[node name="Label" type="Label" parent="UI" unique_id=1561996554]
 visible = false
 z_index = 1
 layout_mode = 0
@@ -98,7 +76,7 @@ text = "BlueTeam Turn x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CombatMenu" type="TabContainer" parent="GameManager/UI" unique_id=706196546]
+[node name="CombatMenu" type="TabContainer" parent="UI" unique_id=706196546]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 12
@@ -114,51 +92,50 @@ current_tab = 0
 tabs_visible = false
 script = ExtResource("8_215e1")
 
-[node name="EndTurnButton" type="Button" parent="GameManager/UI/CombatMenu" unique_id=208532653]
+[node name="EndTurnButton" type="Button" parent="UI/CombatMenu" unique_id=208532653]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_x5p1p")
 text = "End Turn"
 metadata/_tab_index = 0
 
-[node name="ActionMenu" type="HBoxContainer" parent="GameManager/UI/CombatMenu" unique_id=489189746]
+[node name="ActionMenu" type="HBoxContainer" parent="UI/CombatMenu" unique_id=489189746]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("8_lc2xo")
 metadata/_tab_index = 1
 
-[node name="Combat" type="Node" parent="GameManager" unique_id=432269478]
+[node name="Combat" type="Node" parent="." unique_id=432269478]
 script = ExtResource("14_7sc4i")
 
-[node name="TileMap" type="Node2D" parent="GameManager" unique_id=714817926]
+[node name="TileMap" type="Node2D" parent="." unique_id=714817926]
 script = ExtResource("5_7jktm")
 
-[node name="SpawnerLayer" type="TileMapLayer" parent="GameManager/TileMap" unique_id=1306133556]
-tile_map_data = PackedByteArray("AAAKAAYAAAAAAAAAAQAJAAMAAAAAAAAAAQAGAAUAAAAAAAAAAgAGAAIAAAAAAAAAAgA=")
+[node name="SpawnerLayer" type="TileMapLayer" parent="TileMap" unique_id=1306133556]
+tile_map_data = PackedByteArray("AAAKAAYAAAAAAAAAAQAJAAMAAAAAAAAAAQAGAAUAAAAAAAAAAgAGAAIAAAAAAAAAAgAKAAQAAAAAAAAAAQAFAAQAAAAAAAAAAgA=")
 tile_set = SubResource("TileSet_xa8c5")
 
-[node name="BaseTileMapLayer" type="TileMapLayer" parent="GameManager/TileMap" unique_id=313124913]
+[node name="BaseTileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=313124913]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAABAAAAAAAGAAEAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAADAAYAAAABAAAAAAACAAYAAAABAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAABAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAABAAAAAAAJAAEAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAABAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAABAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAABAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAIAAAABAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAAMAAMAAAABAAAAAAALAAQAAAAAAAAAAAANAAUAAAABAAAAAAAEAAQAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_7jktm")
 
-[node name="Targeting" type="Node2D" parent="GameManager" unique_id=1820902521]
+[node name="Targeting" type="Node2D" parent="." unique_id=1820902521]
 script = ExtResource("10_mfdv2")
 
-[node name="PotentialTargets" type="Node2D" parent="GameManager/Targeting" unique_id=60829521]
+[node name="PotentialTargets" type="Node2D" parent="Targeting" unique_id=60829521]
 script = ExtResource("15_e8heu")
 
-[node name="Turns" type="Node" parent="GameManager" unique_id=1847990413]
+[node name="Turns" type="Node" parent="." unique_id=1847990413]
 script = ExtResource("17_rvswv")
 
-[node name="Actors" type="Node2D" parent="GameManager" unique_id=931924421]
+[node name="Actors" type="Node2D" parent="." unique_id=931924421]
 script = ExtResource("5_vef74")
-team_configurations = Array[ExtResource("12_i2p71")]([SubResource("Resource_5b14r"), SubResource("Resource_bnpwn")])
 
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
 
-[connection signal="pressed" from="GameManager/UI/CombatMenu/EndTurnButton" to="GameManager/Turns" method="_on_end_turn_button_pressed"]
-[connection signal="tile_selected" from="GameManager/TileMap" to="GameManager/Actors" method="_on_tile_map_tile_selected"]
-[connection signal="click" from="Input" to="GameManager/Actors" method="_on_input_click"]
+[connection signal="pressed" from="UI/CombatMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
+[connection signal="tile_selected" from="TileMap" to="Actors" method="_on_tile_map_tile_selected"]
+[connection signal="click" from="Input" to="Actors" method="_on_input_click"]

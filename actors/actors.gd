@@ -1,14 +1,14 @@
 extends Node2D
 
+var team_configurations: Array[TeamConfiguration]
 var combat_menu: Control
 var targeting: Node
 var tilemap: Node2D
 var combat: Node
 var is_character_acting: bool = false
 
-@export var team_configurations: Array[TeamConfiguration]
-
-func init(_tilemap: Node2D, _combat_menu: Control, _targeting: Node, _combat: Node):
+func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _combat_menu: Control, _targeting: Node, _combat: Node):
+	team_configurations = team_configs
 	combat_menu = _combat_menu
 	targeting = _targeting
 	tilemap = _tilemap

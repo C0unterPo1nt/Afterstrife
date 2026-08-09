@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TeamConfiguration" format=3 uid="uid://cfdk85b8ysg1o"]
+
+[ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="1_i34pe"]
+[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="2_d2oex"]
+[ext_resource type="Script" uid="uid://dwqed2v72wghc" path="res://actors/teams/team_configuration.gd" id="3_lqvyk"]
+[ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://actors/teams/blue_team.tres" id="4_karwv"]
+
+[resource]
+script = ExtResource("3_lqvyk")
+team = ExtResource("4_karwv")
+members = Array[PackedScene]([ExtResource("1_i34pe"), ExtResource("2_d2oex")])
+metadata/_custom_type_script = "uid://dwqed2v72wghc"

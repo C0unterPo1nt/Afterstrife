@@ -6,7 +6,7 @@ signal tile_selected(Vector2i)
 
 var astar_grid:AStarGrid2D
 
-func initialize():
+func _init() -> void:
 	astar_grid = AStarGrid2D.new()
 	astar_grid.cell_size = Grid.cell_size
 	reset()
