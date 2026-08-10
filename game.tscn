@@ -1,59 +1,15 @@
-[gd_scene format=4 uid="uid://cwbwrxpbonbnh"]
+[gd_scene format=3 uid="uid://cwbwrxpbonbnh"]
 
-[ext_resource type="Texture2D" uid="uid://h2dsosu0nnaw" path="res://sprites/grass.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://olnxkew7u2go" path="res://sprites/board_tiles.png" id="2_vef74"]
-[ext_resource type="Script" uid="uid://ctcn8nw4q4fu8" path="res://Map/tilemap.gd" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
-[ext_resource type="PackedScene" uid="uid://clas810dc8esh" path="res://Map/red_spawner.tscn" id="12_vaj68"]
-[ext_resource type="PackedScene" uid="uid://bggqsuyagsada" path="res://Map/blue_spawner.tscn" id="13_i2p71"]
 [ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://Managers/combat.gd" id="14_7sc4i"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i2p71"]
-scenes/1/scene = ExtResource("13_i2p71")
-scenes/2/scene = ExtResource("12_vaj68")
-
-[sub_resource type="TileSet" id="TileSet_xa8c5"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetScenesCollectionSource_i2p71")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
-texture = ExtResource("2_vef74")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/custom_data_0 = true
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
-texture = ExtResource("1_e2o6t")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-1:1/0 = 0
-0:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_7jktm"]
-tile_size = Vector2i(32, 32)
-navigation_layer_0/layers = 1
-custom_data_layer_0/name = "Obstacle"
-custom_data_layer_0/type = 1
-sources/3 = SubResource("TileSetAtlasSource_fc0e3")
-sources/0 = SubResource("TileSetAtlasSource_hve3p")
 
 [node name="Game" type="Node2D" unique_id=1196397495]
 script = ExtResource("7_eow3j")
@@ -109,17 +65,7 @@ metadata/_tab_index = 1
 [node name="Combat" type="Node" parent="." unique_id=432269478]
 script = ExtResource("14_7sc4i")
 
-[node name="TileMap" type="Node2D" parent="." unique_id=714817926]
-script = ExtResource("5_7jktm")
-
-[node name="SpawnerLayer" type="TileMapLayer" parent="TileMap" unique_id=1306133556]
-tile_map_data = PackedByteArray("AAAKAAYAAAAAAAAAAQAJAAMAAAAAAAAAAQAGAAUAAAAAAAAAAgAGAAIAAAAAAAAAAgAKAAQAAAAAAAAAAQAFAAQAAAAAAAAAAgA=")
-tile_set = SubResource("TileSet_xa8c5")
-
-[node name="BaseTileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=313124913]
-texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAABAAAAAAAGAAEAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAABAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAADAAYAAAABAAAAAAACAAYAAAABAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAABAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAABAAAAAAAJAAEAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAABAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAABAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAABAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAIAAAABAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAAMAAMAAAABAAAAAAALAAQAAAAAAAAAAAANAAUAAAABAAAAAAAEAAQAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAA=")
-tile_set = SubResource("TileSet_7jktm")
+[node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
 
 [node name="Targeting" type="Node2D" parent="." unique_id=1820902521]
 script = ExtResource("10_mfdv2")

@@ -15,6 +15,9 @@ func _init() -> void:
 	astar_grid.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	astar_grid.update()
 
+func _ready() -> void:
+	$SpawnerLayer.visible = false
+
 func reset():
 	astar_grid.clear()
 	astar_grid.region = Grid.region

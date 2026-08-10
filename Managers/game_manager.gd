@@ -17,8 +17,15 @@ var team_configurations: Array[TeamConfiguration] = [TeamConfiguration.new(
 )]
 
 var teams: Array[Team]
+var map_path: String = "res://Map/Maps/base_map.tscn"
+
+func setup(team_configs: Array[TeamConfiguration], map_p: String):
+	team_configurations = team_configs
+	map_path = map_p
+	pass
 
 func _ready():
+	$TileMap.create_instance(true, load(map_path))
 	call_deferred("on_ready")
 
 func on_ready():

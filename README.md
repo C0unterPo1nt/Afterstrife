@@ -7,3 +7,4 @@
 - Characters should turn on attack
 - Team selection screen
 - Intro Card with Story Hook
+- Make spawn order deterministic
