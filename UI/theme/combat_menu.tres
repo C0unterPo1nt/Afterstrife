@@ -4,7 +4,26 @@
 [ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/theme/button_normal.tres" id="1_qvpb8"]
 [ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/theme/button_depressed.tres" id="2_8xdmq"]
 [ext_resource type="Texture2D" uid="uid://caxibdg3u0t7k" path="res://sprites/healthbarBackground.png" id="4_0lm3h"]
+[ext_resource type="Texture2D" uid="uid://ds1g2pun2gho" path="res://sprites/dropdown_arrow.png" id="4_70che"]
+[ext_resource type="StyleBox" uid="uid://c8w4lct84nig2" path="res://UI/theme/dropdown_button_depressed.tres" id="4_cr6y6"]
 [ext_resource type="Texture2D" uid="uid://dkw4170csh6sh" path="res://sprites/healthbar.png" id="5_1c0i3"]
+[ext_resource type="Texture2D" uid="uid://bronfp8prsous" path="res://sprites/radio_button_checked.png" id="5_70che"]
+[ext_resource type="Texture2D" uid="uid://d2stqj0yk8gqq" path="res://sprites/popup_menu_panel.png" id="5_146i7"]
+[ext_resource type="Texture2D" uid="uid://ca0akcqlf4yuh" path="res://sprites/radio_button_unchecked.png" id="5_a5wts"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70che"]
+bg_color = Color(0.49803922, 0.25882354, 0.21176471, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a5wts"]
+texture = ExtResource("5_146i7")
+texture_margin_left = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cr6y6"]
 texture = ExtResource("4_0lm3h")
@@ -39,7 +58,18 @@ Label/colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
 Label/colors/font_outline_color = Color(0.2784314, 0.17254902, 0.14901961, 1)
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("1_8xdmq")
-OptionButton/icons/arrow = null
+OptionButton/colors/font_hover_color = Color(1, 0.91764706, 0.68235296, 1)
+OptionButton/colors/font_hover_pressed_color = Color(1, 0.91764706, 0.68235296, 1)
+OptionButton/colors/font_pressed_color = Color(1, 0.7254902, 0.38039216, 1)
+OptionButton/constants/arrow_margin = 8
+OptionButton/icons/arrow = ExtResource("4_70che")
+OptionButton/styles/hover_pressed = ExtResource("4_cr6y6")
+OptionButton/styles/pressed = ExtResource("4_cr6y6")
+PopupMenu/icons/radio_checked = ExtResource("5_70che")
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = ExtResource("5_a5wts")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_70che")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_a5wts")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_cr6y6")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_146i7")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_8xdmq")

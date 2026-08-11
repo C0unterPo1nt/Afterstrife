@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cxm1suusy6s2v"
+path="res://.godot/imported/dropdown_arrow.ase-0dd3f448ed46106d5aed7c41a54a1963.res"
+
+[deps]
+
+source_file="res://sprites/dropdown_arrow.ase"
+dest_files=["res://.godot/imported/dropdown_arrow.ase-0dd3f448ed46106d5aed7c41a54a1963.res"]
+
+[params]
+

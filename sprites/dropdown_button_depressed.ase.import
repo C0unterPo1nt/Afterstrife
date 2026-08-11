@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dm824rv7ro7e8"
+path="res://.godot/imported/dropdown_button_depressed.ase-194dc7b3c3b259278a16e18ae89dcb70.res"
+
+[deps]
+
+source_file="res://sprites/dropdown_button_depressed.ase"
+dest_files=["res://.godot/imported/dropdown_button_depressed.ase-194dc7b3c3b259278a16e18ae89dcb70.res"]
+
+[params]
+
