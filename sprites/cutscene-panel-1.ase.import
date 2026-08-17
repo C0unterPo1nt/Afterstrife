@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://446k0jt0bkjq"
+path="res://.godot/imported/cutscene-panel-1.ase-4583ab6a96530b5e4ded00f11c21fb95.res"
+
+[deps]
+
+source_file="res://sprites/cutscene-panel-1.ase"
+dest_files=["res://.godot/imported/cutscene-panel-1.ase-4583ab6a96530b5e4ded00f11c21fb95.res"]
+
+[params]
+
