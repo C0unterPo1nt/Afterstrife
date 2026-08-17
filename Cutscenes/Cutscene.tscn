@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxuterdfrspxa"]
+
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_xldxk"]
+[ext_resource type="PackedScene" uid="uid://ceuud070nihay" path="res://Cutscenes/cutscene_page.tscn" id="2_fc0am"]
+
+[node name="Cutscene" type="TabContainer" unique_id=1423086630]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xldxk")
+current_tab = 0
+tabs_visible = false
+
+[node name="Page" parent="." unique_id=625805336 instance=ExtResource("2_fc0am")]
+layout_mode = 2
