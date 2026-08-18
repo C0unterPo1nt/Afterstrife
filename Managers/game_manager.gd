@@ -31,7 +31,7 @@ func _ready():
 func on_ready():
 	for config in team_configurations:
 		teams.append(config.team)
-	$Actors.init(team_configurations, $TileMap, $UI/CombatMenu, $Targeting, $Combat)
+	$Actors.init(team_configurations, $TileMap, $UI/CombatMenu, $Targeting)
 	$Targeting.init($TileMap)
 	$Turns.init(teams, $UI/Label)
 	start_game()

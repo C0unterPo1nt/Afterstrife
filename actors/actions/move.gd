@@ -10,3 +10,10 @@ func _init() -> void:
 
 func predicate(character: Character) -> bool:
 	return true
+
+func act(character: Character, targeting: Node) -> void:
+		var target_payload = await targeting.begin_targeting(character, movement, targeting_config)
+		var path: PackedVector2Array = target_payload[1]
+		GameState.input_allowed = false
+		await character.move(path)
+		GameState.input_allowed = true

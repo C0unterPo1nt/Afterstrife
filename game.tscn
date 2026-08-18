@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
-[ext_resource type="Script" uid="uid://b4u7dkm4epfae" path="res://Managers/combat.gd" id="14_7sc4i"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
 
@@ -61,9 +60,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("8_lc2xo")
 metadata/_tab_index = 1
-
-[node name="Combat" type="Node" parent="." unique_id=432269478]
-script = ExtResource("14_7sc4i")
 
 [node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
 

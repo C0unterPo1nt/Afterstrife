@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="1_vi2m7"]
 [ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="2_i1s42"]
 [ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="3_g25md"]
+[ext_resource type="Script" uid="uid://bsjjguut4eju6" path="res://actors/actions/teleport.gd" id="4_g25md"]
 
 [sub_resource type="Resource" id="Resource_i1s42"]
 script = ExtResource("2_i1s42")
@@ -14,6 +15,11 @@ metadata/_custom_type_script = "uid://bwajd4yfjqr64"
 script = ExtResource("3_g25md")
 metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 
+[sub_resource type="Resource" id="Resource_6mbpo"]
+script = ExtResource("4_g25md")
+range = 3
+metadata/_custom_type_script = "uid://bsjjguut4eju6"
+
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_d2tkx")
@@ -22,5 +28,5 @@ max_health = 100
 health = 100
 maximum_actions = 2
 remaining_actions = 2
-actions = Array[ExtResource("1_vi2m7")]([SubResource("Resource_i1s42"), SubResource("Resource_g25md")])
+actions = Array[ExtResource("1_vi2m7")]([SubResource("Resource_i1s42"), SubResource("Resource_g25md"), SubResource("Resource_6mbpo")])
 metadata/_custom_type_script = "uid://0vslwn03wk6o"

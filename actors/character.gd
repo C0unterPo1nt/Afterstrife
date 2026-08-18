@@ -81,5 +81,8 @@ func die():
 func move(path: PackedVector2Array):
 	await $Movement.move(self, path)
 
+func teleport(coords: Vector2):
+	await  $Movement.teleport(self, coords)
+
 func should_display_health(should: bool):
 	$HealthBar.visible = should

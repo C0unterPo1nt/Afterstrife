@@ -15,3 +15,10 @@ func predicate(character: Character) -> bool:
 		if other.team != character.team:
 			return true
 	return false
+
+func act(character: Character, targeting: Node) -> void:
+		var target_payload = await targeting.begin_targeting(character, range, targeting_config)
+		var target = Grid.get_actor(target_payload[0])
+		GameState.input_allowed = false
+		await character.attack(target)
+		GameState.input_allowed = true

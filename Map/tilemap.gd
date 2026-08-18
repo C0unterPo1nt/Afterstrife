@@ -30,6 +30,9 @@ func get_obstacles():
 			obstacles.append(pos)
 	return obstacles
 
+func get_map_tile_data(point: Vector2i):
+	return $BaseTileMapLayer.get_cell_tile_data(point)
+
 func get_points() -> Array[Vector2i]:
 	var points: Array[Vector2i]
 	for i in range(astar_grid.size.x):

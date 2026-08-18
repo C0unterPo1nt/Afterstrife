@@ -16,10 +16,10 @@ func begin_targeting(character: Character, range: int, config: TargetingConfig) 
 			continue
 		var character_at_tile: Character = Grid.game_board.get(tile)
 		var valid_target: bool = false
-		if config.potential_targets.obstacles == true:
-			if tile_map.get_cell_tile_data(tile).get_custom_data("Obstacle") == true:
+		if tile_map.get_map_tile_data(tile).get_custom_data("Obstacle") == true:
+			if config.potential_targets.obstacles == true:
 				valid_target = true
-		if character_at_tile != null:
+		elif character_at_tile != null:
 			if character.team == character_at_tile.team && config.potential_targets.allies:
 				valid_target = true
 			if character.team != character_at_tile.team && config.potential_targets.enemies:

@@ -5,3 +5,4 @@ var targeting_config: TargetingConfig
 
 
 @abstract func predicate(character: Character) -> bool
+@abstract func act(character: Character, targeting: Node) -> void
