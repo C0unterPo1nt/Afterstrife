@@ -54,6 +54,6 @@ func game_over(victor: Team):
 	$UI/Overlays/VictoryScreen.show_victory_screen(victor)
 
 func _on_return_to_menu_button_pressed() -> void:
-	var main_menu = preload("res://UI/Menus/main_menu.tscn")
+	var main_menu = load("res://UI/Menus/main_menu.tscn")
 	get_tree().change_scene_to_node(main_menu.instantiate())
 	queue_free()
