@@ -10,7 +10,6 @@
 ## Polish
 - Teleport Animation
 - Team selection screen name field
-- Characters should turn on attack
 - finer controls of targeting config (preview tile mask, colors)
 
 ## Bugs

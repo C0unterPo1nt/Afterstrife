@@ -68,6 +68,10 @@ func damage(ammount: int):
 		die()
 
 func attack(defender: Character):
+	if defender.grid_coordinates.x < grid_coordinates.x:
+		$CharacterSprite.flip_h = true
+	elif defender.grid_coordinates.x > grid_coordinates.x:
+		$CharacterSprite.flip_h = false
 	$CharacterSprite.play("attack")
 	defender.damage(stats.attack_strength)
 	await $CharacterSprite.animation_finished
