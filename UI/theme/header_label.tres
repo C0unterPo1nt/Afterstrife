@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bu5v6rwr7c1gs"]
+
+[ext_resource type="FontFile" uid="uid://d4c4tyfs0mrmn" path="res://UI/pixeloid.ttf/PixeloidMono.ttf" id="1_1tbvj"]
+
+[resource]
+font = ExtResource("1_1tbvj")
+font_size = 36
+font_color = Color(1, 0.7254902, 0.38039216, 1)

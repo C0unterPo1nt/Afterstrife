@@ -2,6 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_jf8mj"]
 [ext_resource type="Script" uid="uid://cb40xx0qx7h6k" path="res://UI/Menus/main_menu.gd" id="2_p3jrs"]
+[ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="3_1e7f8"]
+[ext_resource type="Script" uid="uid://dsa3o3hfegc3j" path="res://UI/Menus/info_body.gd" id="3_at2v2"]
 [ext_resource type="Script" uid="uid://h6e8d3wlml14" path="res://UI/Menus/game_setup.gd" id="3_ch4um"]
 [ext_resource type="PackedScene" uid="uid://di1jlrk2gykii" path="res://UI/Menus/GameSetupPage/team_setup_container.tscn" id="3_njn2r"]
 [ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://actors/teams/red_team.tres" id="5_328dx"]
@@ -40,11 +42,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -54,6 +55,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme = ExtResource("1_jf8mj")
 text = "Afterstrife"
+label_settings = ExtResource("3_1e7f8")
 
 [node name="MenuContainer" type="VBoxContainer" parent="TabContainer/HomePageContainer" unique_id=1910597178]
 layout_mode = 2
@@ -75,6 +77,7 @@ size_flags_vertical = 0
 text = "Quit"
 
 [node name="InfoPageContainer" type="VBoxContainer" parent="TabContainer" unique_id=497232664]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -83,15 +86,32 @@ metadata/_tab_index = 1
 [node name="Label" type="Label" parent="TabContainer/InfoPageContainer" unique_id=1930442114]
 layout_mode = 2
 text = "Info"
+label_settings = ExtResource("3_1e7f8")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/InfoPageContainer" unique_id=792088412]
+[node name="InfoBody" type="RichTextLabel" parent="TabContainer/InfoPageContainer" unique_id=792088412]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Changelog
-WIP"
+bbcode_enabled = true
+text = "V0.1
+
+A Game by Lucy!
+
+I hope you enjoy my silly little game. A lot of sleepless nights and fits of fervor went into making it.
+
+
+
+Font by GGBotNet [url]https://ggbot.itch.io/pixeloid-font[/url]
+
+Color Palette by SurrealEmber [url]https://surrealember.itch.io/glory-of-colors-palette-pack-for-aseprite[/url]
+
+
+Everything else was made by me using Godot 4.6 and Libresprite.
+
+No AI was used to make this game."
 fit_content = true
 horizontal_alignment = 1
+script = ExtResource("3_at2v2")
 
 [node name="GameSetupPageContainer" type="HBoxContainer" parent="TabContainer" unique_id=1287884916]
 visible = false
@@ -169,5 +189,6 @@ text = "< Back"
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="meta_clicked" from="TabContainer/InfoPageContainer/InfoBody" to="TabContainer/InfoPageContainer/InfoBody" method="_on_meta_clicked"]
 [connection signal="pressed" from="TabContainer/GameSetupPageContainer/GameSettingsContainer/StartGameButton" to="TabContainer/GameSetupPageContainer" method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

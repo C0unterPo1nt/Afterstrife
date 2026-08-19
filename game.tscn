@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
 [ext_resource type="Script" uid="uid://b80nipujqphsf" path="res://victory_screen.gd" id="3_hve3p"]
+[ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
@@ -32,16 +33,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TurnsLabel" type="Label" parent="UI/Overlays" unique_id=1561996554]
-visible = false
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 224.0
 text = "BlueTeam Turn x"
+label_settings = ExtResource("3_mfdv2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VictoryScreen" type="VBoxContainer" parent="UI/Overlays" unique_id=1701308198]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -57,6 +57,7 @@ custom_minimum_size = Vector2(0, 65.565)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Victory Label"
+label_settings = ExtResource("3_mfdv2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
