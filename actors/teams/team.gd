@@ -14,3 +14,6 @@ func refresh():
 func check_defeated():
 	if actors.is_empty():
 		defeated = true
+
+func clear():
+	actors = []

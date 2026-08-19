@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cwbwrxpbonbnh"]
 
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
+[ext_resource type="Script" uid="uid://b80nipujqphsf" path="res://victory_screen.gd" id="3_hve3p"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
@@ -14,6 +15,7 @@
 script = ExtResource("7_eow3j")
 
 [node name="UI" type="Control" parent="." unique_id=413811218]
+z_index = 1
 custom_minimum_size = Vector2(512, 288)
 layout_mode = 3
 anchors_preset = 0
@@ -21,15 +23,47 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("6_x5p1p")
 
-[node name="Label" type="Label" parent="UI" unique_id=1561996554]
+[node name="Overlays" type="Control" parent="UI" unique_id=637373877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurnsLabel" type="Label" parent="UI/Overlays" unique_id=1561996554]
 visible = false
-z_index = 1
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 224.0
 text = "BlueTeam Turn x"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VictoryScreen" type="VBoxContainer" parent="UI/Overlays" unique_id=1701308198]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.88900006
+offset_bottom = -0.03201294
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("3_hve3p")
+
+[node name="VictoryLabel" type="Label" parent="UI/Overlays/VictoryScreen" unique_id=1720534359]
+custom_minimum_size = Vector2(0, 65.565)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Victory Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnToMenuButton" type="Button" parent="UI/Overlays/VictoryScreen" unique_id=1115615143]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return"
 
 [node name="CombatMenu" type="TabContainer" parent="UI" unique_id=706196546]
 custom_minimum_size = Vector2(32, 32)
@@ -78,6 +112,7 @@ script = ExtResource("5_vef74")
 [node name="Input" type="Node" parent="." unique_id=112512100]
 script = ExtResource("2_fc0e3")
 
+[connection signal="pressed" from="UI/Overlays/VictoryScreen/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="pressed" from="UI/CombatMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
 [connection signal="tile_selected" from="TileMap" to="Actors" method="_on_tile_map_tile_selected"]
 [connection signal="click" from="Input" to="Actors" method="_on_input_click"]

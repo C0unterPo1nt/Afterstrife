@@ -13,6 +13,7 @@ func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _combat_menu
 	tilemap = _tilemap
 	for config in team_configurations:
 		var team = config.team
+		team.clear()
 		var starting_positions: Array[Vector2] = tilemap.get_starting_positions_for_team(team)
 		for char in config.members:
 			if starting_positions.is_empty():

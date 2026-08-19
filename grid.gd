@@ -6,6 +6,9 @@ var lower_bound = Vector2i.ZERO
 var region = Rect2i(lower_bound, grid_size)
 @export var game_board: Dictionary[Vector2i, Character]
 
+func clear():
+	game_board.clear()
+
 func get_actor(coords: Vector2i):
 	return game_board.get(coords)
 

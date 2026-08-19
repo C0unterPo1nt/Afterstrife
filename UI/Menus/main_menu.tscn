@@ -40,11 +40,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -100,6 +99,7 @@ size_flags_horizontal = 4
 text = "Back"
 
 [node name="GameSetupPageContainer" type="HBoxContainer" parent="TabContainer" unique_id=1287884916]
+visible = false
 layout_mode = 2
 script = ExtResource("3_ch4um")
 metadata/_tab_index = 2
