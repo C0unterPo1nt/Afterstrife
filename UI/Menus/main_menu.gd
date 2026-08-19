@@ -13,3 +13,9 @@ func _on_info_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	$TabContainer.current_tab = 0
+
+func _on_tab_container_tab_changed(tab: int) -> void:
+	if $TabContainer.current_tab == 0:
+		$BackButton.visible = false
+	else:
+		$BackButton.visible = true
