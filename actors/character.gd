@@ -10,11 +10,13 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var activated: bool = false
 @export var stats: CharacterStats
 @export var team: Team
+var targeting: Node
 
-func init(_grid_coordinates: Vector2i, _team: Team):
+func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node):
 	grid_coordinates = _grid_coordinates
 	team = _team
 	team.actors.append(self)
+	targeting = _targeting
 
 func _ready() -> void:
 	#stats.health = stats.max_health
@@ -34,6 +36,10 @@ func activate():
 	activated = true
 	$ReadyIndicator.visible = false
 	state = States.declare
+	#TODO: get rid of the self param
+	var action: Action = await $ActionMenu.make_action_selection(self)
+	await action.act(self, targeting)
+	deactivate()
 	
 func deactivate():
 	activated = false

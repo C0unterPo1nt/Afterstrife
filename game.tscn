@@ -7,7 +7,6 @@
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
-[ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="8_lc2xo"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
@@ -44,7 +43,6 @@ grow_vertical = 2
 script = ExtResource("3_lc2xo")
 
 [node name="BackgroundGradientTexture" type="TextureRect" parent="UI/Overlays" unique_id=1021788979]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -57,7 +55,6 @@ rotation = 1.5707964
 texture = SubResource("GradientTexture1D_iotsf")
 
 [node name="ChangeTurnPrompt" type="VBoxContainer" parent="UI/Overlays" unique_id=519286984]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -89,7 +86,6 @@ horizontal_alignment = 1
 [node name="StartTurnButton" type="Button" parent="UI/Overlays/ChangeTurnPrompt" unique_id=2127382953]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 theme_override_font_sizes/font_size = 9
 text = "Begin"
 
@@ -119,7 +115,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 9
 text = "Return"
 
-[node name="CombatMenu" type="TabContainer" parent="UI" unique_id=706196546]
+[node name="GameMenu" type="TabContainer" parent="UI" unique_id=706196546]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 12
@@ -135,18 +131,17 @@ current_tab = 0
 tabs_visible = false
 script = ExtResource("8_215e1")
 
-[node name="EndTurnButton" type="Button" parent="UI/CombatMenu" unique_id=208532653]
+[node name="EndTurnButton" type="Button" parent="UI/GameMenu" unique_id=208532653]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_x5p1p")
 text = "End Turn"
 metadata/_tab_index = 0
 
-[node name="ActionMenu" type="HBoxContainer" parent="UI/CombatMenu" unique_id=489189746]
+[node name="ColorRect" type="ColorRect" parent="UI/GameMenu" unique_id=1956010047]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("8_lc2xo")
+color = Color(0.27058825, 0.21176471, 0.32941177, 1)
 metadata/_tab_index = 1
 
 [node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
@@ -167,6 +162,6 @@ script = ExtResource("5_vef74")
 script = ExtResource("2_fc0e3")
 
 [connection signal="pressed" from="UI/Overlays/VictoryScreen/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
-[connection signal="pressed" from="UI/CombatMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="UI/GameMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
 [connection signal="tile_selected" from="TileMap" to="Actors" method="_on_tile_map_tile_selected"]
 [connection signal="click" from="Input" to="Actors" method="_on_input_click"]

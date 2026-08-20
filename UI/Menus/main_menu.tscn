@@ -42,10 +42,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -58,6 +59,7 @@ text = "Afterstrife"
 label_settings = ExtResource("3_1e7f8")
 
 [node name="MenuContainer" type="VBoxContainer" parent="TabContainer/HomePageContainer" unique_id=1910597178]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -114,7 +116,6 @@ horizontal_alignment = 1
 script = ExtResource("3_at2v2")
 
 [node name="GameSetupPageContainer" type="HBoxContainer" parent="TabContainer" unique_id=1287884916]
-visible = false
 layout_mode = 2
 script = ExtResource("3_ch4um")
 metadata/_tab_index = 2
@@ -139,6 +140,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
 
 [node name="MapOptionButton" type="OptionButton" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=533235487]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -149,6 +151,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
 
 [node name="StartGameButton" type="Button" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=1331143962]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Play
@@ -175,11 +178,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
 anchor_top = 0.017
-anchor_right = 0.148
+anchor_right = 0.109000005
 anchor_bottom = 0.09
 offset_left = -0.14400005
 offset_top = 0.103999615
-offset_right = 0.22399902
+offset_right = 0.19199753
 offset_bottom = 0.07999802
 grow_horizontal = 2
 grow_vertical = 2
