@@ -18,6 +18,7 @@ var team_configurations: Array[TeamConfiguration] = [TeamConfiguration.new(
 
 var teams: Array[Team]
 var map_path: String = "res://Map/Maps/base_map.tscn"
+@onready var overlays = $UI/Overlays
 
 func setup(team_configs: Array[TeamConfiguration], map_p: String):
 	team_configurations = team_configs
@@ -34,7 +35,7 @@ func on_ready():
 		teams.append(config.team)
 	$Actors.init(team_configurations, $TileMap, $UI/CombatMenu, $Targeting)
 	$Targeting.init($TileMap)
-	$Turns.init(teams, $UI/Overlays/TurnsLabel)
+	$Turns.init(teams, overlays)
 	start_game()
 
 func start_game():
@@ -51,7 +52,7 @@ func check_victory_condition():
 
 func game_over(victor: Team):
 	GameState.input_allowed = false
-	$UI/Overlays/VictoryScreen.show_victory_screen(victor)
+	overlays.show_victory_screen(victor)
 
 func _on_return_to_menu_button_pressed() -> void:
 	var main_menu = load("res://UI/Menus/main_menu.tscn")

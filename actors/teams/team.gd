@@ -17,3 +17,4 @@ func check_defeated():
 
 func clear():
 	actors = []
+	defeated = false

@@ -9,7 +9,6 @@
 
 ## Polish
 - Teleport Animation
-- "Pass the Mouse" and confirmation prompt
 - Team selection screen name field
 - finer controls of targeting config (preview tile mask, colors)
 

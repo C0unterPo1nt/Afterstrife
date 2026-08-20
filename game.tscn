@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwbwrxpbonbnh"]
 
 [ext_resource type="Script" uid="uid://g38pp5kbw872" path="res://input.gd" id="2_fc0e3"]
-[ext_resource type="Script" uid="uid://b80nipujqphsf" path="res://victory_screen.gd" id="3_hve3p"]
+[ext_resource type="Script" uid="uid://txm4n2i8q3fd" path="res://overlays.gd" id="3_lc2xo"]
 [ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
@@ -11,6 +11,16 @@
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
+
+[sub_resource type="Gradient" id="Gradient_mfdv2"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.375, 0.625, 1)
+colors = PackedColorArray(0.2716998, 0.21209751, 0.33003333, 0, 0.11764706, 0.05490196, 0.18039216, 1, 0.11764706, 0.05490196, 0.18039216, 1, 0.2716998, 0.21209751, 0.33003333, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iotsf"]
+gradient = SubResource("Gradient_mfdv2")
 
 [node name="Game" type="Node2D" unique_id=1196397495]
 script = ExtResource("7_eow3j")
@@ -31,15 +41,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_lc2xo")
 
-[node name="TurnsLabel" type="Label" parent="UI/Overlays" unique_id=1561996554]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 224.0
+[node name="BackgroundGradientTexture" type="TextureRect" parent="UI/Overlays" unique_id=1021788979]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.88900006
+offset_left = 512.0
+offset_top = 2.2380233e-05
+offset_right = 256.03198
+offset_bottom = 255.96799
+rotation = 1.5707964
+texture = SubResource("GradientTexture1D_iotsf")
+
+[node name="ChangeTurnPrompt" type="VBoxContainer" parent="UI/Overlays" unique_id=519286984]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.88900006
+offset_bottom = -0.03201294
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TurnCountLabel" type="Label" parent="UI/Overlays/ChangeTurnPrompt" unique_id=2058669755]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Turn 0"
+horizontal_alignment = 1
+
+[node name="TeamNameLabel" type="Label" parent="UI/Overlays/ChangeTurnPrompt" unique_id=1561996554]
+layout_mode = 2
 text = "BlueTeam Turn x"
 label_settings = ExtResource("3_mfdv2")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ChangeTurnSubLabel" type="Label" parent="UI/Overlays/ChangeTurnPrompt" unique_id=1021733046]
+custom_minimum_size = Vector2(0, 29.93)
+layout_mode = 2
+text = "Pass the mouse"
+horizontal_alignment = 1
+
+[node name="StartTurnButton" type="Button" parent="UI/Overlays/ChangeTurnPrompt" unique_id=2127382953]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 9
+text = "Begin"
 
 [node name="VictoryScreen" type="VBoxContainer" parent="UI/Overlays" unique_id=1701308198]
 visible = false
@@ -51,7 +103,6 @@ offset_bottom = -0.03201294
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("3_hve3p")
 
 [node name="VictoryLabel" type="Label" parent="UI/Overlays/VictoryScreen" unique_id=1720534359]
 custom_minimum_size = Vector2(0, 65.565)
@@ -65,6 +116,7 @@ vertical_alignment = 1
 [node name="ReturnToMenuButton" type="Button" parent="UI/Overlays/VictoryScreen" unique_id=1115615143]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 9
 text = "Return"
 
 [node name="CombatMenu" type="TabContainer" parent="UI" unique_id=706196546]

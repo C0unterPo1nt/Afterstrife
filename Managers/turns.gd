@@ -3,17 +3,17 @@ extends Node
 var team_queue: Array[Team]
 var turn_count: int = 0
 var round_count: int = 1
-var turn_counter_ui: Control
+var overlays: Control
 
-func init(_team_queue, _turn_counter_ui: Control):
+func init(_team_queue, _overlays: Control):
 	team_queue = _team_queue
-	turn_counter_ui = _turn_counter_ui
+	overlays = _overlays
 
 func start():
 	start_turn(team_queue[turn_count])
 
 func start_turn(team):
-	await show_turn_label(team)
+	await overlays.show_prompt(team, round_count)
 	GameState.active_team = team
 	team.refresh()
 	GameState.input_allowed = true
@@ -31,13 +31,7 @@ func next_turn():
 	else:
 		next_round()
 
-func show_turn_label(team: Team):
-	GameState.input_allowed = false
-	turn_counter_ui.text = "{0} Turn {1}".format([team.name, round_count])
-	turn_counter_ui.visible = true
-	await get_tree().create_timer(1).timeout
-	turn_counter_ui.visible = false
-	GameState.input_allowed = true
+
 	
 
 func next_round():
