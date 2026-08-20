@@ -22,4 +22,4 @@ class TileMask extends Resource:
 		obstacles = _obstacles
 		allies = _allies
 		enemies = _enemies
-		empty_tiles = empty_tiles
+		empty_tiles = _empty_tiles

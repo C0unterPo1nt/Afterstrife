@@ -24,8 +24,10 @@ func begin_targeting(character: Character, range: int, config: TargetingConfig) 
 				valid_target = true
 			if character.team != character_at_tile.team && config.potential_targets.enemies:
 				valid_target = true
-		else:
+		elif config.potential_targets.empty_tiles:
 			valid_target = true
+		else:
+			valid_target = false
 		$PotentialTargets.create_target_indicator(tile, path, valid_target, config.preview_path)
 	
 	var target = await $PotentialTargets.target_selected
