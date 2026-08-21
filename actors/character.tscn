@@ -46,6 +46,14 @@ centered = false
 offset = Vector2(-16, -16)
 script = ExtResource("3_px5sl")
 
+[node name="Movement" type="Node2D" parent="." unique_id=2081088522]
+script = ExtResource("4_mdkfl")
+
+[node name="TeamIndicator" type="Polygon2D" parent="." unique_id=854318393]
+position = Vector2(27, 27)
+color = Color(0.7058824, 0.19215687, 0.23921569, 1)
+polygon = PackedVector2Array(0, 0, 4, 0, 4, 4, 0, 4)
+
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=428600830]
 visible = false
 offset_top = 25.0
@@ -55,13 +63,5 @@ theme = ExtResource("4_v8d33")
 step = 1.0
 value = 80.0
 show_percentage = false
-
-[node name="Movement" type="Node2D" parent="." unique_id=2081088522]
-script = ExtResource("4_mdkfl")
-
-[node name="TeamIndicator" type="Polygon2D" parent="." unique_id=854318393]
-position = Vector2(27, 27)
-color = Color(0.7058824, 0.19215687, 0.23921569, 1)
-polygon = PackedVector2Array(0, 0, 4, 0, 4, 4, 0, 4)
 
 [connection signal="turn" from="Movement" to="CharacterSprite" method="_on_movement_turn"]
