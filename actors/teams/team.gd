@@ -3,6 +3,7 @@ class_name Team
 extends Resource
 
 @export var name: String
+@export var color: Color
 var defeated: bool = false
 
 signal team_member_removed(character: Character)

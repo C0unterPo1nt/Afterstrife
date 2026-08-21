@@ -2,10 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_w11f1"]
 [ext_resource type="Resource" uid="uid://d2uhdvul868o3" path="res://actors/characters/scythe/scythegirlstats.tres" id="2_02nrh"]
-[ext_resource type="SpriteFrames" uid="uid://bxso7i1gq5i0a" path="res://actors/characters/scythe/scythegirlsprites.tres" id="3_wal2c"]
 
 [node name="Character" unique_id=264603401 instance=ExtResource("1_w11f1")]
 stats = ExtResource("2_02nrh")
-
-[node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
-sprite_frames = ExtResource("3_wal2c")

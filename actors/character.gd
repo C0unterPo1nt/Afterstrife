@@ -16,10 +16,10 @@ func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node):
 	grid_coordinates = _grid_coordinates
 	team = _team
 	team.actors.append(self)
+	set_team_indicator_color(team)
 	targeting = _targeting
 
 func _ready() -> void:
-	#stats.health = stats.max_health
 	$HealthBar.max_value = stats.max_health
 	$HealthBar.value = stats.health
 
@@ -96,6 +96,9 @@ func teleport(coords: Vector2):
 
 func should_display_health(should: bool):
 	$HealthBar.visible = should
+
+func set_team_indicator_color(team: Team):
+	$TeamIndicator.color = team.color
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.pressed && GameState.input_allowed && !GameState.is_character_acting:

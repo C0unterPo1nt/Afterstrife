@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_8e6yw")
 name = "Red Team"
+color = Color(0.7058824, 0.19215687, 0.23921569, 1)
 metadata/_custom_type_script = "uid://kkv5evd2gwl4"

@@ -7,6 +7,6 @@
 [node name="Character" unique_id=264603401 instance=ExtResource("1_xms36")]
 stats = ExtResource("2_56ja5")
 
-[node name="CharacterSprite" parent="." index="1" unique_id=2028234674]
+[node name="CharacterSprite" parent="." index="2" unique_id=2028234674]
 sprite_frames = ExtResource("3_56ja5")
 animation = &"attack"

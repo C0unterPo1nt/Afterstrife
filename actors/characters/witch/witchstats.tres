@@ -7,18 +7,18 @@
 
 [sub_resource type="Resource" id="Resource_thp4s"]
 script = ExtResource("2_2kx0c")
-movement = 4
+movement = 3
 metadata/_custom_type_script = "uid://bwajd4yfjqr64"
 
 [sub_resource type="Resource" id="Resource_8bf0x"]
 script = ExtResource("3_thp4s")
-range = 2
+range = 3
 metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_135xd")
-attack_strength = 45
+attack_strength = 70
 max_health = 50
 health = 50
 maximum_actions = 1

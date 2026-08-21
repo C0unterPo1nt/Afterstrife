@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_5k7dn"]
 script = ExtResource("2_5k7dn")
-movement = 5
+movement = 3
 metadata/_custom_type_script = "uid://bwajd4yfjqr64"
 
 [sub_resource type="Resource" id="Resource_pu5ap"]
@@ -17,10 +17,10 @@ metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("3_pu5ap")
-attack_strength = 41
+attack_strength = 22
 max_health = 100
 health = 100
-maximum_actions = 2
-remaining_actions = 2
+maximum_actions = 3
+remaining_actions = 3
 actions = Array[ExtResource("1_fxif8")]([SubResource("Resource_5k7dn"), SubResource("Resource_pu5ap")])
 metadata/_custom_type_script = "uid://0vslwn03wk6o"
