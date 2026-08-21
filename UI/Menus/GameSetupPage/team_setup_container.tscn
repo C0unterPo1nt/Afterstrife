@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d34irjwbk1ddb" path="res://UI/Menus/GameSetupPage/team_setup.gd" id="1_2usol"]
 [ext_resource type="PackedScene" uid="uid://d266komxkemby" path="res://UI/Menus/GameSetupPage/CharacterSpinner/character_spinner.tscn" id="1_n23k0"]
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_rqoe8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n23k0"]
 
@@ -16,6 +17,7 @@ offset_left = -26.0
 offset_right = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_rqoe8")
 alignment = 1
 script = ExtResource("1_2usol")
 
@@ -23,6 +25,11 @@ script = ExtResource("1_2usol")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n23k0")
+
+[node name="TeamNameLabel" type="Label" parent="." unique_id=1548330749]
+layout_mode = 2
+text = "team"
+horizontal_alignment = 1
 
 [node name="CharacterSpinner" parent="." unique_id=1182409972 instance=ExtResource("1_n23k0")]
 layout_mode = 2

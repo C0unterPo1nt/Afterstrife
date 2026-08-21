@@ -8,3 +8,6 @@ func get_team_configuration() -> TeamConfiguration:
 		if child is CharacterSpinner:
 			team_composition.append(child.get_selected_character_scene())
 	return TeamConfiguration.new(team, team_composition)
+
+func _ready() -> void:
+	$TeamNameLabel.text = team.name
