@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://maje43f5cvr0" path="res://UI/pixeloid.ttf/PixeloidSans.ttf" id="1_8xdmq"]
 [ext_resource type="StyleBox" uid="uid://ca2nvte6iuevc" path="res://UI/theme/button_normal.tres" id="1_qvpb8"]
 [ext_resource type="StyleBox" uid="uid://doh8qcjlkbjws" path="res://UI/theme/button_depressed.tres" id="2_8xdmq"]
+[ext_resource type="Texture2D" uid="uid://b6iappwwr76uk" path="res://sprites/button_disabled.png" id="2_due77"]
 [ext_resource type="Texture2D" uid="uid://caxibdg3u0t7k" path="res://sprites/healthbarBackground.png" id="4_0lm3h"]
 [ext_resource type="Texture2D" uid="uid://ds1g2pun2gho" path="res://sprites/dropdown_arrow.png" id="4_70che"]
 [ext_resource type="StyleBox" uid="uid://c8w4lct84nig2" path="res://UI/theme/dropdown_button_depressed.tres" id="4_cr6y6"]
@@ -10,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://bronfp8prsous" path="res://sprites/radio_button_checked.png" id="5_70che"]
 [ext_resource type="Texture2D" uid="uid://d2stqj0yk8gqq" path="res://sprites/popup_menu_panel.png" id="5_146i7"]
 [ext_resource type="Texture2D" uid="uid://ca0akcqlf4yuh" path="res://sprites/radio_button_unchecked.png" id="5_a5wts"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smcr8"]
+texture = ExtResource("2_due77")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70che"]
 bg_color = Color(0.49803922, 0.25882354, 0.21176471, 1)
@@ -46,10 +54,12 @@ default_font = ExtResource("1_8xdmq")
 default_font_size = 9
 BoxContainer/constants/separation = 0
 Button/colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
+Button/colors/font_disabled_color = Color(0.39215687, 0.37254903, 0.44313726, 1)
 Button/colors/font_hover_color = Color(1, 0.91764706, 0.68235296, 1)
 Button/colors/font_pressed_color = Color(1, 0.7254902, 0.38039216, 1)
 Button/font_sizes/font_size = 18
 Button/fonts/font = ExtResource("1_8xdmq")
+Button/styles/disabled = SubResource("StyleBoxTexture_smcr8")
 Button/styles/focus = ExtResource("1_qvpb8")
 Button/styles/hover = ExtResource("1_qvpb8")
 Button/styles/normal = ExtResource("1_qvpb8")

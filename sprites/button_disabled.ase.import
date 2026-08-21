@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://jn35np3pkt2p"
+path="res://.godot/imported/button_disabled.ase-aad933c335c83c17e577c74d4e1edca4.res"
+
+[deps]
+
+source_file="res://sprites/button_disabled.ase"
+dest_files=["res://.godot/imported/button_disabled.ase-aad933c335c83c17e577c74d4e1edca4.res"]
+
+[params]
+

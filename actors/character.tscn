@@ -11,6 +11,7 @@
 script = ExtResource("1_px5sl")
 
 [node name="ActionMenu" type="VBoxContainer" parent="." unique_id=927356078]
+visible = false
 z_index = 1
 offset_left = 32.0
 offset_top = -32.0

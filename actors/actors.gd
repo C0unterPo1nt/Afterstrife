@@ -5,9 +5,8 @@ var combat_menu: Control
 var tilemap: Node2D
 var is_character_acting: bool = false
 
-func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _combat_menu: Control, _targeting: Node):
+func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _targeting: Node):
 	team_configurations = team_configs
-	combat_menu = _combat_menu
 	tilemap = _tilemap
 	for config in team_configurations:
 		var team = config.team
@@ -26,17 +25,3 @@ func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _combat_menu
 func sleep():
 	for actor in get_children():
 		actor.sleep()
-
-func _on_input_click(_position) -> void:
-	if GameState.input_allowed && !is_character_acting:
-		var coordinates = Grid.absolute_to_grid_coordinates(_position)
-		var character = Grid.get_actor(coordinates)
-		if character == null:
-			return
-		if character.state != Character.States.ready:
-			return
-		if character.team != GameState.active_team:
-			return
-		is_character_acting = true
-		await character.activate()
-		is_character_acting = false

@@ -5,7 +5,13 @@ extends Resource
 @export var name: String
 var defeated: bool = false
 
+signal team_member_removed(character: Character)
+
 var actors: Array[Character]
+
+func remove_character_from_team(character: Character):
+	actors.erase(character)
+	team_member_removed.emit(character)
 
 func refresh(): 
 	for actor in actors:

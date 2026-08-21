@@ -96,3 +96,16 @@ func teleport(coords: Vector2):
 
 func should_display_health(should: bool):
 	$HealthBar.visible = should
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton && event.pressed && GameState.input_allowed && !GameState.is_character_acting:
+		var _position = Grid.snap_to_grid(get_viewport().get_mouse_position())
+		if _position != position:
+			return
+		if state != Character.States.ready:
+			return
+		if team != GameState.active_team:
+			return
+		GameState.is_character_acting = true
+		await activate()
+		GameState.is_character_acting = false

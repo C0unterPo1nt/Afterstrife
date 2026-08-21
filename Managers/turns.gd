@@ -5,6 +5,8 @@ var turn_count: int = 0
 var round_count: int = 1
 var overlays: Control
 
+signal turn_changed(team: Team)
+
 func init(_team_queue, _overlays: Control):
 	team_queue = _team_queue
 	overlays = _overlays
@@ -13,6 +15,7 @@ func start():
 	start_turn(team_queue[turn_count])
 
 func start_turn(team):
+	turn_changed.emit(team)
 	await overlays.show_prompt(team, round_count)
 	GameState.active_team = team
 	team.refresh()

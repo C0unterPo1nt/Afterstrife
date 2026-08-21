@@ -33,7 +33,8 @@ func on_ready():
 	Grid.clear()
 	for config in team_configurations:
 		teams.append(config.team)
-	$Actors.init(team_configurations, $TileMap, $UI/CombatMenu, $Targeting)
+	$UI/GameMenu.init(teams)
+	$Actors.init(team_configurations, $TileMap, $Targeting)
 	$Targeting.init($TileMap)
 	$Turns.init(teams, overlays)
 	start_game()
