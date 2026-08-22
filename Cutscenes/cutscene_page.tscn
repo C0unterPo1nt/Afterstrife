@@ -2,12 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bexdmgffeo5m2" path="res://sprites/cutscene-panel-1.png" id="1_dqla8"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_w4upr"]
+[ext_resource type="Script" uid="uid://n3vuiv0uhkxk" path="res://Cutscenes/cutscene_page.gd" id="2_8h30q"]
 [ext_resource type="Texture2D" uid="uid://ds1g2pun2gho" path="res://sprites/dropdown_arrow.png" id="2_w4upr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_pmbqd"]
-line_spacing = 1.0
-font_size = 9
-font_color = Color(1, 0.91764706, 0.68235296, 1)
+[ext_resource type="Script" uid="uid://bdvk1k6g0j1gm" path="res://Cutscenes/text_box.gd" id="3_2gd17"]
 
 [node name="Page" type="Control" unique_id=625805336]
 layout_mode = 3
@@ -17,9 +14,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w4upr")
+script = ExtResource("2_8h30q")
 metadata/_tab_index = 0
 
-[node name="Sprite2D" type="TextureRect" parent="." unique_id=737738107]
+[node name="Background" type="TextureRect" parent="." unique_id=737738107]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,9 +34,10 @@ anchor_bottom = 1.0
 offset_top = -0.06402588
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("3_2gd17")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="TextBox" unique_id=1051242391]
+[node name="TextLabel" type="RichTextLabel" parent="TextBox" unique_id=97577535]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
@@ -48,13 +47,11 @@ offset_top = 1.5258789e-05
 offset_right = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
-text = "text ojfilij js lj lj j  kn kj k njh njhb jb  bh knkj kjn k jn kn j,n ,kknkjnkn knjn jkkjn jknkjnkjnkjnkjk"
-label_settings = SubResource("LabelSettings_pmbqd")
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TextBox" unique_id=391300966]
+[node name="AdvancePrompt" type="TextureRect" parent="TextBox" unique_id=391300966]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

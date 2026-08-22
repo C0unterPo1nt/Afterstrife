@@ -1,7 +1,28 @@
 [gd_scene format=3 uid="uid://bxuterdfrspxa"]
 
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_xldxk"]
+[ext_resource type="Script" uid="uid://dclu5ffksbnox" path="res://Cutscenes/cutscene.gd" id="2_5dvul"]
 [ext_resource type="PackedScene" uid="uid://ceuud070nihay" path="res://Cutscenes/cutscene_page.tscn" id="2_fc0am"]
+[ext_resource type="Script" uid="uid://5n884swf7v7t" path="res://Cutscenes/cutscene_page_data.gd" id="3_fc0am"]
+[ext_resource type="Texture2D" uid="uid://bexdmgffeo5m2" path="res://sprites/cutscene-panel-1.png" id="4_2efhh"]
+
+[sub_resource type="Resource" id="Resource_5dvul"]
+script = ExtResource("3_fc0am")
+background = ExtResource("4_2efhh")
+text_blocks = Array[String](["test ssdfsdfsdfsdfsdf sdfsdfsdf", "mlem sdfsdfsdghfgdhfghfghgfh"])
+metadata/_custom_type_script = "uid://5n884swf7v7t"
+
+[sub_resource type="Gradient" id="Gradient_s8cb0"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2efhh"]
+gradient = SubResource("Gradient_s8cb0")
+
+[sub_resource type="Resource" id="Resource_s8cb0"]
+script = ExtResource("3_fc0am")
+background = SubResource("GradientTexture1D_2efhh")
+text_blocks = Array[String](["more text", "bwah"])
+metadata/_custom_type_script = "uid://5n884swf7v7t"
 
 [node name="Cutscene" type="TabContainer" unique_id=1423086630]
 anchors_preset = 15
@@ -12,6 +33,14 @@ grow_vertical = 2
 theme = ExtResource("1_xldxk")
 current_tab = 0
 tabs_visible = false
+script = ExtResource("2_5dvul")
 
 [node name="Page" parent="." unique_id=625805336 instance=ExtResource("2_fc0am")]
 layout_mode = 2
+page_data = SubResource("Resource_5dvul")
+
+[node name="Page2" parent="." unique_id=501785064 instance=ExtResource("2_fc0am")]
+visible = false
+layout_mode = 2
+page_data = SubResource("Resource_s8cb0")
+metadata/_tab_index = 1
