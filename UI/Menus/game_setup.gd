@@ -2,7 +2,8 @@ extends HBoxContainer
 
 var maps: Dictionary[String, String] = {
 	"Cave": "res://Map/Maps/cave_map.tscn",
-	"Docks": "res://Map/Maps/docks_map.tscn"
+	"Docks": "res://Map/Maps/docks_map.tscn",
+	"Graveyard": "res://Map/Maps/graveyard_map.tscn"
 }
 
 @onready var map_selector = $GameSettingsContainer/MapOptionButton

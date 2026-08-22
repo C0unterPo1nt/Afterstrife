@@ -43,15 +43,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="Cutscene" parent="TabContainer" unique_id=1423086630 instance=ExtResource("3_0r024")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -79,6 +79,7 @@ layout_mode = 2
 text = "Info"
 
 [node name="QuitGameButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1219398686]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "Quit"
@@ -146,7 +147,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_njn2r")
 
 [node name="MapOptionButton" type="OptionButton" parent="TabContainer/GameSetupPageContainer/GameSettingsContainer" unique_id=533235487]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
