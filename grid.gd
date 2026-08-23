@@ -18,11 +18,12 @@ func get_actors(coords: Array[Vector2i]):
 		actors.append(game_board.get(i))
 	return actors
 
-func get_allies_coordinates(character: Character):
-	var allies_coords: Array[Character]
+func get_allies_coordinates(character: Character) -> Array[Vector2i]:
+	var allies_coords: Array[Vector2i]
 	for key in game_board.keys():
 		if character.team == game_board.get(key).team:
 			allies_coords.append(key)
+	allies_coords.erase(character)
 	return allies_coords
 
 func get_enemies_coordinates(character: Character) -> Array[Vector2i]:

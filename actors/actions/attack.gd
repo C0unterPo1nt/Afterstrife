@@ -1,11 +1,9 @@
 class_name Attack extends Action
 
-@export var range = 1
-
 func _init():
 	name = "Attack"
-	var potential_targets = TargetingConfig.TileMask.new(false, false, true, false)
-	var path_obstacles = TargetingConfig.TileMask.new(false, false, false, false)
+	var potential_targets = TargetingConfig.TileMask.new(false, false, true, false, false)
+	var path_obstacles = TargetingConfig.TileMask.new(false, false, false, false, false)
 	targeting_config = TargetingConfig.new(potential_targets, false, path_obstacles)
 
 func predicate(character: Character) -> bool:

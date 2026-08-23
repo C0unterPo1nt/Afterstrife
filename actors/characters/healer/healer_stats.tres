@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://c8cj7rfciatcn"]
+
+[ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="1_t3wrp"]
+[ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="2_q00cq"]
+[ext_resource type="Script" uid="uid://dk5q8xhjo3gs4" path="res://actors/actions/heal.gd" id="3_71u8e"]
+[ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="4_g7cnp"]
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="5_csqai"]
+
+[sub_resource type="Resource" id="Resource_jhvt7"]
+script = ExtResource("2_q00cq")
+range = 2
+metadata/_custom_type_script = "uid://bmes4xjeg8eml"
+
+[sub_resource type="Resource" id="Resource_qtv4w"]
+script = ExtResource("3_71u8e")
+metadata/_custom_type_script = "uid://dk5q8xhjo3gs4"
+
+[sub_resource type="Resource" id="Resource_2blxy"]
+script = ExtResource("4_g7cnp")
+range = 4
+metadata/_custom_type_script = "uid://bwajd4yfjqr64"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_csqai")
+attack_strength = 20
+heal_strength = 25
+max_health = 80
+health = 80
+maximum_actions = 2
+remaining_actions = 2
+actions = Array[ExtResource("1_t3wrp")]([SubResource("Resource_jhvt7"), SubResource("Resource_qtv4w"), SubResource("Resource_2blxy")])
+metadata/_custom_type_script = "uid://0vslwn03wk6o"

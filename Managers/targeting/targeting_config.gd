@@ -13,13 +13,15 @@ func _init(_potential_targets: TileMask, _preview_path: bool = true, _path_obsta
 		path_obstacles = potential_targets
 
 class TileMask extends Resource:
-	var obstacles: bool
+	var _self: bool
 	var allies: bool
 	var enemies: bool
+	var obstacles: bool
 	var empty_tiles: bool
 	
-	func _init(_obstacles: bool, _allies: bool, _enemies: bool, _empty_tiles: bool) -> void:
-		obstacles = _obstacles
+	func _init(__self: bool, _allies: bool, _enemies: bool, _obstacles: bool, _empty_tiles: bool) -> void:
+		_self = __self
 		allies = _allies
 		enemies = _enemies
+		obstacles = _obstacles
 		empty_tiles = _empty_tiles

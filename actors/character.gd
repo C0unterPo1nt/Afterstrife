@@ -44,7 +44,7 @@ func activate():
 func deactivate():
 	activated = false
 	stats.remaining_actions = stats.remaining_actions - 1
-	if stats.remaining_actions == 0:
+	if stats.remaining_actions <= 0:
 		state = States.tapped
 		$ReadyIndicator.visible = false
 		$CharacterSprite.dim()
@@ -63,11 +63,12 @@ func sleep():
 	$ReadyIndicator.visible = false
 	$CharacterSprite.undim()
 
-func damage(ammount: int):
-	stats.health -= ammount
+func change_health(ammount: int, animation: String):
+	clamp(ammount, stats.health, stats.max_health - stats.health)
+	stats.health += ammount
 	$HealthBar.value = stats.health
 	should_display_health(true)
-	$CharacterSprite.play("damage")
+	$CharacterSprite.play(animation)
 	await $CharacterSprite.animation_finished
 	should_display_health(false)
 	if stats.health <= 0:
@@ -79,8 +80,13 @@ func attack(defender: Character):
 	elif defender.grid_coordinates.x > grid_coordinates.x:
 		$CharacterSprite.flip_h = false
 	$CharacterSprite.play("attack")
-	defender.damage(stats.attack_strength)
+	defender.change_health(-stats.attack_strength, "damage")
 	await $CharacterSprite.animation_finished
+
+func heal(target: Character):
+	$CharacterSprite.play("attack")
+	await $CharacterSprite.animation_finished
+	target.change_health(stats.heal_strength, "default")
 
 func die():
 	Grid.game_board.erase(grid_coordinates)
@@ -99,6 +105,9 @@ func should_display_health(should: bool):
 
 func set_team_indicator_color(team: Team):
 	$TeamIndicator.color = team.color
+
+func is_at_max_health():
+	return stats.health == stats.max_health
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.pressed && GameState.input_allowed && !GameState.is_character_acting:

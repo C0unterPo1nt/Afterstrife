@@ -20,9 +20,11 @@ func begin_targeting(character: Character, range: int, config: TargetingConfig) 
 			if config.potential_targets.obstacles == true:
 				valid_target = true
 		elif character_at_tile != null:
-			if character.team == character_at_tile.team && config.potential_targets.allies:
+			if character == character_at_tile && config.potential_targets._self:
 				valid_target = true
-			if character.team != character_at_tile.team && config.potential_targets.enemies:
+			elif character.team == character_at_tile.team && config.potential_targets.allies:
+				valid_target = true
+			elif character.team != character_at_tile.team && config.potential_targets.enemies:
 				valid_target = true
 		elif config.potential_targets.empty_tiles:
 			valid_target = true

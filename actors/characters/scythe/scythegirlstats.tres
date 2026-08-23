@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_i1s42"]
 script = ExtResource("2_i1s42")
-movement = 4
+range = 5
 metadata/_custom_type_script = "uid://bwajd4yfjqr64"
 
 [sub_resource type="Resource" id="Resource_g25md"]
@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 
 [sub_resource type="Resource" id="Resource_6mbpo"]
 script = ExtResource("4_g25md")
+range = 3
 range = 3
 metadata/_custom_type_script = "uid://bsjjguut4eju6"
 

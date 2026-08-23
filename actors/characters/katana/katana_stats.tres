@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_5k7dn"]
 script = ExtResource("2_5k7dn")
-movement = 3
+range = 3
 metadata/_custom_type_script = "uid://bwajd4yfjqr64"
 
 [sub_resource type="Resource" id="Resource_pu5ap"]

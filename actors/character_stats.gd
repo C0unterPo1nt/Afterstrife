@@ -2,6 +2,7 @@ class_name CharacterStats
 extends Resource
 
 @export var attack_strength: int = 0
+@export var heal_strength: int = 0
 @export var max_health: int = 0
 @export var health: int = 0
 @export var maximum_actions: int = 0
