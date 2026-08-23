@@ -6,10 +6,22 @@
 [ext_resource type="Script" uid="uid://5n884swf7v7t" path="res://Cutscenes/cutscene_page_data.gd" id="3_fc0am"]
 [ext_resource type="Texture2D" uid="uid://bexdmgffeo5m2" path="res://sprites/cutscene-panel-1.png" id="4_2efhh"]
 
+[sub_resource type="Gradient" id="Gradient_2efhh"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jgroq"]
+gradient = SubResource("Gradient_2efhh")
+
+[sub_resource type="Resource" id="Resource_ecgp4"]
+script = ExtResource("3_fc0am")
+background = SubResource("GradientTexture1D_jgroq")
+text_blocks = Array[String](["Death is not as cold as you thought it would be.", "You are cold, but it doesn't bite.", "Rather it's  inescapable.", "A bone deep, lukewarmness that remindes you that the fire within has been snuffed out.", "Just as everything goes dark and you resolve to embrace oblivion...", "\"oh what a darling little soul!\""])
+metadata/_custom_type_script = "uid://5n884swf7v7t"
+
 [sub_resource type="Resource" id="Resource_5dvul"]
 script = ExtResource("3_fc0am")
 background = ExtResource("4_2efhh")
-text_blocks = Array[String](["test ssdfsdfsdfsdfsdf sdfsdfsdf", "mlem sdfsdfsdghfgdhfghfghgfh"])
+text_blocks = Array[String](["A hand reaches out and plucks you from the spiritstream.", "\"You are just the perfect addition to my collection!\""])
 metadata/_custom_type_script = "uid://5n884swf7v7t"
 
 [sub_resource type="Gradient" id="Gradient_s8cb0"]
@@ -21,10 +33,21 @@ gradient = SubResource("Gradient_s8cb0")
 [sub_resource type="Resource" id="Resource_s8cb0"]
 script = ExtResource("3_fc0am")
 background = SubResource("GradientTexture1D_2efhh")
-text_blocks = Array[String](["more text", "bwah"])
+text_blocks = Array[String](["\"I cant wait to see what you're capable of~\"", "...", "You feel nothing."])
 metadata/_custom_type_script = "uid://5n884swf7v7t"
 
-[node name="Cutscene" type="TabContainer" unique_id=1423086630]
+[node name="Cutscene" type="Control" unique_id=294491457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xldxk")
+script = ExtResource("2_5dvul")
+
+[node name="PageContainer" type="TabContainer" parent="." unique_id=1423086630]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,14 +56,29 @@ grow_vertical = 2
 theme = ExtResource("1_xldxk")
 current_tab = 0
 tabs_visible = false
-script = ExtResource("2_5dvul")
 
-[node name="Page" parent="." unique_id=625805336 instance=ExtResource("2_fc0am")]
+[node name="Page" parent="PageContainer" unique_id=625805336 instance=ExtResource("2_fc0am")]
+layout_mode = 2
+page_data = SubResource("Resource_ecgp4")
+
+[node name="Page2" parent="PageContainer" unique_id=112855921 instance=ExtResource("2_fc0am")]
+visible = false
 layout_mode = 2
 page_data = SubResource("Resource_5dvul")
+metadata/_tab_index = 1
 
-[node name="Page2" parent="." unique_id=501785064 instance=ExtResource("2_fc0am")]
+[node name="Page3" parent="PageContainer" unique_id=501785064 instance=ExtResource("2_fc0am")]
 visible = false
 layout_mode = 2
 page_data = SubResource("Resource_s8cb0")
-metadata/_tab_index = 1
+metadata/_tab_index = 2
+
+[node name="SkipLabel" type="Label" parent="." unique_id=1088177456]
+modulate = Color(1, 1, 1, 0.14500001)
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 9
+text = "Press esc to skip"
+horizontal_alignment = 1
+vertical_alignment = 1

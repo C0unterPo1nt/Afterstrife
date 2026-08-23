@@ -1,18 +1,27 @@
-extends TabContainer
+extends Control
 
 signal done
+var is_done: bool = false
+@onready var tab_container = $PageContainer
 
 func _ready() -> void:
-	for page in get_children():
+	for page in tab_container.get_children():
 		page.done.connect(_on_page_done)
-	get_current_tab_control().start()
+	tab_container.get_current_tab_control().start()
 
 func _on_page_done():
-	if current_tab == get_tab_count() -1:
+	if tab_container.current_tab == tab_container.get_tab_count() -1:
 		end()
 	else:
-		current_tab += 1
-		get_current_tab_control().start()
+		tab_container.current_tab += 1
+		tab_container.get_current_tab_control().start()
+
+func _process(delta):
+	if Input.is_action_pressed("skip_cutscene"):
+		end()
 
 func end():
-	done.emit()
+	if !is_done:
+		print('end')
+		is_done = true
+		done.emit()

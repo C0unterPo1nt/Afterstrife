@@ -18,7 +18,6 @@ metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 [sub_resource type="Resource" id="Resource_6mbpo"]
 script = ExtResource("4_g25md")
 range = 3
-range = 3
 metadata/_custom_type_script = "uid://bsjjguut4eju6"
 
 [resource]

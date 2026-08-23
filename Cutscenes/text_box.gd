@@ -4,7 +4,7 @@ var text: String
 var shown_char_index: int
 var all_shown: bool
 var time_since_last_update: float = 0
-var characters_per_second: float = .05
+var characters_per_second: float = .03
 
 func update_label(_text: String):
 	text = _text

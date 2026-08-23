@@ -43,15 +43,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="Cutscene" parent="TabContainer" unique_id=1423086630 instance=ExtResource("3_0r024")]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="HomePageContainer" type="VBoxContainer" parent="TabContainer" unique_id=24934544]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
