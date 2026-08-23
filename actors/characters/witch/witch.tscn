@@ -1,11 +1,35 @@
 [gd_scene format=3 uid="uid://bkp0ju8beu2q8"]
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_xms36"]
-[ext_resource type="Resource" uid="uid://da3p7bdebs7ih" path="res://actors/characters/witch/witchstats.tres" id="2_56ja5"]
+[ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="2_50lb1"]
 [ext_resource type="SpriteFrames" uid="uid://d0hm7ek4hywo5" path="res://actors/characters/witch/witchsprites.tres" id="3_56ja5"]
+[ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="3_yxohn"]
+[ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="4_ftww1"]
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="5_s3vmn"]
+
+[sub_resource type="Resource" id="Resource_thp4s"]
+script = ExtResource("3_yxohn")
+range = 3
+metadata/_custom_type_script = "uid://bwajd4yfjqr64"
+
+[sub_resource type="Resource" id="Resource_8bf0x"]
+script = ExtResource("4_ftww1")
+range = 3
+metadata/_custom_type_script = "uid://bmes4xjeg8eml"
+
+[sub_resource type="Resource" id="Resource_evmwx"]
+resource_local_to_scene = true
+script = ExtResource("5_s3vmn")
+attack_strength = 70
+max_health = 50
+health = 50
+maximum_actions = 1
+remaining_actions = 1
+actions = Array[ExtResource("2_50lb1")]([SubResource("Resource_thp4s"), SubResource("Resource_8bf0x")])
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [node name="Character" unique_id=264603401 instance=ExtResource("1_xms36")]
-stats = ExtResource("2_56ja5")
+stats = SubResource("Resource_evmwx")
 
 [node name="CharacterSprite" parent="." index="2" unique_id=2028234674]
 sprite_frames = ExtResource("3_56ja5")

@@ -2,7 +2,7 @@
 
 var name: String
 var targeting_config: TargetingConfig
-@export var range: int = 1
+@export var range: int
 
 @abstract func predicate(character: Character) -> bool
 @abstract func act(character: Character, targeting: Node) -> void

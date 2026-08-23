@@ -1,8 +1,39 @@
 [gd_scene format=3 uid="uid://hoautbsrjqwt"]
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_as3a2"]
-[ext_resource type="Resource" uid="uid://c8cj7rfciatcn" path="res://actors/characters/healer/healer_stats.tres" id="2_6d23l"]
+[ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="2_d7h0p"]
 [ext_resource type="Texture2D" uid="uid://w8kwkhosiel7" path="res://sprites/healer.png" id="2_h14i5"]
+[ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="3_qtv4w"]
+[ext_resource type="Script" uid="uid://dk5q8xhjo3gs4" path="res://actors/actions/heal.gd" id="4_4xj22"]
+[ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="5_jhvt7"]
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="6_2blxy"]
+
+[sub_resource type="Resource" id="Resource_jhvt7"]
+script = ExtResource("3_qtv4w")
+range = 2
+metadata/_custom_type_script = "uid://bmes4xjeg8eml"
+
+[sub_resource type="Resource" id="Resource_qtv4w"]
+script = ExtResource("4_4xj22")
+range = 1
+metadata/_custom_type_script = "uid://dk5q8xhjo3gs4"
+
+[sub_resource type="Resource" id="Resource_2blxy"]
+script = ExtResource("5_jhvt7")
+range = 4
+metadata/_custom_type_script = "uid://bwajd4yfjqr64"
+
+[sub_resource type="Resource" id="Resource_ujm75"]
+resource_local_to_scene = true
+script = ExtResource("6_2blxy")
+attack_strength = 20
+heal_strength = 25
+max_health = 80
+health = 80
+maximum_actions = 2
+remaining_actions = 2
+actions = Array[ExtResource("2_d7h0p")]([SubResource("Resource_jhvt7"), SubResource("Resource_qtv4w"), SubResource("Resource_2blxy")])
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h14i5"]
 atlas = ExtResource("2_h14i5")
@@ -87,7 +118,7 @@ animations = [{
 }]
 
 [node name="Character" unique_id=264603401 instance=ExtResource("1_as3a2")]
-stats = ExtResource("2_6d23l")
+stats = SubResource("Resource_ujm75")
 
 [node name="CharacterSprite" parent="." index="2" unique_id=2028234674]
 sprite_frames = SubResource("SpriteFrames_sh6tt")

@@ -1,7 +1,37 @@
 [gd_scene format=3 uid="uid://bk1s4ono60yno"]
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_w11f1"]
-[ext_resource type="Resource" uid="uid://d2uhdvul868o3" path="res://actors/characters/scythe/scythegirlstats.tres" id="2_02nrh"]
+[ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="2_rvbt8"]
+[ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="3_q6f34"]
+[ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="4_0lp0r"]
+[ext_resource type="Script" uid="uid://bsjjguut4eju6" path="res://actors/actions/teleport.gd" id="5_6tbe4"]
+[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="6_tu2cq"]
+
+[sub_resource type="Resource" id="Resource_i1s42"]
+script = ExtResource("3_q6f34")
+range = 5
+metadata/_custom_type_script = "uid://bwajd4yfjqr64"
+
+[sub_resource type="Resource" id="Resource_g25md"]
+script = ExtResource("4_0lp0r")
+range = 1
+metadata/_custom_type_script = "uid://bmes4xjeg8eml"
+
+[sub_resource type="Resource" id="Resource_6mbpo"]
+script = ExtResource("5_6tbe4")
+range = 3
+metadata/_custom_type_script = "uid://bsjjguut4eju6"
+
+[sub_resource type="Resource" id="Resource_n34au"]
+resource_local_to_scene = true
+script = ExtResource("6_tu2cq")
+attack_strength = 35
+max_health = 80
+health = 80
+maximum_actions = 2
+remaining_actions = 2
+actions = Array[ExtResource("2_rvbt8")]([SubResource("Resource_i1s42"), SubResource("Resource_g25md"), SubResource("Resource_6mbpo")])
+metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [node name="Character" unique_id=264603401 instance=ExtResource("1_w11f1")]
-stats = ExtResource("2_02nrh")
+stats = SubResource("Resource_n34au")
