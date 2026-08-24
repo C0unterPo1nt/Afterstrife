@@ -3,9 +3,9 @@ extends Node2D
 var target_preview_indicator = load("res://Managers/targeting/target_preview_indicator.tscn")
 signal target_selected(coords: Vector2i, path: PackedVector2Array)
 
-func create_target_indicator(coords: Vector2i, path: PackedVector2Array, selectable: bool, preview_path: bool):
+func create_target_indicator(coords: Vector2i, path: PackedVector2Array, preview_path: bool):
 		var indicator = target_preview_indicator.instantiate()
-		indicator.init(path, coords, _on_target_preview_indicator_selected, selectable, preview_path)
+		indicator.init(path, coords, _on_target_preview_indicator_selected, preview_path)
 		add_child(indicator)
 
 func deactivate():

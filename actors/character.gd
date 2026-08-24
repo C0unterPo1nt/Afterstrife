@@ -10,7 +10,7 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var activated: bool = false
 @export var stats: CharacterStats
 @export var team: Team
-var targeting: Node
+var targeting: Targeting
 
 func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node):
 	grid_coordinates = _grid_coordinates
@@ -64,7 +64,7 @@ func sleep():
 	$CharacterSprite.undim()
 
 func change_health(ammount: int, animation: String):
-	clamp(ammount, stats.health, stats.max_health - stats.health)
+	ammount = clamp(ammount, -stats.health, stats.max_health - stats.health)
 	stats.health += ammount
 	$HealthBar.value = stats.health
 	should_display_health(true)
@@ -107,7 +107,7 @@ func set_team_indicator_color(team: Team):
 	$TeamIndicator.color = team.color
 
 func is_at_max_health():
-	return stats.health == stats.max_health
+	return stats.health >= stats.max_health
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.pressed && GameState.input_allowed && !GameState.is_character_acting:

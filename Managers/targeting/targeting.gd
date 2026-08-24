@@ -1,4 +1,4 @@
-extends Node2D
+class_name Targeting extends Node2D
 
 enum States {targeting, sleeping}
 
@@ -7,30 +7,30 @@ var tile_map: Node2D
 func init(_tile_map: Node2D):
 	tile_map = _tile_map
 
-func begin_targeting(character: Character, range: int, config: TargetingConfig) -> Array:
+func calculate_valid_targets(character: Character, range: int, config: TargetingConfig) -> Array[PotentialTargetConfig]:
 	var reachable_tiles: Array[Vector2i] = get_navigable_tiles_in_range(character, range, config)
-	
+	var potential_target_configs: Array[PotentialTargetConfig] = []
 	for tile in reachable_tiles:
 		var path = tile_map.calculate_path(character.grid_coordinates, tile, reachable_tiles)
+		var potential_target_config = PotentialTargetConfig.new(tile, path, config.preview_path)
 		if path.size() > range + 1 or path.is_empty():
 			continue
 		var character_at_tile: Character = Grid.game_board.get(tile)
-		var valid_target: bool = false
 		if tile_map.get_map_tile_data(tile).get_custom_data("Obstacle") == true:
-			if config.potential_targets.obstacles == true:
-				valid_target = true
+			if config.potential_targets.obstacles == true && config.predicate.call(potential_target_config):
+				potential_target_configs.append(potential_target_config)
 		elif character_at_tile != null:
-			if character == character_at_tile && config.potential_targets._self:
-				valid_target = true
-			elif character.team == character_at_tile.team && config.potential_targets.allies:
-				valid_target = true
-			elif character.team != character_at_tile.team && config.potential_targets.enemies:
-				valid_target = true
-		elif config.potential_targets.empty_tiles:
-			valid_target = true
-		else:
-			valid_target = false
-		$PotentialTargets.create_target_indicator(tile, path, valid_target, config.preview_path)
+			if character.team == character_at_tile.team && config.potential_targets.allies && config.predicate.call(potential_target_config):
+				potential_target_configs.append(potential_target_config)
+			elif character.team != character_at_tile.team && config.potential_targets.enemies && config.predicate.call(potential_target_config):
+				potential_target_configs.append(potential_target_config)
+		elif config.potential_targets.empty_tiles && config.predicate.call(potential_target_config):
+				potential_target_configs.append(potential_target_config)
+	return potential_target_configs
+
+func begin_targeting(potential_target_configs: Array[PotentialTargetConfig]) -> Array:
+	for config in potential_target_configs:
+		$PotentialTargets.create_target_indicator(config.coordinates, config.path, config.preview_path)
 	
 	var target = await $PotentialTargets.target_selected
 	return target

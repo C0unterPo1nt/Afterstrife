@@ -3,8 +3,10 @@ class_name TargetingConfig extends Resource
 var potential_targets: TileMask
 var preview_path: bool
 var path_obstacles: TileMask
+var predicate: Callable
 
-func _init(_potential_targets: TileMask, _preview_path: bool = true, _path_obstacles: TileMask = null) -> void:
+func _init(_predicate, _potential_targets: TileMask, _preview_path: bool = true, _path_obstacles: TileMask = null) -> void:
+	predicate = _predicate
 	potential_targets = _potential_targets
 	preview_path = _preview_path
 	if _path_obstacles != null:

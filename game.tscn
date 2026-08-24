@@ -196,6 +196,7 @@ text = "0/3"
 [node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
 
 [node name="Targeting" type="Node2D" parent="." unique_id=1820902521]
+unique_name_in_owner = true
 script = ExtResource("10_mfdv2")
 
 [node name="PotentialTargets" type="Node2D" parent="Targeting" unique_id=60829521]
