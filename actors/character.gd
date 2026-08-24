@@ -36,21 +36,29 @@ func activate():
 	activated = true
 	$ReadyIndicator.visible = false
 	state = States.declare
-	#TODO: get rid of the self param
-	var action: Action = await $ActionMenu.make_action_selection(self)
-	await action.act(self, targeting)
+	var success = false
+	while !success:
+		#TODO: get rid of the self param
+		var action: Action = await $ActionMenu.make_action_selection(self)
+		if action == null:
+			unactivate()
+			return
+		success = await action.act(self, targeting)
 	deactivate()
-	
-func deactivate():
+
+func unactivate():
 	activated = false
+	state = States.ready
+	$ReadyIndicator.visible = true
+
+func deactivate():
+	unactivate()
 	stats.remaining_actions = stats.remaining_actions - 1
 	if stats.remaining_actions <= 0:
 		state = States.tapped
 		$ReadyIndicator.visible = false
 		$CharacterSprite.dim()
-	else:
-		state = States.ready
-		$ReadyIndicator.visible = true
+
 
 func refresh():
 	state = States.ready

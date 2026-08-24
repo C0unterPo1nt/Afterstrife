@@ -6,9 +6,6 @@ func _init() -> void:
 	var path_obstacles = TargetingConfig.TileMask.new(false, false, false, false, false)
 	_targeting_config = TargetingConfig.new(targeting_predicate, potential_targets, false, path_obstacles)
 
-func act(character: Character, targeting: Node) -> void:
-		var target_payload = await targeting.begin_targeting(_potential_target_configs)
+func act_inner(character: Character, target_payload):
 		var path: PackedVector2Array = target_payload[1]
-		GameState.input_allowed = false
 		await character.teleport(path[path.size() -1])
-		GameState.input_allowed = true

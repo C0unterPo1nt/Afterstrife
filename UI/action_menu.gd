@@ -5,6 +5,10 @@ signal selected(action: Action)
 func _ready() -> void:
 	destroy()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("cancel"):
+		selected.emit(null)
+
 func make_action_selection(character: Character) -> Action:
 	var actions: Array[Action] = character.stats.actions
 	offset_if_needed(character)

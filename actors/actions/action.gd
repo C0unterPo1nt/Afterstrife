@@ -12,4 +12,13 @@ func predicate(character: Character) -> bool:
 func targeting_predicate(config: PotentialTargetConfig) -> bool:
 	return true
 
-@abstract func act(character: Character, targeting: Node) -> void
+func act(character: Character, targeting: Node) -> bool:
+	var target_payload = await targeting.begin_targeting(_potential_target_configs)
+	if target_payload[0] == null:
+		return false
+	GameState.input_allowed = false
+	await act_inner(character, target_payload)
+	GameState.input_allowed = true
+	return true
+
+@abstract func act_inner(character: Character, target_payload: Array)

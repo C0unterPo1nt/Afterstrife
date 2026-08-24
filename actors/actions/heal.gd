@@ -12,9 +12,6 @@ func targeting_predicate(config: PotentialTargetConfig):
 		return true
 	return false
 
-func act(character: Character, targeting: Node) -> void:
-	var target_payload = await targeting.begin_targeting(_potential_target_configs)
+func act_inner(character: Character, target_payload):
 	var target = Grid.get_actor(target_payload[0])
-	GameState.input_allowed = false
 	await character.heal(target)
-	GameState.input_allowed = true
