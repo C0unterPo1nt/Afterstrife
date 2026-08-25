@@ -8,4 +8,8 @@ func _init() -> void:
 
 func act_inner(character: Character, target_payload):
 		var path: PackedVector2Array = target_payload[1]
-		await character.teleport(path[path.size() -1])
+		character.sprite_handler.fade(true)
+		await character.sprite_handler.animation_finished
+		character.teleport(path[path.size() -1])
+		character.sprite_handler.fade(false)
+		await character.sprite_handler.animation_finished

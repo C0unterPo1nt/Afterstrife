@@ -1,24 +1,12 @@
 extends AnimatedSprite2D
 
+signal impact
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	connect("animation_finished", _on_animation_finished)
-
+@export var impact_frame: int
+var waiting_for_impact_frame: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-func dim():
-	modulate = Color(.5,.5,.5)
-
-func undim():
-	modulate = Color(1,1,1)
-
-func _on_animation_finished():
-	play("default")
-
-
-func _on_movement_turn(bool: Variant) -> void:
-	flip_h = bool
+	if waiting_for_impact_frame and frame == impact_frame:
+		waiting_for_impact_frame = false
+		impact.emit()

@@ -10,6 +10,7 @@ enum States {ready, declare, acting, tapped, sleep}
 @export var activated: bool = false
 @export var stats: CharacterStats
 @export var team: Team
+@onready var sprite_handler: Node = $SpriteHandler
 var targeting: Targeting
 
 func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node):
@@ -57,44 +58,27 @@ func deactivate():
 	if stats.remaining_actions <= 0:
 		state = States.tapped
 		$ReadyIndicator.visible = false
-		$CharacterSprite.dim()
+		$SpriteHandler.dim()
 
 
 func refresh():
 	state = States.ready
 	stats.remaining_actions = stats.maximum_actions
 	$ReadyIndicator.visible = true
-	$CharacterSprite.undim()
+	$SpriteHandler.undim()
 
 func sleep():
 	state = States.sleep
 	$ReadyIndicator.visible = false
-	$CharacterSprite.undim()
+	$SpriteHandler.undim()
 
-func change_health(ammount: int, animation: String):
+# TODO change this to a setter on health
+func change_health(ammount: int):
 	ammount = clamp(ammount, -stats.health, stats.max_health - stats.health)
 	stats.health += ammount
 	$HealthBar.value = stats.health
-	should_display_health(true)
-	$CharacterSprite.play(animation)
-	await $CharacterSprite.animation_finished
-	should_display_health(false)
 	if stats.health <= 0:
 		die()
-
-func attack(defender: Character):
-	if defender.grid_coordinates.x < grid_coordinates.x:
-		$CharacterSprite.flip_h = true
-	elif defender.grid_coordinates.x > grid_coordinates.x:
-		$CharacterSprite.flip_h = false
-	$CharacterSprite.play("attack")
-	defender.change_health(-stats.attack_strength, "damage")
-	await $CharacterSprite.animation_finished
-
-func heal(target: Character):
-	$CharacterSprite.play("attack")
-	await $CharacterSprite.animation_finished
-	target.change_health(stats.heal_strength, "default")
 
 func die():
 	Grid.game_board.erase(grid_coordinates)
@@ -106,13 +90,13 @@ func move(path: PackedVector2Array):
 	await $Movement.move(self, path)
 
 func teleport(coords: Vector2):
-	await  $Movement.teleport(self, coords)
+	$Movement.teleport(self, coords)
 
 func should_display_health(should: bool):
 	$HealthBar.visible = should
 
 func set_team_indicator_color(team: Team):
-	$TeamIndicator.color = team.color
+	$SpriteHandler/TeamIndicator.color = team.color
 
 func is_at_max_health():
 	return stats.health >= stats.max_health

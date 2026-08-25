@@ -9,7 +9,7 @@ var region = Rect2i(lower_bound, grid_size)
 func clear():
 	game_board.clear()
 
-func get_actor(coords: Vector2i):
+func get_actor(coords: Vector2i) -> Character:
 	return game_board.get(coords)
 
 func get_actors(coords: Array[Vector2i]):

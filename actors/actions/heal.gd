@@ -14,4 +14,14 @@ func targeting_predicate(config: PotentialTargetConfig):
 
 func act_inner(character: Character, target_payload):
 	var target = Grid.get_actor(target_payload[0])
-	await character.heal(target)
+	if target is not Character:
+		return
+	var animations = character.sprite_handler
+	turn_towards_target(character, target)
+	target.should_display_health(true)
+	animations.heal()
+	await animations.impact
+	target.sprite_handler.healed()
+	target.change_health(character.stats.heal_strength)
+	await target.sprite_handler.animation_finished
+	target.should_display_health(false)

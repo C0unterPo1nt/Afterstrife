@@ -8,4 +8,14 @@ func _init():
 
 func act_inner(character: Character, target_payload):
 		var target = Grid.get_actor(target_payload[0])
-		await character.attack(target)
+		if target is not Character:
+			return
+		var animations = character.sprite_handler
+		turn_towards_target(character, target)
+		target.should_display_health(true)
+		animations.attack()
+		await animations.impact
+		target.sprite_handler.damage()
+		target.change_health(-character.stats.attack_strength)
+		await target.sprite_handler.animation_finished
+		target.should_display_health(false)

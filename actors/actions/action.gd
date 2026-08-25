@@ -22,3 +22,10 @@ func act(character: Character, targeting: Node) -> bool:
 	return true
 
 @abstract func act_inner(character: Character, target_payload: Array)
+
+func turn_towards_target(character: Character, target: Character):
+	var animations = character.sprite_handler
+	if target.grid_coordinates.x < character.grid_coordinates.x:
+		animations.flip_h = true
+	elif target.grid_coordinates.x > character.grid_coordinates.x:
+		animations.flip_h = false
