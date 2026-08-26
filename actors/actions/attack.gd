@@ -19,3 +19,5 @@ func act_inner(character: Character, target_payload):
 		target.change_health(-character.stats.attack_strength)
 		await target.sprite_handler.animation_finished
 		target.should_display_health(false)
+		if target.stats.health <= 0:
+			target.die()

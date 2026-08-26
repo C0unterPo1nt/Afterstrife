@@ -77,8 +77,6 @@ func change_health(ammount: int):
 	ammount = clamp(ammount, -stats.health, stats.max_health - stats.health)
 	stats.health += ammount
 	$HealthBar.value = stats.health
-	if stats.health <= 0:
-		die()
 
 func die():
 	Grid.game_board.erase(grid_coordinates)
