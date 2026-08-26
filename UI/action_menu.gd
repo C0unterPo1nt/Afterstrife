@@ -24,17 +24,17 @@ func make_action_selection(character: Character) -> Action:
 func offset_if_needed(character: Character):
 	var unit = float(Grid.cell_size.x)
 	if character.grid_coordinates.x > Grid.grid_size.x - 3:
-		position.x = -size.x
+		position.x = character.position.x - size.x
 	else:
-		position.x = unit
+		position.x = character.position.x + unit
 	if character.grid_coordinates.y > Grid.grid_size.y - 2:
-		position.y = -2 * unit
+		position.y = character.position.y - (2 * unit)
 		alignment = ALIGNMENT_END
 	elif character.grid_coordinates.y == 0:
 		position.y = 0
 		alignment = ALIGNMENT_BEGIN
 	else:
-		position.y = -unit
+		position.y = character.position.y -  unit
 		alignment = ALIGNMENT_CENTER
 	
 

@@ -23,7 +23,6 @@ var map_path: String = "res://Map/Maps/base_map.tscn"
 func setup(team_configs: Array[TeamConfiguration], map_p: String):
 	team_configurations = team_configs
 	map_path = map_p
-	pass
 
 func _ready():
 	$TileMap.create_instance(true, load(map_path))
@@ -34,7 +33,7 @@ func on_ready():
 	for config in team_configurations:
 		teams.append(config.team)
 	$UI/GameMenu.init(teams)
-	$Actors.init(team_configurations, $TileMap, $Targeting)
+	$Actors.init(team_configurations, $TileMap, $Targeting, $UI/ActionMenu)
 	$Targeting.init($TileMap)
 	$Turns.init(teams, overlays)
 	start_game()

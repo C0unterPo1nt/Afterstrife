@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://tycvwwbtgk0f"]
 
 [ext_resource type="Script" uid="uid://d3wixdyf7dxr3" path="res://actors/character.gd" id="1_px5sl"]
+[ext_resource type="Script" uid="uid://6dbljn0kc7hs" path="res://actors/sprite_handler.gd" id="2_dhxxy"]
 [ext_resource type="SpriteFrames" uid="uid://bxso7i1gq5i0a" path="res://actors/characters/scythe/scythegirlsprites.tres" id="2_waij2"]
-[ext_resource type="Script" uid="uid://bw8wiskuh8h7e" path="res://actors/sprite_handler.gd" id="3_px5sl"]
 [ext_resource type="Script" uid="uid://c38u4idawgxej" path="res://actors/movement.gd" id="4_mdkfl"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="4_v8d33"]
 [ext_resource type="Script" uid="uid://dcbd0bx7xjo36" path="res://actors/character_sprite.gd" id="6_3cqhy"]
-[ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="6_dhxxy"]
 [ext_resource type="Texture2D" uid="uid://bdbbt10rertf8" path="res://sprites/heal.png" id="7_3cqhy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jerb"]
@@ -74,31 +73,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Character" type="Node2D" unique_id=264603401]
+[node name="Character2" type="Node2D" unique_id=264603401]
 script = ExtResource("1_px5sl")
-
-[node name="ActionMenu" type="VBoxContainer" parent="." unique_id=927356078]
-visible = false
-z_index = 1
-offset_left = 32.0
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = 64.0
-size_flags_horizontal = 3
-theme = ExtResource("4_v8d33")
-alignment = 1
-script = ExtResource("6_dhxxy")
-metadata/_tab_index = 1
-
-[node name="ActionButton1" type="Button" parent="ActionMenu" unique_id=967905346]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "test"
-
-[node name="ActionButton2" type="Button" parent="ActionMenu" unique_id=205829067]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "test"
 
 [node name="ReadyIndicator" type="Polygon2D" parent="." unique_id=164336434]
 visible = false
@@ -106,7 +82,7 @@ color = Color(0.17184411, 0.33003333, 0.6196782, 0.3)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
 
 [node name="SpriteHandler" type="Node2D" parent="." unique_id=1191219822]
-script = ExtResource("3_px5sl")
+script = ExtResource("2_dhxxy")
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="SpriteHandler" unique_id=2028234674]
 texture_filter = 1

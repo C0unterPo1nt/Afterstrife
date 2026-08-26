@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://txm4n2i8q3fd" path="res://overlays.gd" id="3_lc2xo"]
 [ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="3_mfdv2"]
 [ext_resource type="Script" uid="uid://db5a1l3oti5h5" path="res://actors/actors.gd" id="5_vef74"]
+[ext_resource type="Script" uid="uid://x0tyhsx3a5si" path="res://UI/action_menu.gd" id="6_mfdv2"]
 [ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="6_x5p1p"]
 [ext_resource type="Script" uid="uid://b5jpm7m4wfg64" path="res://Managers/game_manager.gd" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
@@ -192,6 +193,29 @@ offset_right = 150.0
 offset_bottom = 27.0
 theme_override_colors/font_color = Color(1, 0.91764706, 0.68235296, 1)
 text = "0/3"
+
+[node name="ActionMenu" type="VBoxContainer" parent="UI" unique_id=819866365]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+theme = ExtResource("6_x5p1p")
+alignment = 1
+script = ExtResource("6_mfdv2")
+metadata/_tab_index = 1
+
+[node name="ActionButton1" type="Button" parent="UI/ActionMenu" unique_id=1747527551]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "test"
+
+[node name="ActionButton2" type="Button" parent="UI/ActionMenu" unique_id=717728023]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "test"
 
 [node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
 

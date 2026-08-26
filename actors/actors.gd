@@ -5,7 +5,7 @@ var combat_menu: Control
 var tilemap: Node2D
 var is_character_acting: bool = false
 
-func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _targeting: Node):
+func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _targeting: Node, action_menu: Node):
 	team_configurations = team_configs
 	tilemap = _tilemap
 	for config in team_configurations:
@@ -20,7 +20,7 @@ func init(team_configs: Array[TeamConfiguration], _tilemap: Node2D, _targeting: 
 			character.position = Grid.snap_to_grid(starting_positions.pop_front())
 			var coordinates = Grid.absolute_to_grid_coordinates(character.position)
 			Grid.game_board.set(coordinates, character)
-			character.init(coordinates, team, _targeting)
+			character.init(coordinates, team, _targeting, action_menu)
 
 func sleep():
 	for actor in get_children():

@@ -6,19 +6,20 @@ enum States {ready, declare, acting, tapped, sleep}
 
 @export var state: States = States.ready
 
+var action_menu: Node
 @export var grid_coordinates: Vector2i
-@export var activated: bool = false
 @export var stats: CharacterStats
 @export var team: Team
 @onready var sprite_handler: Node = $SpriteHandler
 var targeting: Targeting
 
-func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node):
+func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node, _action_menu: Node):
 	grid_coordinates = _grid_coordinates
 	team = _team
 	team.actors.append(self)
 	set_team_indicator_color(team)
 	targeting = _targeting
+	action_menu = _action_menu
 
 func _ready() -> void:
 	$HealthBar.max_value = stats.max_health
@@ -26,7 +27,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if GameState.input_allowed:
-		if Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position()) == grid_coordinates:
+		var mouse_coordinates = Grid.absolute_to_grid_coordinates(get_viewport().get_mouse_position())
+		if mouse_coordinates == grid_coordinates && !action_menu.visible:
 			should_display_health(true)
 		else:
 			should_display_health(false)
@@ -34,13 +36,11 @@ func _process(delta: float) -> void:
 func activate():
 	if state != States.ready:
 		return
-	activated = true
 	$ReadyIndicator.visible = false
 	state = States.declare
 	var success = false
 	while !success:
-		#TODO: get rid of the self param
-		var action: Action = await $ActionMenu.make_action_selection(self)
+		var action: Action = await action_menu.make_action_selection(self)
 		if action == null:
 			unactivate()
 			return
@@ -48,7 +48,6 @@ func activate():
 	deactivate()
 
 func unactivate():
-	activated = false
 	state = States.ready
 	$ReadyIndicator.visible = true
 
