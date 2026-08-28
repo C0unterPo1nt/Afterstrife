@@ -1,35 +1,11 @@
 [gd_scene format=3 uid="uid://cobn7mntvekv8"]
 
 [ext_resource type="PackedScene" uid="uid://tycvwwbtgk0f" path="res://actors/character.tscn" id="1_6cqmo"]
-[ext_resource type="Script" uid="uid://epvhci8hpdqr" path="res://actors/actions/action.gd" id="2_00nhj"]
-[ext_resource type="Script" uid="uid://bwajd4yfjqr64" path="res://actors/actions/move.gd" id="3_0vo3q"]
+[ext_resource type="Resource" uid="uid://da0y0wf1vmr0o" path="res://actors/characters/katana/katana_stats.tres" id="2_5ufc2"]
 [ext_resource type="SpriteFrames" uid="uid://3qeqem53at2f" path="res://actors/characters/katana/katanagirlsprites.tres" id="3_4osny"]
-[ext_resource type="Script" uid="uid://bmes4xjeg8eml" path="res://actors/actions/attack.gd" id="4_tfnog"]
-[ext_resource type="Script" uid="uid://0vslwn03wk6o" path="res://actors/character_stats.gd" id="5_ccxke"]
-
-[sub_resource type="Resource" id="Resource_5k7dn"]
-script = ExtResource("3_0vo3q")
-range = 3
-metadata/_custom_type_script = "uid://bwajd4yfjqr64"
-
-[sub_resource type="Resource" id="Resource_pu5ap"]
-script = ExtResource("4_tfnog")
-range = 1
-metadata/_custom_type_script = "uid://bmes4xjeg8eml"
-
-[sub_resource type="Resource" id="Resource_we6yl"]
-resource_local_to_scene = true
-script = ExtResource("5_ccxke")
-attack_strength = 22
-max_health = 100
-health = 100
-maximum_actions = 3
-remaining_actions = 3
-actions = Array[ExtResource("2_00nhj")]([SubResource("Resource_5k7dn"), SubResource("Resource_pu5ap")])
-metadata/_custom_type_script = "uid://0vslwn03wk6o"
 
 [node name="Character" unique_id=264603401 instance=ExtResource("1_6cqmo")]
-stats = SubResource("Resource_we6yl")
+stats = ExtResource("2_5ufc2")
 
-[node name="CharacterSprite" parent="." index="2" unique_id=2028234674]
+[node name="CharacterSprite" parent="SpriteHandler" parent_id_path=PackedInt32Array(1191219822) index="0" unique_id=2028234674]
 sprite_frames = ExtResource("3_4osny")

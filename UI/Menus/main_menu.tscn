@@ -15,10 +15,14 @@
 [ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://actors/teams/blue_team.tres" id="6_at2v2"]
 [ext_resource type="Texture2D" uid="uid://b77prxpdhl6t8" path="res://sprites/katanagirl2.png" id="6_dmxr8"]
 [ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="7_eyj0v"]
+[ext_resource type="Resource" uid="uid://cr8sq34fghch0" path="res://actors/characters/scythe/scythe_stats.tres" id="7_xdwi4"]
 [ext_resource type="Texture2D" uid="uid://c2itxhbrv5fxy" path="res://sprites/witch.png" id="8_d7284"]
 [ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="9_k46ao"]
 [ext_resource type="Texture2D" uid="uid://w8kwkhosiel7" path="res://sprites/healer.png" id="10_dmxr8"]
+[ext_resource type="Resource" uid="uid://da0y0wf1vmr0o" path="res://actors/characters/katana/katana_stats.tres" id="10_momb8"]
 [ext_resource type="PackedScene" uid="uid://hoautbsrjqwt" path="res://actors/characters/healer/healer.tscn" id="11_eyj0v"]
+[ext_resource type="Resource" uid="uid://duybkegwty7t1" path="res://actors/characters/witch/witch_stats.tres" id="13_x4gtu"]
+[ext_resource type="Resource" uid="uid://n8u0oc2t04rb" path="res://actors/characters/healer/healer_stats.tres" id="16_upc7w"]
 [ext_resource type="PackedScene" uid="uid://cvcca8ico2fhb" path="res://UI/Menus/UnitCatalogue/unit_catalogue.tscn" id="17_nsbyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdoul"]
@@ -40,6 +44,7 @@ script = ExtResource("3_mn8lt")
 scene = ExtResource("5_4em55")
 preview_texture = SubResource("AtlasTexture_sdoul")
 profile = SubResource("Resource_d7284")
+stats = ExtResource("7_xdwi4")
 metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xs283"]
@@ -61,6 +66,7 @@ script = ExtResource("3_mn8lt")
 scene = ExtResource("7_eyj0v")
 preview_texture = SubResource("AtlasTexture_xs283")
 profile = SubResource("Resource_ley3s")
+stats = ExtResource("10_momb8")
 metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkrl2"]
@@ -82,6 +88,7 @@ script = ExtResource("3_mn8lt")
 scene = ExtResource("9_k46ao")
 preview_texture = SubResource("AtlasTexture_vkrl2")
 profile = SubResource("Resource_xdwi4")
+stats = ExtResource("13_x4gtu")
 metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7284"]
@@ -95,7 +102,7 @@ description = "Skin deep piety"
 likes = "Daydreaming, Smut"
 dislikes = "Small talk"
 calling = "Secretary"
-weight = "Slightly more than a feather"
+weight = "More than a feather"
 metadata/_custom_type_script = "uid://ds2nokhmjd8la"
 
 [sub_resource type="Resource" id="Resource_k46ao"]
@@ -103,6 +110,7 @@ script = ExtResource("3_mn8lt")
 scene = ExtResource("11_eyj0v")
 preview_texture = SubResource("AtlasTexture_d7284")
 profile = SubResource("Resource_momb8")
+stats = ExtResource("16_upc7w")
 metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njn2r"]

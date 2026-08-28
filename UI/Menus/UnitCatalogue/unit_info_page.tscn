@@ -4,17 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="1_nhhxu"]
 [ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="2_11up8"]
 [ext_resource type="LabelSettings" uid="uid://bkj6rgs2n2khf" path="res://UI/theme/unit_page_label_settings.tres" id="3_j4g1c"]
-[ext_resource type="PackedScene" uid="uid://d0hlhc2w4v8gl" path="res://UI/Menus/UnitCatalogue/action_info.tscn" id="4_gv16n"]
 
 [sub_resource type="Theme" id="Theme_maedw"]
-BoxContainer/constants/separation = 3
+BoxContainer/constants/separation = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3r33"]
 atlas = ExtResource("1_nhhxu")
 region = Rect2(16, 16, 32, 32)
 
 [node name="UnitInfoContainer" type="VBoxContainer" unique_id=1014825884]
-custom_minimum_size = Vector2(400, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_right = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 theme = SubResource("Theme_maedw")
 alignment = 1
 script = ExtResource("1_11up8")
@@ -41,8 +48,8 @@ label_settings = ExtResource("2_11up8")
 
 [node name="DescriptionLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=1449657089]
 layout_mode = 2
-theme_override_font_sizes/font_size = 9
 text = "Burdened by the weight of responsibility"
+label_settings = ExtResource("3_j4g1c")
 
 [node name="LikesLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=48108474]
 layout_mode = 2
@@ -78,12 +85,3 @@ text = "Health: 80"
 [node name="ActionsLabel" type="Label" parent="UnitStatsContainer/BasicStatsContainer" unique_id=1375592878]
 layout_mode = 2
 text = "Actions: 2"
-
-[node name="ActionContainer" parent="UnitStatsContainer" unique_id=187056854 instance=ExtResource("4_gv16n")]
-layout_mode = 2
-
-[node name="ActionContainer2" parent="UnitStatsContainer" unique_id=2076882036 instance=ExtResource("4_gv16n")]
-layout_mode = 2
-
-[node name="ActionContainer3" parent="UnitStatsContainer" unique_id=167141292 instance=ExtResource("4_gv16n")]
-layout_mode = 2

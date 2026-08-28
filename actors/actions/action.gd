@@ -2,6 +2,7 @@
 
 var name: String
 @export var range: int
+@export var strength: int
 var _targeting_config: TargetingConfig
 var _potential_target_configs: Array[PotentialTargetConfig]
 

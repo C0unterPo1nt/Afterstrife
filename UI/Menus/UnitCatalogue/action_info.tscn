@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://d0hlhc2w4v8gl"]
 
+[ext_resource type="Script" uid="uid://cbijgebti17vc" path="res://UI/Menus/UnitCatalogue/action_info.gd" id="1_duvyj"]
+
 [node name="ActionContainer" type="HBoxContainer" unique_id=187056854]
 theme_override_constants/separation = 4
+script = ExtResource("1_duvyj")
 
 [node name="ActionName" type="Label" parent="." unique_id=850495719]
 layout_mode = 2
