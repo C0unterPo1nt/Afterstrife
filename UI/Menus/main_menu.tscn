@@ -6,9 +6,104 @@
 [ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="3_1e7f8"]
 [ext_resource type="Script" uid="uid://dsa3o3hfegc3j" path="res://UI/Menus/info_body.gd" id="3_at2v2"]
 [ext_resource type="Script" uid="uid://h6e8d3wlml14" path="res://UI/Menus/game_setup.gd" id="3_ch4um"]
+[ext_resource type="Script" uid="uid://bhu0c7rxtk4ox" path="res://actors/character_preview.gd" id="3_mn8lt"]
 [ext_resource type="PackedScene" uid="uid://di1jlrk2gykii" path="res://UI/Menus/GameSetupPage/team_setup_container.tscn" id="3_njn2r"]
+[ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="4_nsbyk"]
+[ext_resource type="PackedScene" uid="uid://bk1s4ono60yno" path="res://actors/characters/scythe/scythegirl.tscn" id="5_4em55"]
 [ext_resource type="Resource" uid="uid://b1j6g6avk4snx" path="res://actors/teams/red_team.tres" id="5_328dx"]
+[ext_resource type="Script" uid="uid://ds2nokhmjd8la" path="res://actors/character_profile.gd" id="5_eyj0v"]
 [ext_resource type="Resource" uid="uid://b5tdqsh4anv23" path="res://actors/teams/blue_team.tres" id="6_at2v2"]
+[ext_resource type="Texture2D" uid="uid://b77prxpdhl6t8" path="res://sprites/katanagirl2.png" id="6_dmxr8"]
+[ext_resource type="PackedScene" uid="uid://cobn7mntvekv8" path="res://actors/characters/katana/katanagirl.tscn" id="7_eyj0v"]
+[ext_resource type="Texture2D" uid="uid://c2itxhbrv5fxy" path="res://sprites/witch.png" id="8_d7284"]
+[ext_resource type="PackedScene" uid="uid://bkp0ju8beu2q8" path="res://actors/characters/witch/witch.tscn" id="9_k46ao"]
+[ext_resource type="Texture2D" uid="uid://w8kwkhosiel7" path="res://sprites/healer.png" id="10_dmxr8"]
+[ext_resource type="PackedScene" uid="uid://hoautbsrjqwt" path="res://actors/characters/healer/healer.tscn" id="11_eyj0v"]
+[ext_resource type="PackedScene" uid="uid://cvcca8ico2fhb" path="res://UI/Menus/UnitCatalogue/unit_catalogue.tscn" id="17_nsbyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdoul"]
+atlas = ExtResource("4_nsbyk")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_d7284"]
+script = ExtResource("5_eyj0v")
+name = "Rhea"
+description = "Burdened by the weight of responsibility"
+likes = "Shoujo, Menthols"
+dislikes = "Uninished tasks"
+calling = "Collections Agent"
+weight = "A gold ingot"
+metadata/_custom_type_script = "uid://ds2nokhmjd8la"
+
+[sub_resource type="Resource" id="Resource_07diq"]
+script = ExtResource("3_mn8lt")
+scene = ExtResource("5_4em55")
+preview_texture = SubResource("AtlasTexture_sdoul")
+profile = SubResource("Resource_d7284")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs283"]
+atlas = ExtResource("6_dmxr8")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_ley3s"]
+script = ExtResource("5_eyj0v")
+name = "Kris"
+description = "Obsessed with perfection"
+likes = "Structure, Discipline"
+dislikes = "Sweets"
+calling = "Potter"
+weight = "The tension in your neck"
+metadata/_custom_type_script = "uid://ds2nokhmjd8la"
+
+[sub_resource type="Resource" id="Resource_7rxre"]
+script = ExtResource("3_mn8lt")
+scene = ExtResource("7_eyj0v")
+preview_texture = SubResource("AtlasTexture_xs283")
+profile = SubResource("Resource_ley3s")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkrl2"]
+atlas = ExtResource("8_d7284")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_xdwi4"]
+script = ExtResource("5_eyj0v")
+name = "dcfb"
+description = "Shrouded in a cloak of shame"
+likes = "Puzzles, Sugary drinks"
+dislikes = "People"
+calling = "Unemployed"
+weight = "One disapproving glare"
+metadata/_custom_type_script = "uid://ds2nokhmjd8la"
+
+[sub_resource type="Resource" id="Resource_few66"]
+script = ExtResource("3_mn8lt")
+scene = ExtResource("9_k46ao")
+preview_texture = SubResource("AtlasTexture_vkrl2")
+profile = SubResource("Resource_xdwi4")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7284"]
+atlas = ExtResource("10_dmxr8")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="Resource" id="Resource_momb8"]
+script = ExtResource("5_eyj0v")
+name = "Mari"
+description = "Skin deep piety"
+likes = "Daydreaming, Smut"
+dislikes = "Small talk"
+calling = "Secretary"
+weight = "Slightly more than a feather"
+metadata/_custom_type_script = "uid://ds2nokhmjd8la"
+
+[sub_resource type="Resource" id="Resource_k46ao"]
+script = ExtResource("3_mn8lt")
+scene = ExtResource("11_eyj0v")
+preview_texture = SubResource("AtlasTexture_d7284")
+profile = SubResource("Resource_momb8")
+metadata/_custom_type_script = "uid://bhu0c7rxtk4ox"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njn2r"]
 
@@ -23,6 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jf8mj")
 script = ExtResource("2_p3jrs")
+character_previews = Array[ExtResource("3_mn8lt")]([SubResource("Resource_07diq"), SubResource("Resource_7rxre"), SubResource("Resource_few66"), SubResource("Resource_k46ao")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1981534267]
 layout_mode = 0
@@ -77,6 +173,10 @@ text = "Play"
 [node name="InfoButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1328858006]
 layout_mode = 2
 text = "Info"
+
+[node name="UnitsButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1764919467]
+layout_mode = 2
+text = "Units"
 
 [node name="QuitGameButton" type="Button" parent="TabContainer/HomePageContainer/MenuContainer" unique_id=1219398686]
 visible = false
@@ -181,6 +281,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ch4um")
 
+[node name="UnitCatalogue" parent="TabContainer" unique_id=398620515 instance=ExtResource("17_nsbyk")]
+visible = false
+layout_mode = 2
+
 [node name="BackButton" type="Button" parent="." unique_id=743332192]
 visible = false
 layout_mode = 1
@@ -202,6 +306,7 @@ text = "< Back"
 [connection signal="done" from="TabContainer/Cutscene" to="." method="_on_cutscene_done"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/UnitsButton" to="." method="_on_units_button_pressed"]
 [connection signal="pressed" from="TabContainer/HomePageContainer/MenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="meta_clicked" from="TabContainer/InfoPageContainer/InfoBody" to="TabContainer/InfoPageContainer/InfoBody" method="_on_meta_clicked"]
 [connection signal="pressed" from="TabContainer/GameSetupPageContainer/GameSettingsContainer/StartGameButton" to="TabContainer/GameSetupPageContainer" method="_on_start_game_button_pressed"]

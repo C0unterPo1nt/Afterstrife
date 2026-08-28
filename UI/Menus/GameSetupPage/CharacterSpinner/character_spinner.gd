@@ -1,6 +1,6 @@
 class_name CharacterSpinner extends CenterContainer
 
-@export var all_characters: Array[CharacterPreview]
+var all_characters: Array[CharacterPreview]
 
 func _init() -> void:
 	call_deferred("init_characters")

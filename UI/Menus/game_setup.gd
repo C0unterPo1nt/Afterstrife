@@ -12,6 +12,10 @@ func _ready():
 	for map in maps.keys():
 		map_selector.add_item(map)
 
+func init(characters: Array[CharacterPreview]):
+	$TeamSetupContainer.init(characters)
+	$TeamSetupContainer2.init(characters)
+
 func _on_start_game_button_pressed() -> void:
 	#eventually get the map
 	var map: String = maps[map_selector.text]

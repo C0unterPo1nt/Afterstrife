@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cvcca8ico2fhb"]
+
+[ext_resource type="Theme" uid="uid://ce4rc8t8yldjd" path="res://UI/theme/combat_menu.tres" id="1_lvoqb"]
+[ext_resource type="Texture2D" uid="uid://e648ra8dvo8w" path="res://sprites/ScrollBoxArrow.png" id="2_ch47j"]
+[ext_resource type="Script" uid="uid://bf56r5yo34opf" path="res://UI/Menus/UnitCatalogue/unit_catalogue.gd" id="2_xhvt6"]
+[ext_resource type="PackedScene" uid="uid://dqffobuapr7mq" path="res://UI/Menus/UnitCatalogue/unit_info_page.tscn" id="3_vxu05"]
+[ext_resource type="Script" uid="uid://bidrabx52ka83" path="res://UI/Menus/UnitCatalogue/units_pages.gd" id="4_segv6"]
+
+[node name="UnitCatalogue" type="TabContainer" unique_id=398620515]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lvoqb")
+current_tab = 0
+tabs_visible = false
+script = ExtResource("2_xhvt6")
+metadata/_tab_index = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1374770849]
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="NavigateLeftContainer" type="CenterContainer" parent="HBoxContainer" unique_id=2028981856]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftButton" type="TextureButton" parent="HBoxContainer/NavigateLeftContainer" unique_id=1586646151]
+custom_minimum_size = Vector2(12, 44)
+layout_mode = 2
+texture_normal = ExtResource("2_ch47j")
+stretch_mode = 5
+flip_h = true
+
+[node name="Units" type="TabContainer" parent="HBoxContainer" unique_id=774571953]
+layout_mode = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("4_segv6")
+
+[node name="UnitInfoContainer" parent="HBoxContainer/Units" unique_id=1014825884 instance=ExtResource("3_vxu05")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="NavigateRightContainer" type="CenterContainer" parent="HBoxContainer" unique_id=847029816]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightButton" type="TextureButton" parent="HBoxContainer/NavigateRightContainer" unique_id=903979340]
+custom_minimum_size = Vector2(12, 44)
+layout_mode = 2
+texture_normal = ExtResource("2_ch47j")
+stretch_mode = 5
+
+[connection signal="pressed" from="HBoxContainer/NavigateLeftContainer/LeftButton" to="HBoxContainer/Units" method="_on_left_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NavigateRightContainer/RightButton" to="HBoxContainer/Units" method="_on_right_button_pressed"]

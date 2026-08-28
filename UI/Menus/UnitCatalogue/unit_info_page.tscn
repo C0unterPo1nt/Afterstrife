@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dqffobuapr7mq"]
+
+[ext_resource type="Script" uid="uid://cthrqi1x67d3s" path="res://UI/Menus/UnitCatalogue/unit_info_page.gd" id="1_11up8"]
+[ext_resource type="Texture2D" uid="uid://cdt7q22mjkcdc" path="res://sprites/Scythegirl.png" id="1_nhhxu"]
+[ext_resource type="LabelSettings" uid="uid://bu5v6rwr7c1gs" path="res://UI/theme/header_label.tres" id="2_11up8"]
+[ext_resource type="LabelSettings" uid="uid://bkj6rgs2n2khf" path="res://UI/theme/unit_page_label_settings.tres" id="3_j4g1c"]
+[ext_resource type="PackedScene" uid="uid://d0hlhc2w4v8gl" path="res://UI/Menus/UnitCatalogue/action_info.tscn" id="4_gv16n"]
+
+[sub_resource type="Theme" id="Theme_maedw"]
+BoxContainer/constants/separation = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3r33"]
+atlas = ExtResource("1_nhhxu")
+region = Rect2(16, 16, 32, 32)
+
+[node name="UnitInfoContainer" type="VBoxContainer" unique_id=1014825884]
+custom_minimum_size = Vector2(400, 0)
+theme = SubResource("Theme_maedw")
+alignment = 1
+script = ExtResource("1_11up8")
+
+[node name="UnitCharacterContainer" type="HBoxContainer" parent="." unique_id=288214615]
+layout_mode = 2
+
+[node name="CharacterPortraitContainer" type="CenterContainer" parent="UnitCharacterContainer" unique_id=8131901]
+layout_mode = 2
+
+[node name="CharacterPortrait" type="TextureRect" parent="UnitCharacterContainer/CharacterPortraitContainer" unique_id=1922770392]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = SubResource("AtlasTexture_i3r33")
+expand_mode = 4
+
+[node name="CharacterProfileContainer" type="VBoxContainer" parent="UnitCharacterContainer" unique_id=2065379802]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=1437223160]
+layout_mode = 2
+text = "Rhea"
+label_settings = ExtResource("2_11up8")
+
+[node name="DescriptionLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=1449657089]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Burdened by the weight of responsibility"
+
+[node name="LikesLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=48108474]
+layout_mode = 2
+text = "Likes: Shoujo, Menthols"
+label_settings = ExtResource("3_j4g1c")
+
+[node name="DislikesLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=104760607]
+layout_mode = 2
+text = "Dislikes: Unfinished Tasks"
+label_settings = ExtResource("3_j4g1c")
+
+[node name="LifesCallingLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=395342918]
+layout_mode = 2
+text = "Lifes Calling: Collections Agent"
+label_settings = ExtResource("3_j4g1c")
+
+[node name="SoulWeightLabel" type="Label" parent="UnitCharacterContainer/CharacterProfileContainer" unique_id=2087643386]
+layout_mode = 2
+text = "Soul Wt.: A gold ingot"
+label_settings = ExtResource("3_j4g1c")
+
+[node name="UnitStatsContainer" type="VBoxContainer" parent="." unique_id=882753549]
+layout_mode = 2
+
+[node name="BasicStatsContainer" type="HBoxContainer" parent="UnitStatsContainer" unique_id=1066157241]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HealthLabel" type="Label" parent="UnitStatsContainer/BasicStatsContainer" unique_id=973276008]
+layout_mode = 2
+text = "Health: 80"
+
+[node name="ActionsLabel" type="Label" parent="UnitStatsContainer/BasicStatsContainer" unique_id=1375592878]
+layout_mode = 2
+text = "Actions: 2"
+
+[node name="ActionContainer" parent="UnitStatsContainer" unique_id=187056854 instance=ExtResource("4_gv16n")]
+layout_mode = 2
+
+[node name="ActionContainer2" parent="UnitStatsContainer" unique_id=2076882036 instance=ExtResource("4_gv16n")]
+layout_mode = 2
+
+[node name="ActionContainer3" parent="UnitStatsContainer" unique_id=167141292 instance=ExtResource("4_gv16n")]
+layout_mode = 2
