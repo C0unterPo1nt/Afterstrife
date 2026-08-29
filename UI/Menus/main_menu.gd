@@ -6,7 +6,7 @@ var game = preload("res://game.tscn")
 
 func _ready() -> void:
 	$TabContainer/GameSetupPageContainer.init(character_previews)
-	$TabContainer/UnitCatalogue.init(character_previews)	
+	$TabContainer/UnitCatalogue.init(character_previews)
 
 func _on_back_button_pressed() -> void:
 	$TabContainer.current_tab = 1

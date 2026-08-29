@@ -106,7 +106,6 @@ theme_override_font_sizes/font_size = 9
 text = "Begin"
 
 [node name="VictoryScreen" type="VBoxContainer" parent="UI/Overlays" unique_id=1701308198]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

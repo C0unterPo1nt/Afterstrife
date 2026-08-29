@@ -19,7 +19,6 @@ metadata/_custom_type_script = "uid://bmes4xjeg8eml"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("4_pukdt")
-attack_strength = 22
 max_health = 100
 health = 100
 maximum_actions = 3

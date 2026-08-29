@@ -25,7 +25,6 @@ metadata/_custom_type_script = "uid://bsjjguut4eju6"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("5_gjgg1")
-attack_strength = 35
 max_health = 80
 health = 80
 maximum_actions = 2

@@ -17,7 +17,7 @@ func get_spinners():
 
 func init(characters: Array):
 	for spinner in get_spinners():
-		spinner.all_characters = characters
+		spinner.init_characters(characters)
 
 func _ready() -> void:
 	$TeamNameLabel.text = team.name

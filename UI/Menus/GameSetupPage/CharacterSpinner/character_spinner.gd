@@ -1,11 +1,9 @@
 class_name CharacterSpinner extends CenterContainer
 
 var all_characters: Array[CharacterPreview]
-
-func _init() -> void:
-	call_deferred("init_characters")
 	
-func init_characters():
+func init_characters(_all_characters: Array[CharacterPreview]):
+	all_characters = _all_characters
 	for character in all_characters:
 		var preview: TextureRect = TextureRect.new()
 		preview.texture = character.preview_texture
