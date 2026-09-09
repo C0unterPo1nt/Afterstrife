@@ -75,7 +75,7 @@ region = Rect2(16, 16, 32, 32)
 
 [sub_resource type="Resource" id="Resource_xdwi4"]
 script = ExtResource("5_eyj0v")
-name = "dcfb"
+name = "Fae"
 description = "Shrouded in a cloak of shame"
 likes = "Puzzles, Sugary drinks"
 dislikes = "People"
@@ -213,7 +213,7 @@ text = "V0.1
 
 A Game by Lucy!
 
-I hope you enjoy my silly little game. A lot of sleepless nights and fits of fervor went into making it.
+Thank you Harry, Brooke, Matt and Nicky for playtesting <3
 
 
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://7mnkbmqiiaou"
+path="res://.godot/imported/cover_img.ase-81310f7148844a1eecc7d3a45c1e462d.res"
+
+[deps]
+
+source_file="res://sprites/cover_img.ase"
+dest_files=["res://.godot/imported/cover_img.ase-81310f7148844a1eecc7d3a45c1e462d.res"]
+
+[params]
+
