@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://duybkegwty7t1" path="res://actors/characters/witch/witch_stats.tres" id="13_x4gtu"]
 [ext_resource type="Resource" uid="uid://n8u0oc2t04rb" path="res://actors/characters/healer/healer_stats.tres" id="16_upc7w"]
 [ext_resource type="PackedScene" uid="uid://cvcca8ico2fhb" path="res://UI/Menus/UnitCatalogue/unit_catalogue.tscn" id="17_nsbyk"]
+[ext_resource type="Script" uid="uid://p4inwor7gtoo" path="res://addons/godot-console/scripts/console_container.gd" id="25_momb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdoul"]
 atlas = ExtResource("4_nsbyk")
@@ -309,6 +310,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 9
 text = "< Back"
+
+[node name="ConsoleContainer" type="VBoxContainer" parent="." unique_id=1496907806]
+visible = false
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 288.0
+script = ExtResource("25_momb8")
+metadata/_custom_type_script = "uid://p4inwor7gtoo"
 
 [connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="done" from="TabContainer/Cutscene" to="." method="_on_cutscene_done"]

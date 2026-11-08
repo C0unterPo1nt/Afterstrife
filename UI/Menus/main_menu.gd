@@ -8,6 +8,10 @@ func _ready() -> void:
 	$TabContainer/GameSetupPageContainer.init(character_previews)
 	$TabContainer/UnitCatalogue.init(character_previews)
 
+func _process(delta):
+	if Input.is_action_just_pressed("toggle_dev_console"):
+		$ConsoleContainer.visible = !$ConsoleContainer.visible
+
 func _on_back_button_pressed() -> void:
 	$TabContainer.current_tab = 1
 

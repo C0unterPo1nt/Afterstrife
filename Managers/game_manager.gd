@@ -43,6 +43,9 @@ func start_game():
 
 func _process(delta: float) -> void:
 	check_victory_condition()
+	
+	if Input.is_action_just_pressed("toggle_dev_console"):
+		$ConsoleContainer.visible = !$ConsoleContainer.visible
 
 func check_victory_condition():
 	for team in teams:

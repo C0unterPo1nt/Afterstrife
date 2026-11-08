@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://rlftr63ukhb8" path="res://UI/menu.gd" id="8_215e1"]
 [ext_resource type="AudioStream" uid="uid://cc2wbo37fv25x" path="res://Sound/song1.wav" id="10_hve3p"]
 [ext_resource type="Script" uid="uid://cv6jkbh1mmggm" path="res://Managers/targeting/targeting.gd" id="10_mfdv2"]
+[ext_resource type="Script" uid="uid://p4inwor7gtoo" path="res://addons/godot-console/scripts/console_container.gd" id="12_iotsf"]
 [ext_resource type="Script" uid="uid://dbg1uu8eypcw" path="res://Managers/targeting/PotentialTargets.gd" id="15_e8heu"]
 [ext_resource type="Script" uid="uid://d1g2paabsa222" path="res://Managers/turns.gd" id="17_rvswv"]
 
@@ -235,6 +236,13 @@ script = ExtResource("5_vef74")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=1981684605]
 stream = ExtResource("10_hve3p")
 autoplay = true
+
+[node name="ConsoleContainer" type="VBoxContainer" parent="." unique_id=2115990461]
+visible = false
+offset_right = 160.0
+offset_bottom = 256.0
+script = ExtResource("12_iotsf")
+metadata/_custom_type_script = "uid://p4inwor7gtoo"
 
 [connection signal="pressed" from="UI/Overlays/VictoryScreen/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="pressed" from="UI/GameMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
