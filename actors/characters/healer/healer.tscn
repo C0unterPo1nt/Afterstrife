@@ -86,7 +86,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Character" unique_id=264603401 instance=ExtResource("1_as3a2")]
+[node name="Character2" unique_id=264603401 instance=ExtResource("1_as3a2")]
 stats = ExtResource("2_6d23l")
 
 [node name="CharacterSprite" parent="SpriteHandler" parent_id_path=PackedInt32Array(1191219822) index="0" unique_id=2028234674]

@@ -12,6 +12,11 @@ var action_menu: Node
 @export var team: Team
 @onready var sprite_handler: Node = $SpriteHandler
 var targeting: Targeting
+var health: int:
+	set(ammount):
+		health = clamp(ammount, 0, stats.max_health)
+		$HealthBar.value = health
+var remaining_actions: int = 0
 
 func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node, _action_menu: Node):
 	grid_coordinates = _grid_coordinates
@@ -23,7 +28,7 @@ func init(_grid_coordinates: Vector2i, _team: Team, _targeting: Node, _action_me
 
 func _ready() -> void:
 	$HealthBar.max_value = stats.max_health
-	$HealthBar.value = stats.health
+	health = stats.max_health
 
 func _process(delta: float) -> void:
 	if GameState.input_allowed:
@@ -53,8 +58,8 @@ func unactivate():
 
 func deactivate():
 	unactivate()
-	stats.remaining_actions = stats.remaining_actions - 1
-	if stats.remaining_actions <= 0:
+	remaining_actions = remaining_actions - 1
+	if remaining_actions <= 0:
 		state = States.tapped
 		$ReadyIndicator.visible = false
 		$SpriteHandler.dim()
@@ -62,7 +67,7 @@ func deactivate():
 
 func refresh():
 	state = States.ready
-	stats.remaining_actions = stats.maximum_actions
+	remaining_actions = stats.maximum_actions
 	$ReadyIndicator.visible = true
 	$SpriteHandler.undim()
 
@@ -71,11 +76,8 @@ func sleep():
 	$ReadyIndicator.visible = false
 	$SpriteHandler.undim()
 
-# TODO change this to a setter on health
 func change_health(ammount: int):
-	ammount = clamp(ammount, -stats.health, stats.max_health - stats.health)
-	stats.health += ammount
-	$HealthBar.value = stats.health
+	health = health + ammount
 
 func die():
 	Grid.game_board.erase(grid_coordinates)
@@ -96,7 +98,7 @@ func set_team_indicator_color(team: Team):
 	$SpriteHandler/TeamIndicator.color = team.color
 
 func is_at_max_health():
-	return stats.health >= stats.max_health
+	return health >= stats.max_health
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.pressed && GameState.input_allowed && !GameState.is_character_acting:

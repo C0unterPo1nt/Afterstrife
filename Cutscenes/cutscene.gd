@@ -22,6 +22,5 @@ func _process(delta):
 
 func end():
 	if !is_done:
-		print('end')
 		is_done = true
 		done.emit()
