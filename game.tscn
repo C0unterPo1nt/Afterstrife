@@ -218,6 +218,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 9
 text = "test"
 
+[node name="ConsoleContainer" type="VBoxContainer" parent="UI" unique_id=2115990461]
+visible = false
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 256.0
+script = ExtResource("12_iotsf")
+metadata/_custom_type_script = "uid://p4inwor7gtoo"
+
 [node name="TileMap" parent="." unique_id=637387977 instance_placeholder="res://Map/Maps/base_map.tscn"]
 
 [node name="Targeting" type="Node2D" parent="." unique_id=1820902521]
@@ -236,13 +244,6 @@ script = ExtResource("5_vef74")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=1981684605]
 stream = ExtResource("10_hve3p")
 autoplay = true
-
-[node name="ConsoleContainer" type="VBoxContainer" parent="." unique_id=2115990461]
-visible = false
-offset_right = 160.0
-offset_bottom = 256.0
-script = ExtResource("12_iotsf")
-metadata/_custom_type_script = "uid://p4inwor7gtoo"
 
 [connection signal="pressed" from="UI/Overlays/VictoryScreen/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
 [connection signal="pressed" from="UI/GameMenu/EndTurnButton" to="Turns" method="_on_end_turn_button_pressed"]
